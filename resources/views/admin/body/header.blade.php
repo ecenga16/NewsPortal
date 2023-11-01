@@ -294,20 +294,13 @@
                     <div class="dropdown-divider"></div>
 
                     <!-- item-->
-                    <a href="javascript:void(0);" class="dropdown-item notify-item">
+                    <a href="{{ route('admin.logout')}}" class="dropdown-item notify-item">
                         <i class="fe-log-out"></i>
                         <span>Logout</span>
                     </a>
 
                 </div>
             </li>
-
-            <li class="dropdown notification-list">
-                <a href="javascript:void(0);" class="nav-link right-bar-toggle waves-effect waves-light">
-                    <i class="fe-settings noti-icon"></i>
-                </a>
-            </li>
-
         </ul>
 
         <!-- LOGO -->
