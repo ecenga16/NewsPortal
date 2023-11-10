@@ -20,7 +20,12 @@ class AdminController extends Controller
 
         $request->session()->regenerateToken();
 
-        return redirect('/admin/logout/page');
+        $notification = array(
+            'message' => 'Logout successful',
+            'alert-type' => 'info',
+        );
+
+        return redirect('/admin/logout/page')->with($notification);
 
     }
 
@@ -65,5 +70,9 @@ class AdminController extends Controller
         $data->save();
 
         return redirect()->back()->with($notification);
+    }
+
+    public function AdminChangePassword() { 
+        return view('admin.admin_change_password');
     }
 }
