@@ -42,27 +42,28 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="tab-pane" id="settings">
-                            <form>
+                            <form method="post" action="{{route('admin.profile.store')}}" enctype="multipart/form-data">
+                                @csrf
                                 <h5 class="mb-4 text-uppercase"><i class="mdi mdi-account-circle me-1"></i>Admin Personal Info</h5>
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="mb-3">
                                             <label for="lastname" class="form-label">User Name</label>
-                                            <input type="text" class="form-control" id="lastname" value="{{$adminData->name}}">
+                                            <input type="text" class="form-control" name="username" id="lastname" value="{{$adminData->name}}">
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
+                                    {{-- <div class="col-md-6">
                                         <div class="mb-3">
                                             <label for="lastname" class="form-label">Admin Photo</label>
                                             <input type="file" class="form-control" name="photo" id="example-fileinput">
                                         </div>
-                                    </div>
-                                    <div class="col-md-6">
+                                    </div> --}}
+                                    {{-- <div class="col-md-6">
                                         <div class="mb-3">
                                             <label for="lastname" class="form-label"></label>
                                             <img src="{{(!empty($adminData->photo)) ? url('upload/admin_images/'.$adminData->photo): url('upload/no-image.jpg')}}" class="rounded-circle avatar-lg img-thumbnail" id="showImage" alt="profile-image">
                                         </div>
-                                    </div>
+                                    </div> --}}
                                 </div>
                                 <div class="text-end">
                                     <button type="submit" class="btn btn-success waves-effect waves-light mt-2"><i class="mdi mdi-content-save"></i> Save</button>
@@ -76,7 +77,7 @@
     </div>
 </div>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+{{-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <script>
     $(document).ready(function(){
         $('#example-fileinput').change(function(e){
@@ -87,6 +88,6 @@
             reader.readAsDataURL(e.target.files[0]);
         })
     });
-</script>
+</script> --}}
 
 @endsection
