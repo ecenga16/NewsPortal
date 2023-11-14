@@ -25,8 +25,8 @@
  
 
 <ul>
- <li><a href=""><b>🟢 Your Profile </b></a> </li>
- <li> <a href=""> <b>🔵 Change Password </b> </a> </li> 
+ <li><a href="{{route('user.dashboard')}}"><b>🟢 Your Profile </b></a> </li>
+ <li> <a href="{{route('user.change.password')}}"> <b>🔵 Change Password </b> </a> </li> 
 <li> <a href=""> <b>🟠 Read Later List </b> </a> </li> 
 <li> <a href="{{route('user.logout')}}"> <b>🟠 Log out </b> </a> </li> 
 

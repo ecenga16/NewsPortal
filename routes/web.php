@@ -28,12 +28,15 @@ Route::get('/', [IndexController::class, 'Index']);
 
 Route::middleware(['auth'])->group(function () {
    
-Route::get('/dashboard', [UserController::class, 'UserDashboard'])->name('admin.dashboard');
+Route::get('/dashboard', [UserController::class, 'UserDashboard'])->name('user.dashboard');
 
-Route::post('/dashboard/store', [UserController::class, 'UserProfileStore'])->name('user.profile.store');
+Route::post('/user/profile/store', [UserController::class, 'UserProfileStore'])->name('user.profile.store');
 
-Route::get('/dashboard/logout', [UserController::class, 'UserLogout'])->name('user.logout');
+Route::get('/user/logout', [UserController::class, 'UserLogout'])->name('user.logout');
 
+Route::get('/user/change/password', [UserController::class, 'UserChangePassword'])->name('user.change.password');
+
+Route::post('/user/update/password', [UserController::class, 'UserUpdatePassword'])->name('user.update.password');
 
 });
 
