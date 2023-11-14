@@ -46,11 +46,10 @@
     <div class="row">
     <div class="col-lg-6 col-md-6">
     <div class="copy-right">
-    © All rights reserved © EasyNews </div>
+    © All rights reserved </div>
     </div>
     <div class="col-lg-6 col-md-6">
     <div class="design-developed">
-    Theme Developed BY <a href=" " target="_blank">easylearningbd.Com</a> </div>
     </div>
     </div>
     </div>
