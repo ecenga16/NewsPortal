@@ -24,7 +24,7 @@
                             <div class="col-12">
                                 <div class="card">
                                     <div class="card-body">
-                                        <form action="{{route('store.category')}}" method="post">
+                                        <form action="{{route('category.store')}}" method="post">
                                         @csrf
                                             <div class="row">
                                                 <div class="col-md-6 mb-3">
