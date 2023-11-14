@@ -14,12 +14,12 @@
  
 
  <figure class="authorPage-image">
-<img alt="" src="assets/images/lazy.jpg" class="avatar avatar-96 photo" height="96" width="96" loading="lazy"> </figure>
+ <img src="{{(!empty($userData->photo)) ? url('upload/admin_images/'.$userData->photo): url('upload/no-image.jpg')}}" class="rounded-circle avatar-lg img-thumbnail" id="image" alt="profile-image">
 <h1 class="authorPage-name">
-<a href=" "> User </a>
+ {{$userData['name']}}
 </h1>
 <h6 class="authorPage-name">
-  user@gmail.com 
+  {{$userData['email']}} 
 </h6>
   
  
@@ -28,6 +28,8 @@
  <li><a href=""><b>🟢 Your Profile </b></a> </li>
  <li> <a href=""> <b>🔵 Change Password </b> </a> </li> 
 <li> <a href=""> <b>🟠 Read Later List </b> </a> </li> 
+<li> <a href="{{route('user.logout')}}"> <b>🟠 Log out </b> </a> </li> 
+
 </ul>
 
 </div>
@@ -47,7 +49,8 @@
 User Account </h4>
 <div role="form" class="wpcf7" id="wpcf7-f437-o1" lang="en-US" dir="ltr">
 <div class="screen-reader-response"><p role="status" aria-live="polite" aria-atomic="true"></p> <ul></ul></div>
-<form action=" " method="post" class="wpcf7-form init" enctype="multipart/form-data" novalidate="novalidate" data-status="init">
+<form action="{{route('user.profile.store')}}" method="post" class="wpcf7-form init" enctype="multipart/form-data" novalidate="novalidate" data-status="init">
+@csrf
 <div style="display: none;">
  
 </div>
@@ -61,45 +64,9 @@ User Account </h4>
 User Name *
 </div>
 <div class="contact-form">
-<span class="wpcf7-form-control-wrap sub_title"><input type="text" name="sub_title" value="" size="40" class="wpcf7-form-control wpcf7-text" aria-invalid="false" placeholder="Email"></span>
+<span class="wpcf7-form-control-wrap sub_title"><input type="text" name="username" value="" size="40" class="wpcf7-form-control wpcf7-text" aria-invalid="false" ></span>
 </div>
 </div>
-
-
-
-<div class="col-md-12 col-sm-12">
-<div class="contact-title ">
-Email *
-</div>
-<div class="contact-form">
-<span class="wpcf7-form-control-wrap sub_title"><input type="text" name="sub_title" value="" size="40" class="wpcf7-form-control wpcf7-text" aria-invalid="false" placeholder="Email"></span>
-</div>
-</div>
-
-<div class="col-md-12 col-sm-12">
-<div class="contact-title ">
-Phone *
-</div>
-<div class="contact-form">
-<span class="wpcf7-form-control-wrap sub_title"><input type="text" name="sub_title" value="" size="40" class="wpcf7-form-control wpcf7-text" aria-invalid="false" placeholder="Phone"></span>
-</div>
-</div>
-
-
-<div class="col-md-12 col-sm-12">
-<div class="contact-title ">
-Photo *
-</div>
-<div class="contact-form">
-<span class="wpcf7-form-control-wrap sub_title"><input type="file" name="sub_title" value="" size="40" class="wpcf7-form-control wpcf7-text" aria-invalid="false"  ></span>
-</div>
-</div>
-
-
- 
-</div>
- 
- 
  
  
 <div class="row">

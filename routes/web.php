@@ -30,6 +30,10 @@ Route::middleware(['auth'])->group(function () {
    
 Route::get('/dashboard', [UserController::class, 'UserDashboard'])->name('admin.dashboard');
 
+Route::post('/dashboard/store', [UserController::class, 'UserProfileStore'])->name('user.profile.store');
+
+Route::get('/dashboard/logout', [UserController::class, 'UserLogout'])->name('user.logout');
+
 
 });
 
