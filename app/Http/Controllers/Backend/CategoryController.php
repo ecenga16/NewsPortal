@@ -15,6 +15,25 @@ class CategoryController extends Controller
    }
    
    public function AddCategory(){
-    return view('backend.category.category_add');
-}
+        return view('backend.category.category_add');   
+    }   
+
+    public function StoreCategory(Request $request) {
+
+        Category::insert([
+            'category_name' => $request['category_name'],
+            'category_slug' => strtolower(str_replace(' ', '-', $request['category_name'])),
+        ]);
+        
+
+        $notification = array(
+            'message' => 'Category added successfully',
+            'alert-type' => 'info',
+        );
+
+        return redirect()->route('all.category')->with($notification);
+
+    }
+
+
 }
