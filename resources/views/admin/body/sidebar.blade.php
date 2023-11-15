@@ -29,13 +29,13 @@
                 <li>
                     <a href="#sidebarEcommerce" data-bs-toggle="collapse">
                         <i class="mdi mdi-cart-outline"></i>
-                        <span> Category </span>
+                        <span> Categories </span>
                         <span class="menu-arrow"></span>
                     </a>
                     <div class="collapse" id="sidebarEcommerce">
                         <ul class="nav-second-level">
                             <li>
-                                <a href="{{route('all.category')}}">All Category</a>
+                                <a href="{{route('all.category')}}">All Categories</a>
                             </li>
                             <li>
                                 <a href="{{route('add.category')}}">Add Category</a>
@@ -47,16 +47,33 @@
                 <li>
                     <a href="#sidebarEcommerce1" data-bs-toggle="collapse">
                         <i class="mdi mdi-cart-outline"></i>
-                        <span> Subategory </span>
+                        <span> Subategories </span>
                         <span class="menu-arrow"></span>
                     </a>
                     <div class="collapse" id="sidebarEcommerce1">
                         <ul class="nav-second-level">
                             <li>
-                                <a href="{{route('all.subcategory')}}">All Subcategory</a>
+                                <a href="{{route('all.subcategory')}}">All Subcategories</a>
                             </li>
                             <li>
                                 <a href="{{ route('add.subcategory') }}">Add SubCategory</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                <li>
+                    <a href="#sidebarEcommerce1" data-bs-toggle="collapse">
+                        <i class="mdi mdi-cart-outline"></i>
+                        <span> Posts </span>
+                        <span class="menu-arrow"></span>
+                    </a>
+                    <div class="collapse" id="sidebarEcommerce1">
+                        <ul class="nav-second-level">
+                            <li>
+                                <a href="{{route('all.news.post')}}">All Posts</a>
+                            </li>
+                            <li>
+                                <a href="{{ route('add.subcategory') }}">Add New Post</a>
                             </li>
                         </ul>
                     </div>

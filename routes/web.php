@@ -7,6 +7,7 @@ use App\Http\Middleware\RedirectIfAuthenticated;
 use App\Http\Controllers\Frontend\IndexController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\Backend\CategoryController;
+use App\Http\Controllers\Backend\PostController;
 
 
 /*
@@ -108,6 +109,18 @@ Route::middleware(['auth','role:admin'])->group(function(){
         Route::get('/inactive/admin/user/{id}','InactiveAdminUser')->name('inactive.admin.user');
         Route::get('/active/admin/user/{id}','ActiveAdminUser')->name('active.admin.user');
 
+
+    });
+
+    // Posts all Route
+    Route::controller(PostController::class)->group(function(){
+
+        Route::get('/all/posts','AllPosts')->name('all.news.post');
+        Route::get('/add/subcategory','AddSubCategory')->name('add.subcategory');
+        Route::post('/store/subcategory','StoreSubCategory')->name('subcategory.store');
+        Route::get('/edit/subcategory/{id}','EditSubCategory')->name('edit.subcategory');
+        Route::post('/update/subcategory','UpdateSubCategory')->name('subcategory.updated');
+        Route::get('/delete/subcategory/{id}','DeleteSubCategory')->name('delete.subcategory');
 
     });
 
