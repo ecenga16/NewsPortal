@@ -10,11 +10,11 @@
                         <div class="row">
                             <div class="col-12">
                                 <div class="page-title-box">
-            <div class="page-title-right">
-                <ol class="breadcrumb m-0">
-                    <a href="{{route('add.admin')}}" class="btn btn-blue waves-effect waves-light">Add Post</a>
-                </ol>
-            </div>
+                                    <div class="page-title-right">
+                                        <ol class="breadcrumb m-0">
+                                            <a href="{{route('add.post')}}" class="btn btn-blue waves-effect waves-light">Add Post</a>
+                                        </ol>
+                                    </div>
                                     <h4 class="page-title">All Posts</h4>
                                 </div>
                             </div>

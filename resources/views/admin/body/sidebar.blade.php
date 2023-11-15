@@ -73,7 +73,7 @@
                                 <a href="{{route('all.news.post')}}">All Posts</a>
                             </li>
                             <li>
-                                <a href="{{ route('add.subcategory') }}">Add New Post</a>
+                                <a href="{{ route('add.post') }}">Add New Post</a>
                             </li>
                         </ul>
                     </div>
