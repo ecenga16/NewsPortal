@@ -104,4 +104,71 @@ class AdminController extends Controller
         return back()->with('status', "Password Changed Successfully!");
 
     }
+
+    // Admin Users
+
+    public function AllAdmin(){
+        $all_admins = User::where('role','admin')->latest()->get();
+
+        return view('backend.admin.all_admin', compact('all_admins'));
+    }
+
+    public function AddAdmin(){
+        return view('backend.admin.add_admin');
+    }
+
+    public function StoreAdmin(Request $request){
+
+        User::insert([
+            'name' => $request['name'],
+            'email' => $request['email'],
+            'role' => $request['role'],
+            'status' => 'active',
+            'password' => Hash::make($request['password'])
+        ]);
+
+        $notification = array(
+            'message' => 'Admin added successfuly',
+            'alert-type' => 'info',
+        );
+
+        return redirect()->route('all.admin')->with($notification);
+
+
+    }
+
+    public function EditAdmin($id) {
+
+        $admin_details = User::findorfail($id);
+
+        return view('backend.admin.edit_admin', compact('admin_details'));
+    }
+
+    public function UpdateAdmin(Request $request) {
+        $id = $request->id; 
+    
+        User::where('id', $id)->update([
+            'name' => $request['name'],
+            'email' => $request['email'],
+        ]);
+    
+        $notification = [
+            'message' => 'Admin updated successfully',
+            'alert-type' => 'info',
+        ];
+    
+        return redirect()->route('all.admin')->with($notification);
+    }
+
+    public function DeleteAdmin($id){
+
+        User::findorfail($id)->delete();
+
+        $notification = [
+            'message' => 'Admin deleted successfully',
+            'alert-type' => 'info',
+        ];
+
+        return redirect()->route('all.admin')->with($notification);
+    }
 }
