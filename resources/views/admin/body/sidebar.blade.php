@@ -1,3 +1,8 @@
+@php
+    $id = Auth::user()->id;
+    $userid = App\Models\User::find($id);
+    $status = $userid->status;
+@endphp
 <div class="left-side-menu">
 
     <div class="h-100" data-simplebar>
@@ -17,7 +22,7 @@
                         <span> Dashboard </span>
                     </a>
                 </li>
-
+                @if($status == 'active')
                 <li class="menu-title mt-2">Menu</li>
 
 
@@ -40,12 +45,12 @@
                 </li>
 
                 <li>
-                    <a href="#sidebarEcommerce" data-bs-toggle="collapse">
+                    <a href="#sidebarEcommerce1" data-bs-toggle="collapse">
                         <i class="mdi mdi-cart-outline"></i>
                         <span> Subategory </span>
                         <span class="menu-arrow"></span>
                     </a>
-                    <div class="collapse" id="sidebarEcommerce">
+                    <div class="collapse" id="sidebarEcommerce1">
                         <ul class="nav-second-level">
                             <li>
                                 <a href="{{route('all.subcategory')}}">All Subcategory</a>
@@ -183,6 +188,8 @@
                         </ul>
                     </div>
                 </li>
+                @else
+                @endif
             </ul>
 
         </div>

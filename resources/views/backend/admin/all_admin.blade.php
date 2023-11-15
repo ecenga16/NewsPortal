@@ -34,6 +34,7 @@
                     <th>Name</th>
                     <th>Email</th> 
                     <th>Role</th>
+                    <th>Status</th>
                 </tr>
             </thead>
 
@@ -45,6 +46,13 @@
                     <td>{{ $item->name }}</td>
                     <td>{{ $item->email }}</td>
                     <td>{{ $item->role }}</td>
+                    <td>
+                        @if($item->status == 'active')
+                            <span class="badge badge-pill bg-success">Active</span>
+                            @else
+                                <span class="badge badge-pill bg-danger">InActive</span>
+                        @endif
+                    </td> 
                     <td>
                     <a href="{{ route('edit.admin',$item->id) }}" class="btn btn-primary rounded-pill waves-effect waves-light">Edit</a>
 
