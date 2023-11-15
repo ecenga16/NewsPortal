@@ -105,6 +105,9 @@ Route::middleware(['auth','role:admin'])->group(function(){
         Route::get('/edit/admin/{id}','EditAdmin')->name('edit.admin');
         Route::post('/update/admin','UpdateAdmin')->name('admin.update');
         Route::get('/delete/admin/{id}','DeleteAdmin')->name('delete.admin');
+        Route::get('/inactive/admin/user/{id}','InactiveAdminUser')->name('inactive.admin.user');
+        Route::get('/active/admin/user/{id}','ActiveAdminUser')->name('active.admin.user');
+
 
     });
 

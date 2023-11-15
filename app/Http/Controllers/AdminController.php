@@ -171,4 +171,17 @@ class AdminController extends Controller
 
         return redirect()->route('all.admin')->with($notification);
     }
+
+    public function InactiveAdminUser($id) {
+
+        User::findorfail($id)->update(['status' => 'inactive']);
+
+        return redirect()->route('all.admin');
+    }
+    public function ActiveAdminUser($id) {
+
+        User::findorfail($id)->update(['status' => 'active']);
+
+        return redirect()->route('all.admin');
+    }
 }
