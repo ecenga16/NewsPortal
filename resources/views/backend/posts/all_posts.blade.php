@@ -47,9 +47,9 @@
                 <tr>
                     <td>{{ $key+1 }}</td>
                     <td><img src="{{asset($item['news_image'])}}" style="width:50px; height:50px;"></td>
-                    <td>{{ Illuminate\Support\Str::limit($item['news_title'], 40) }}</td>
-                    <td>{{ $item['category_id'] }}</td>
-                    <td>{{ $item['user_id'] }}</td>
+                    <td>{{ Str::limit($item['news_title'], 40) }}</td>
+                    <td>{{ $item['category']['category_name'] }}</td>
+                    <td>{{ $item['user']['name'] }}</td>
                     <td>{{ $item['post_date'] }}</td>
                     <td>
                         @if($item->status == '1')
@@ -59,7 +59,7 @@
                         @endif
                     </td> 
                     <td>
-                    <a href="{{ route('edit.admin',$item->id) }}" class="btn btn-primary rounded-pill waves-effect waves-light">Edit</a>
+                    <a href="{{ route('edit.post',$item->id) }}" class="btn btn-primary rounded-pill waves-effect waves-light">Edit</a>
 
                     <a href="{{route('delete.admin',$item->id)}}" class="btn btn-danger rounded-pill waves-effect waves-light">Delete</a>
                     

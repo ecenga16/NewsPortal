@@ -119,7 +119,7 @@ Route::middleware(['auth','role:admin'])->group(function(){
         Route::get('/all/posts','AllPosts')->name('all.news.post');
         Route::get('/add/post','AddPost')->name('add.post');
         Route::post('/store/post','StorePost')->name('post.store');
-
+        Route::get('/edit/post/{id}', 'EditPost')->name('edit.post');
 
     });
 

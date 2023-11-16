@@ -42,7 +42,6 @@ class PostController extends Controller
             'category_id' => $request->category_id,
             'subcategory_id' => $request->subcategory_id,
             'user_id' => Auth::user()->id,
-            'user_name' => Auth::user()->name,
             'news_title' => $request->news_title,
             'news_title_slug' => strtolower(str_replace(' ','-', $request['news_title'])),
             'news_image' => $save_url,
@@ -65,4 +64,13 @@ class PostController extends Controller
 
         return redirect()->route('all.news.post')->with($notification);
     }
+
+    public function EditPost($id){
+
+        $categories = Category::latest()->get();
+        $subcategories = Subcategory::latest()->get();
+        $adminuser = User::where('role','admin')->latest()->get();
+        $newspost = Posts::findOrFail($id);
+        return view('backend.posts.edit_post',compact('categories','subcategories','adminuser','newspost'));
+   }
 }
