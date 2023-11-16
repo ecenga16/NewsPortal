@@ -47,10 +47,10 @@
                 <tr>
                     <td>{{ $key+1 }}</td>
                     <td><img src="{{asset($item['news_image'])}}" style="width:50px; height:50px;"></td>
-                    <td>{{ $item['news_title'] }}</td>
+                    <td>{{ Illuminate\Support\Str::limit($item['news_title'], 40) }}</td>
                     <td>{{ $item['category_id'] }}</td>
                     <td>{{ $item['user_id'] }}</td>
-                    <td>{{ Carbon\Carbon::parse($item['post_date'])->diffForHumans()  }}</td>
+                    <td>{{ $item['post_date'] }}</td>
                     <td>
                         @if($item->status == '1')
                             <span class="badge badge-pill bg-success">Active</span>

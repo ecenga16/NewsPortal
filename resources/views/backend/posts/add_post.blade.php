@@ -27,7 +27,7 @@
                                 <div class="card">
                                     <div class="card-body">
                                          
-    <form id="myForm" method="post" action="{{ route('post.store') }}">
+    <form id="myForm" method="post" action="{{ route('post.store') }}" enctype="multipart/form-data">
     	@csrf 
     	
         <div class="row">
@@ -43,42 +43,36 @@
              <div class="form-group col-md-6 mb-3">
                 <label for="inputEmail4" class="form-label"> Sub Category </label>
                <select name="subcategory_id" class="form-select" id="example-select">
-                <option></option>
+                <option> </option>
             </select>
             </div>
-             <div class="form-group col-md-6 mb-3">
-                <label for="inputEmail4" class="form-label">Writer  </label>
-                <select name="user_id" class="form-select" id="example-select">
-                <option>Select Writer </option>
-                @foreach($adminuser as $user)
-                <option value="{{ $user->id }}">{{ $user->name }}</option>
-                @endforeach
-            </select>
+            <div class="form-group col-md-6 mb-3">
+                <label for="inputEmail4" class="form-label">Writer</label>
+                <input type="text" class="form-control" value="{{ Auth::user()->name }}" readonly>
             </div>
-             <div class="form-group col-md-6 mb-3">
+             <div class="form-group col-md-12 mb-3">
                 <label for="inputEmail4" class="form-label">Title</label>
                 <input type="text" name="news_title" class="form-control" id="inputEmail4" >
             </div>
-             <div class="form-group col-md-6 mb-3">
-          <label for="example-fileinput" class="form-label">Photo</label>
-        <input type="file" name="image" id="image" class="form-control">
+             
+
+
+
+            <div class="col-12 mb-3">
+                <label for="inputEmail4" class="form-label">News Details  </label>
+                <textarea name="news_details"></textarea>    
             </div>
-             <div class="form-group col-md-6 mb-3">
-                <label for="example-fileinput" class="form-label"> </label>
-        <img id="showImage" src="{{ url('upload/no_image.jpg') }} " class="rounded-circle avatar-lg img-thumbnail" alt="profile-image">
-            </div>
-
-
-
- <div class="col-12 mb-3">
-     <label for="inputEmail4" class="form-label">News Details  </label>
-            <textarea name="news_details"></textarea>    
-            </div>
-
-
- <div class="form-group col-md-6 mb-3">
+            <div class="form-group col-md-6 mb-3">
                 <label for="inputEmail4" class="form-label">Tags  </label>
-                <input type="text" class="selectize-close-btn" value="awesome">
+                <input type="text" name="tags" class="selectize-close-btn" value="awesome">
+            </div>
+            <div class="form-group col-md-3 mb-3">
+                <label for="example-fileinput" class="form-label">Photo</label>
+                <input type="file" name="image" id="image" class="form-control">
+            </div>
+            <div class="form-group col-md-3 mb-3 d-flex justify-content-center align-items-center">
+                <label for="example-fileinput" class="form-label"> </label>
+                <img id="showImage" src="{{ url('upload/no_image.jpg') }}" class=" rounded-circle avatar-lg img-thumbnail mx-auto" alt="profile-image">
             </div>
 
 
@@ -134,30 +128,27 @@
             reader.readAsDataURL(e.target.files['0']);
         });
     });
-</script>
-
-<script type="text/javascript">
-        $(document).ready(function(){
-            $('select[name="category_id"]').on('change', function(){
-                var category_id = $(this).val();
-                if (category_id) {
-                    $.ajax({
-                        url: "{{ url('/subcategory/ajax') }}/"+category_id,
-                        type: "GET",  
-                        dataType: "json", 
-                        success:function(data){
-                            $('select[name="subcategory_id"]').html('');
-                            var d =$('select[name="subcategory_id"]').empty();
-                            $.each(data, function(key, value){
-                                $('select[name="subcategory_id"]').append('<option value="'+ value.id +'"> ' + value.subcategory_name + '</option>');
-                            });
-                        },
-                    });
-                } else{
-                    alert('danger');
-                }
-            });
+    $(document).ready(function(){
+        $('select[name="category_id"]').on('change', function(){
+            var category_id = $(this).val();
+            if (category_id) {
+                $.ajax({
+                    url: "{{ url('/subcategory/ajax') }}/"+category_id,
+                    type: "GET",  
+                    dataType: "json", 
+                    success:function(data){
+                        $('select[name="subcategory_id"]').html('');
+                        var d =$('select[name="subcategory_id"]').empty();
+                        $.each(data, function(key, value){
+                            $('select[name="subcategory_id"]').append('<option value="'+ value.id +'"> ' + value.subcategory_name + '</option>');
+                        });
+                    },
+                });
+            } else{
+                alert('danger');
+            }
         });
+    });
         
-    </script>
+</script>
 @endsection 

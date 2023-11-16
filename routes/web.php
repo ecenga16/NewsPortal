@@ -94,8 +94,7 @@ Route::middleware(['auth','role:admin'])->group(function(){
         Route::get('/edit/subcategory/{id}','EditSubCategory')->name('edit.subcategory');
         Route::post('/update/subcategory','UpdateSubCategory')->name('subcategory.updated');
         Route::get('/delete/subcategory/{id}','DeleteSubCategory')->name('delete.subcategory');
-        Route::get('/subcategory/ajax/{category_id}','GetSubCategory');
-
+        Route::get('/subcategory/ajax/{category_id}','GetSubCategory')->name('subcategory.ajax');
 
     });
 
@@ -120,9 +119,7 @@ Route::middleware(['auth','role:admin'])->group(function(){
         Route::get('/all/posts','AllPosts')->name('all.news.post');
         Route::get('/add/post','AddPost')->name('add.post');
         Route::post('/store/post','StorePost')->name('post.store');
-        Route::get('/edit/subcategory/{id}','EditSubCategory')->name('edit.subcategory');
-        Route::post('/update/subcategory','UpdateSubCategory')->name('subcategory.updated');
-        Route::get('/delete/subcategory/{id}','DeleteSubCategory')->name('delete.subcategory');
+
 
     });
 

@@ -16,6 +16,7 @@ return new class extends Migration
             $table->integer('category_id');
             $table->integer('subcategory_id')->nullable();
             $table->integer('user_id');
+            $table->string('user_name');
             $table->string('news_title');
             $table->string('news_title_slug');
             $table->string('news_image');
