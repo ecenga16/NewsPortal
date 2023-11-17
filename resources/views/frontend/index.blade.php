@@ -15,7 +15,7 @@
 <div class="themesbazar_led_active owl-carousel owl-loaded owl-drag">
 
 @php
-$news_slider = App\Models\Posts::where('status',1)->where('top_slider',1)->limit(5)->get();
+$news_slider = App\Models\Posts::where('status',1)->where('top_slider',1)->limit(3)->get();
 @endphp
 
 <div class="owl-stage-outer"><div class="owl-stage" style="transform: translate3d(-1578px, 0px, 0px); transition: all 1s ease 0s; width: 3684px;">
@@ -75,10 +75,10 @@ $section_nine = App\Models\Posts::where('status',1)->where('first_section_nine',
 <div class="sec-one-wrpp2">
 <div class="secOne-news">
 <div class="secOne-image2">
-  <a href="{{ url('news/details/'.$nine->id.'/'.$nine->news_title_slug) }}">{{ $nine->news_title }} </a></div>
+<a href="{{ url('news/details/'.$nine->id.'/'.$nine->news_title_slug) }} "><img class="lazyload" src="{{ asset($nine->news_image) }}"  ></a>
+</div>
 <h4 class="secOne-title2">
-<a href=" ">{{ $nine->news_title }} </a>
-</h4>
+  <a href="{{ url('news/details/'.$nine->id.'/'.$nine->news_title_slug) }}">{{ $nine->news_title }} </a></h4>
 </div>
 <div class="cat-meta">
 <a href=" "> <i class="lar la-newspaper"></i>
