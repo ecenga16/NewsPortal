@@ -73,4 +73,93 @@ class PostController extends Controller
         $newspost = Posts::findOrFail($id);
         return view('backend.posts.edit_post',compact('categories','subcategories','adminuser','newspost'));
    }
+
+   public function UpdatePost(Request $request) {
+
+    $newspost_id = $request['id'];
+
+    if ($request->file('image')){
+
+        $image = $request->file('image');
+        $name_gen = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
+        Image::make($image)->resize(784,436)->save('upload/news/'.$name_gen);
+        $save_url = 'upload/news/'.$name_gen;
+        
+        Posts::findOrFail($newspost_id)->update([
+
+            'category_id' => $request->category_id,
+            'subcategory_id' => $request->subcategory_id,
+            'user_id' => Auth::user()->id,
+            'news_title' => $request->news_title,
+            'news_title_slug' => strtolower(str_replace(' ','-', $request['news_title'])),
+            'news_image' => $save_url,
+            'news_details' => $request->news_details,
+            'tags' => $request->tags,
+            'breaking_news' => $request->breaking_news,
+            'top_slider' => $request->top_slider,   
+            'first_section_three' => $request->first_section_three,
+            'first_section_nine' => $request->first_section_nine,
+            'post_date' => date('d-m-y'),
+            'post_month' => date('F'),
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
+
+        ]);
+
+        $notification = array(
+            'message' => 'Post Updated Successfully',
+            'alert-type' => 'success'
+        );
+
+        return redirect()->route('all.news.post')->with($notification);
+        
+    }else{
+
+        Posts::findOrFail($newspost_id)->update([
+
+            'category_id' => $request->category_id,
+            'subcategory_id' => $request->subcategory_id,
+            'user_id' => Auth::user()->id,
+            'news_title' => $request->news_title,
+            'news_title_slug' => strtolower(str_replace(' ','-', $request['news_title'])),
+            'news_details' => $request->news_details,
+            'tags' => $request->tags,
+            'breaking_news' => $request->breaking_news,
+            'top_slider' => $request->top_slider,   
+            'first_section_three' => $request->first_section_three,
+            'first_section_nine' => $request->first_section_nine,
+            'post_date' => date('d-m-y'),
+            'post_month' => date('F'),
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
+
+        ]);
+
+        $notification = array(
+            'message' => 'Post Updated Successfully',
+            'alert-type' => 'success'
+        );
+
+        return redirect()->route('all.news.post')->with($notification);
+
+        }
+
+    }
+    public function DeletePost($id){
+
+        $post_image = Posts::findOrFail($id);
+        $img = $post_image->news_image;
+        unlink($img);
+
+        Posts::findOrFail($id)->delete();
+
+         $notification = array(
+            'message' => 'Post Deleted Successfully',
+            'alert-type' => 'success'
+
+        );
+        return redirect()->back()->with($notification);
+
+    }
+
 }

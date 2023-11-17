@@ -61,7 +61,7 @@
                     <td>
                     <a href="{{ route('edit.post',$item->id) }}" class="btn btn-primary rounded-pill waves-effect waves-light">Edit</a>
 
-                    <a href="{{route('delete.admin',$item->id)}}" class="btn btn-danger rounded-pill waves-effect waves-light">Delete</a>
+                    <a href="{{route('post.delete',$item->id)}}" class="btn btn-danger rounded-pill waves-effect waves-light">Delete</a>
                     
                     @if($item['status'] == 1)
                         

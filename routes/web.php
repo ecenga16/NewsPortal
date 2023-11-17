@@ -120,6 +120,8 @@ Route::middleware(['auth','role:admin'])->group(function(){
         Route::get('/add/post','AddPost')->name('add.post');
         Route::post('/store/post','StorePost')->name('post.store');
         Route::get('/edit/post/{id}', 'EditPost')->name('edit.post');
+        Route::post('/update/post','UpdatePost')->name('post.update');
+        Route::get('/delete/post/{id}', 'DeletePost')->name('post.delete');
 
     });
 

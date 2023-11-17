@@ -29,8 +29,10 @@
                                 <div class="card">
                                     <div class="card-body">
 
-    <form id="myForm" method="post" action="{{ route('post.store') }}" enctype="multipart/form-data">
+    <form id="myForm" method="post" action="{{ route('post.update') }}" enctype="multipart/form-data">
     	@csrf 
+
+        <input type="hidden" name="id" value="{{ $newspost->id }}">
 
         <div class="row">
             <div class="form-group col-md-6 mb-3">
@@ -38,7 +40,7 @@
                <select name="category_id" class="form-select" id="example-select">
                 <option>Select Category </option>
                 @foreach($categories as $category)
-   <option value="{{ $category->id }}" {{ $category->id == $newspost->category_id ? 'selected' : '' }} >{{ $category->category_name }}</option>
+                    <option value="{{ $category->id }}" {{ $category->id == $newspost->category_id ? 'selected' : '' }} >{{ $category->category_name }}</option>
                 @endforeach
             </select>
             </div>
@@ -146,76 +148,66 @@
 
                 </div> <!-- content -->
 
-<script type="text/javascript">
-    $(document).ready(function (){
-        $('#myForm').validate({
-            rules: {
-                news_title: {
-                    required : true,
-                }, 
-            },
-            messages :{
-                news_title: {
-                    required : 'Please Enter News Title',
-                }, 
-            },
-            errorElement : 'span', 
-            errorPlacement: function (error,element) {
-                error.addClass('invalid-feedback');
-                element.closest('.form-group').append(error);
-            },
-            highlight : function(element, errorClass, validClass){
-                $(element).addClass('is-invalid');
-            },
-            unhighlight : function(element, errorClass, validClass){
-                $(element).removeClass('is-invalid');
-            },
-        });
-    });
-    
-</script>
-
-
-
-<script type="text/javascript">
-    $(document).ready(function(){
-        $('#image').change(function(e){
-            var reader = new FileReader();
-            reader.onload = function(e){
-                $('#showImage').attr('src',e.target.result);
-            }
-            reader.readAsDataURL(e.target.files['0']);
-        });
-    });
-</script>
-
-
-    <script type="text/javascript">
-        $(document).ready(function(){
-            $('select[name="category_id"]').on('change', function(){
-                var category_id = $(this).val();
-                if (category_id) {
-                    $.ajax({
-                        url: "{{ url('/subcategory/ajax') }}/"+category_id,
-                        type: "GET",  
-                        dataType: "json", 
-                        success:function(data){
-                            $('select[name="subcategory_id"]').html('');
-                            var d =$('select[name="subcategory_id"]').empty();
-                            $.each(data, function(key, value){
-                                $('select[name="subcategory_id"]').append('<option value="'+ value.id +'"> ' + value.subcategory_name + '</option>');
-                            });
-                        },
+                <script type="text/javascript">
+                    $(document).ready(function(){
+                        $('#image').change(function(e){
+                            var reader = new FileReader();
+                            reader.onload = function(e){
+                                $('#showImage').attr('src',e.target.result);
+                            }
+                            reader.readAsDataURL(e.target.files['0']);
+                        });
                     });
-                } else{
-                    alert('danger');
-                }
-            });
-        });
-        
-    </script>
-
-
-
-
+                    $(document).ready(function(){
+                        $('select[name="category_id"]').on('change', function(){
+                            var category_id = $(this).val();
+                            if (category_id) {
+                                $.ajax({
+                                    url: "{{ url('/subcategory/ajax') }}/"+category_id,
+                                    type: "GET",  
+                                    dataType: "json", 
+                                    success:function(data){
+                                        $('select[name="subcategory_id"]').html('');
+                                        var d =$('select[name="subcategory_id"]').empty();
+                                        $.each(data, function(key, value){
+                                            $('select[name="subcategory_id"]').append('<option value="'+ value.id +'"> ' + value.subcategory_name + '</option>');
+                                        });
+                                    },
+                                });
+                            } else{
+                                alert('danger');
+                            }
+                        });
+                    });
+                        
+                </script>
+                
+                <script type="text/javascript">
+                    $(document).ready(function (){
+                        $('#myForm').validate({
+                            rules: {
+                                news_title: {
+                                    required : true,
+                                }, 
+                            },
+                            messages :{
+                                news_title: {
+                                    required : 'Please Enter News Title',
+                                }, 
+                            },
+                            errorElement : 'span', 
+                            errorPlacement: function (error,element) {
+                                error.addClass('invalid-feedback');
+                                element.closest('.form-group').append(error);
+                            },
+                            highlight : function(element, errorClass, validClass){
+                                $(element).addClass('is-invalid');
+                            },
+                            unhighlight : function(element, errorClass, validClass){
+                                $(element).removeClass('is-invalid');
+                            },
+                        });
+                    });
+                    
+                </script>
 @endsection 
