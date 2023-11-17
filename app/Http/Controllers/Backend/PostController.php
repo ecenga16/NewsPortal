@@ -153,13 +153,35 @@ class PostController extends Controller
 
         Posts::findOrFail($id)->delete();
 
-         $notification = array(
+        $notification = array(
             'message' => 'Post Deleted Successfully',
             'alert-type' => 'success'
 
         );
         return redirect()->back()->with($notification);
 
+    }
+
+    public function InactivePost($id){
+        Posts::findOrFail($id)->update(['status'=> 0]);
+
+        $notification = array(
+            'message' => 'Post Inactive',
+            'alert-type' => 'info'
+
+        );
+        return redirect()->back()->with($notification);
+    }
+
+    public function ActivePost($id){
+        Posts::findOrFail($id)->update(['status'=> 1]);
+
+        $notification = array(
+            'message' => 'Post Active',
+            'alert-type' => 'success'
+
+        );
+        return redirect()->back()->with($notification);
     }
 
 }

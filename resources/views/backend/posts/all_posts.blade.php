@@ -15,7 +15,7 @@
                                             <a href="{{route('add.post')}}" class="btn btn-blue waves-effect waves-light">Add Post</a>
                                         </ol>
                                     </div>
-                                    <h4 class="page-title">All Posts</h4>
+                                    <h4 class="page-title">All Posts : {{count($all_news)}}</h4>
                                 </div>
                             </div>
                         </div>     
@@ -65,11 +65,11 @@
                     
                     @if($item['status'] == 1)
                         
-                            <a href="{{route('inactive.admin.user',$item->id)}}" class="btn btn-primary rounded-pill waves-effect waves-light" title="Inactive"><i class="fa-solid fa-thumbs-up"></i></a>
+                            <a href="{{route('inactive.post',$item->id)}}" class="btn btn-primary rounded-pill waves-effect waves-light" title="Inactive"><i class="fa-solid fa-thumbs-up"></i></a>
                     
                         @else
                     
-                            <a href="{{route('active.admin.user',$item->id)}}" class="btn btn-primary rounded-pill waves-effect waves-light" title="Active"><i class="fa-solid fa-thumbs-down"></i></a>
+                            <a href="{{route('active.post',$item->id)}}" class="btn btn-primary rounded-pill waves-effect waves-light" title="Active"><i class="fa-solid fa-thumbs-down"></i></a>
 
                     @endif
                     </td> 
