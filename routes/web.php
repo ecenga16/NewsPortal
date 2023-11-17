@@ -129,3 +129,5 @@ Route::middleware(['auth','role:admin'])->group(function(){
 
 
 });
+
+Route::get('/news/details/{id}/{slug}', [IndexController::class, 'PostDetails']);

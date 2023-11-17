@@ -75,8 +75,7 @@ $section_nine = App\Models\Posts::where('status',1)->where('first_section_nine',
 <div class="sec-one-wrpp2">
 <div class="secOne-news">
 <div class="secOne-image2">
-<a href=" "><img class="lazyload" src="{{ asset($nine->news_image) }}"  ></a>
-</div>
+  <a href="{{ url('news/details/'.$nine->id.'/'.$nine->news_title_slug) }}">{{ $nine->news_title }} </a></div>
 <h4 class="secOne-title2">
 <a href=" ">{{ $nine->news_title }} </a>
 </h4>
