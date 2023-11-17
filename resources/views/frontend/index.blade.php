@@ -1,14 +1,11 @@
 @extends('frontend.home_dashboard')
 @section('home') 
-
 <div class="container">
 <div class="row">
  <div class="col-lg-12 col-md-12">
-
 </div>
 </div>
 </div>
-
 <section class="themesBazar_section_one">
 <div class="container">
 <div class="row">
@@ -17,282 +14,81 @@
 <div class="col-lg-7 col-md-7">
 <div class="themesbazar_led_active owl-carousel owl-loaded owl-drag">
 
+@php
+$news_slider = App\Models\Posts::where('status',1)->where('top_slider',1)->limit(5)->get();
+@endphp
+
+<div class="owl-stage-outer"><div class="owl-stage" style="transform: translate3d(-1578px, 0px, 0px); transition: all 1s ease 0s; width: 3684px;">
+
+@foreach($news_slider as $slider )
+    <div class="owl-item " style="width: 506.25px; margin-right: 20px;"><div class="secOne_newsContent">
+<div class="sec-one-image">
+<a href=" "><img class="lazyload" src="{{ asset($slider->news_image) }}"></a>
+<h6 class="sec-small-cat">
+<a href=" ">
+{{ $slider->created_at->format('M d Y') }}
+</a>
+</h6>
+<h1 class="sec-one-title">
+<a href=" ">{{ $slider->news_title  }}</a>
+</h1>
+</div>
+</div></div>
+ @endforeach
 
 
-<div class="owl-stage-outer"><div class="owl-stage" style="transform: translate3d(-1578px, 0px, 0px); transition: all 1s ease 0s; width: 3684px;"><div class="owl-item cloned" style="width: 506.25px; margin-right: 20px;"><div class="secOne_newsContent">
-<div class="sec-one-image">
-<a href=" "><img class="lazyload" src="assets/images/lazy.jpg"></a>
-<h6 class="sec-small-cat">
-<a href=" ">
-8 September 2022, 09:31 PM
-</a>
-</h6>
-<h1 class="sec-one-title">
-<a href=" ">India restricts rice exports, could fuel food inflation</a>
-</h1>
-</div>
-</div></div><div class="owl-item cloned" style="width: 506.25px; margin-right: 20px;"><div class="secOne_newsContent">
-<div class="sec-one-image">
-<a href=" "><img class="lazyload" src="assets/images/lazy.jpg" ></a>
-<h6 class="sec-small-cat">
-<a href=" ">
-8 September 2022, 09:31 PM
-</a>
-</h6>
-<h1 class="sec-one-title">
-<a href=" ">India restricts rice exports, could fuel food inflation</a>
-</h1>
-</div>
-</div></div><div class="owl-item" style="width: 506.25px; margin-right: 20px;"><div class="secOne_newsContent">
-<div class="sec-one-image">
-<a href=" "><img class="lazyload" src="assets/images/lazy.jpg"  ></a>
-<h6 class="sec-small-cat">
-<a href=" ">
-8 September 2022, 09:31 PM
-</a>
-</h6>
-<h1 class="sec-one-title">
-<a href=" ">India restricts rice exports, could fuel food inflation</a>
-</h1>
-</div>
-</div></div><div class="owl-item active" style="width: 506.25px; margin-right: 20px;"><div class="secOne_newsContent">
-<div class="sec-one-image">
-<a href=" "><img class="lazyload" src="assets/images/lazy.jpg" ></a>
-<h6 class="sec-small-cat">
-<a href=" ">
-8 September 2022, 09:31 PM
-</a>
-</h6>
-<h1 class="sec-one-title">
-<a href=" ">India restricts rice exports, could fuel food inflation </a>
-</h1>
-</div>
-</div></div><div class="owl-item" style="width: 506.25px; margin-right: 20px;"><div class="secOne_newsContent">
-<div class="sec-one-image">
-<a href=" "><img class="lazyload" src="assets/images/lazy.jpg"  ></a>
-<h6 class="sec-small-cat">
-<a href=" ">
-8 September 2022, 09:31 PM
-</a>
-</h6>
-<h1 class="sec-one-title">
-<a href=" ">India restricts rice exports, could fuel food inflation </a>
-</h1>
-</div>
-</div></div><div class="owl-item cloned" style="width: 506.25px; margin-right: 20px;"><div class="secOne_newsContent">
-<div class="sec-one-image">
-<a href=" "><img class="lazyload" src="assets/images/lazy.jpg"  ></a>
-<h6 class="sec-small-cat">
-<a href=" ">
-8 September 2022, 09:31 PM
-</a>
-</h6>
-<h1 class="sec-one-title">
-<a href=" ">India restricts rice exports, could fuel food inflation </a>
-</h1>
-</div>
-</div></div><div class="owl-item cloned" style="width: 506.25px; margin-right: 20px;"><div class="secOne_newsContent">
-<div class="sec-one-image">
-<a href=" "><img class="lazyload" src="assets/images/lazy.jpg"  ></a>
-<h6 class="sec-small-cat">
-<a href=" ">
-8 September 2022, 09:31 PM
-</a>
-</h6>
-<h1 class="sec-one-title">
-<a href=" ">India restricts rice exports, could fuel food inflation</a>
-</h1>
-</div>
-</div></div></div></div><div class="owl-nav"><button type="button" role="presentation" class="owl-prev"><i class="fa-solid fa-angle-left"></i></button>
+ </div></div><div class="owl-nav"><button type="button" role="presentation" class="owl-prev"><i class="fa-solid fa-angle-left"></i></button>
 <button type="button" role="presentation" class="owl-next"><i class="fa-solid fa-angle-right"></i></button></div><div class="owl-dots"><button role="button" class="owl-dot"><span></span></button><button role="button" class="owl-dot active"><span></span></button><button role="button" class="owl-dot"><span></span></button></div></div>
 
 
 </div>
 <div class="col-lg-5 col-md-5">
 
+ @php
+$section_three = App\Models\Posts::where('status',1)->where('first_section_three',1)->limit(3)->get();
+@endphp
 
+ @foreach($section_three as $three)
 <div class="secOne-smallItem">
 <div class="secOne-smallImg">
-<a href=" "><img class="lazyload" src="assets/images/lazy.jpg"  ></a>
+<a href=" "><img class="lazyload" src="{{ asset($three->news_image) }}"  ></a>
 <h5 class="secOne_smallTitle">
-<a href=" ">Why people are industry hopping </a>
+<a href=" ">{{ $three->news_title }} </a>
 </h5>
 </div>
 </div>
-<div class="secOne-smallItem">
-<div class="secOne-smallImg">
-<a href=" "><img class="lazyload" src="assets/images/lazy.jpg"  ></a>
-<h5 class="secOne_smallTitle">
-<a href=" ">Why people are industry hopping </a>
-</h5>
-</div>
-</div>
-<div class="secOne-smallItem">
-<div class="secOne-smallImg">
-<a href=" "><img class="lazyload" src="assets/images/lazy.jpg"  ></a>
-<h5 class="secOne_smallTitle">
-<a href=" ">Why people are industry hopping</a>
-</h5>
-</div>
-</div>
+@endforeach
+
+
 
 </div>
 </div>
 <div class="sec-one-item2">
 <div class="row">
+
+@php
+$section_nine = App\Models\Posts::where('status',1)->where('first_section_nine',1)->limit(9)->get();
+@endphp
+
+@foreach($section_nine as $nine)
 <div class="themesBazar-3 themesBazar-m2">
 <div class="sec-one-wrpp2">
 <div class="secOne-news">
 <div class="secOne-image2">
-<a href=" "><img class="lazyload" src="assets/images/lazy.jpg"  ></a>
+<a href=" "><img class="lazyload" src="{{ asset($nine->news_image) }}"  ></a>
 </div>
 <h4 class="secOne-title2">
-<a href=" ">Why people are industry hopping </a>
+<a href=" ">{{ $nine->news_title }} </a>
 </h4>
 </div>
 <div class="cat-meta">
 <a href=" "> <i class="lar la-newspaper"></i>
-8 September 2022
+{{ $nine->created_at->format('M d Y') }}
 </a>
 </div>
 </div>
 </div>
-<div class="themesBazar-3 themesBazar-m2">
-<div class="sec-one-wrpp2">
-<div class="secOne-news">
-<div class="secOne-image2">
- <a href=" "><img class="lazyload" src="assets/images/lazy.jpg"  ></a>
-</div>
-<h4 class="secOne-title2">
-<a href=" ">Why people are industry hopping </a>
-</h4>
-</div>
-<div class="cat-meta">
-<a href=" "> <i class="lar la-newspaper"></i>
-8 September 2022
-</a>
-</div>
-</div>
-</div>
- <div class="themesBazar-3 themesBazar-m2">
-<div class="sec-one-wrpp2">
-<div class="secOne-news">
-<div class="secOne-image2">
-<a href=" "><img class="lazyload" src="assets/images/lazy.jpg"  ></a>
-</div>
-<h4 class="secOne-title2">
-<a href=" ">Why people are industry hopping </a>
-</h4>
-</div>
-<div class="cat-meta">
-<a href=" "> <i class="lar la-newspaper"></i>
-8 September 2022
-</a>
-</div>
-</div>
-</div>
-<div class="themesBazar-3 themesBazar-m2">
-<div class="sec-one-wrpp2">
-<div class="secOne-news">
-<div class="secOne-image2">
-<a href=" "><img class="lazyload" src="assets/images/lazy.jpg"  ></a>
-</div>
-<h4 class="secOne-title2">
-<a href=" ">Why people are industry hopping</a>
-</h4>
-</div>
-<div class="cat-meta">
-<a href=" "> <i class="lar la-newspaper"></i>
-8 September 2022
-</a>
-</div>
-</div>
-</div>
-<div class="themesBazar-3 themesBazar-m2">
-<div class="sec-one-wrpp2">
-<div class="secOne-news">
-<div class="secOne-image2">
-<a href=" "><img class="lazyload" src="assets/images/lazy.jpg"  ></a>
-</div>
-<h4 class="secOne-title2">
-<a href=" ">Why people are industry hopping </a>
-</h4>
-</div>
-<div class="cat-meta">
-<a href=" "> <i class="lar la-newspaper"></i>
-8 September 2022
-</a>
-</div>
-</div>
-</div>
-<div class="themesBazar-3 themesBazar-m2">
-<div class="sec-one-wrpp2">
-<div class="secOne-news">
-<div class="secOne-image2">
-<a href=" "><img class="lazyload" src="assets/images/lazy.jpg"  ></a>
-</div>
-<h4 class="secOne-title2">
-<a href=" ">Why people are industry hopping </a>
-</h4>
-</div>
-<div class="cat-meta">
-<a href=" "> <i class="lar la-newspaper"></i>
-8 September 2022
-</a>
-</div>
-</div>
-</div>
-<div class="themesBazar-3 themesBazar-m2">
-<div class="sec-one-wrpp2">
-<div class="secOne-news">
-<div class="secOne-image2">
-<a href=" "><img class="lazyload" src="assets/images/lazy.jpg"  ></a>
-</div>
-<h4 class="secOne-title2">
- <a href=" ">Why people are industry hopping</a>
-</h4>
-</div>
-<div class="cat-meta">
-<a href=" "> <i class="lar la-newspaper"></i>
-8 September 2022
-</a>
-</div>
-</div>
-</div>
-<div class="themesBazar-3 themesBazar-m2">
-<div class="sec-one-wrpp2">
-<div class="secOne-news">
-<div class="secOne-image2">
-<a href=" "><img class="lazyload" src="assets/images/lazy.jpg"  ></a>
-</div>
-<h4 class="secOne-title2">
-<a href=" ">Why people are industry hopping</a>
-</h4>
-</div>
-<div class="cat-meta">
-<a href=" "> <i class="lar la-newspaper"></i>
-8 September 2022
-</a>
-</div>
-</div>
-</div>
-<div class="themesBazar-3 themesBazar-m2">
-<div class="sec-one-wrpp2">
-<div class="secOne-news">
-<div class="secOne-image2">
-<a href=" "><img class="lazyload" src="assets/images/lazy.jpg"  ></a>
-</div>
-<h4 class="secOne-title2">
-<a href=" ">Why people are industry hopping </a>
-</h4>
-</div>
-<div class="cat-meta">
-<a href=" "> <i class="lar la-newspaper"></i>
-8 September 2022
-</a>
-</div>
-</div>
-</div>
+@endforeach
 </div>
 </div>
 </div>
