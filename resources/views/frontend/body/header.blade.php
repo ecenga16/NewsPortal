@@ -38,7 +38,6 @@ $cdate = new DateTime();
 <div class="col-lg-4 col-md-4">
 <div class="logo">
 <a href=" " title="NewsFlash">
-<img src="{{ asset('frontend/assets/images/logo.png') }}" alt="NewsFlash" title="NewsFlash">
 </a>
 </div>
 </div>
@@ -57,11 +56,11 @@ $cdate = new DateTime();
 <div class="container">
 <div class="row">
 <div class="col-lg-12 col-md-12">
-<div class="mobileLogo">
- <a href=" " title="NewsFlash">
-<img src="assets/images/footer_logo.gif" alt="Logo" title="Logo">
-</a>
-</div>
+    <div class="mobileLogo">
+        <a href=" " title="NewsFlash">
+            <img src="{{ asset('frontend/assets/images/logo.jpg') }}" alt="Logo" title="Logo" style="width: 30px !important; height: 30px !important;">
+        </a>
+    </div>
 <div class="stellarnav dark desktop"><a href="https://newssitedesign.com/newsflash/#" class="menu-toggle full"><span class="bars"><span></span><span></span><span></span></span> </a><ul id="menu-main-menu" class="menu"><li id="menu-item-89" class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home menu-item-89"><a href="https://newssitedesign.com/newsflash" aria-current="page"> <i class="fa-solid fa-house-user"></i>  HOME</a></li>
 
 @php
