@@ -1,9 +1,9 @@
 @php
-$breaking_news = App\Models\Posts::where('breaking_news', 1)->get();
+$breaking_news = App\Models\Posts::where('status', 1)->where('breaking_news', 1)->get();
 @endphp
 
 @if($breaking_news->isNotEmpty())
-    <div class="top-scroll-section5">
+    <div class="top-scroll-section5 d-none d-md-block">
         <div class="container">
             <div class="alert" role="alert">
                 <div class="scroll-section5">
