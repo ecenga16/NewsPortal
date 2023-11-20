@@ -25,7 +25,7 @@ use App\Http\Controllers\Backend\PostController;
 //     return view('welcome');
 //});
 
-Route::get('/', [IndexController::class, 'Index']);
+Route::get('/', [IndexController::class, 'Index'])->name('homepage');
 
 
 Route::middleware(['auth'])->group(function () {
@@ -131,3 +131,4 @@ Route::middleware(['auth','role:admin'])->group(function(){
 });
 
 Route::get('/news/details/{id}/{slug}', [IndexController::class, 'PostDetails']);
+Route::get('/category/{id}/{category_slug}', [IndexController::class, 'CategoryDetails']);

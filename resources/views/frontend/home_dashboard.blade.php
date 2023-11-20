@@ -57,7 +57,6 @@ img.emoji {
 
 
 @include('frontend.body.header')
-@include('frontend.body.breaking_news')
 
 
 <div class="main-section" style="overflow: hidden;">
