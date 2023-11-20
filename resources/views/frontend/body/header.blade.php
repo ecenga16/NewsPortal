@@ -61,7 +61,7 @@ $cdate = new DateTime();
             <img src="{{ asset('frontend/assets/images/logo.jpg') }}" alt="Logo" title="Logo" style="width: 30px !important; height: 30px !important;">
         </a>
     </div>
-<div class="stellarnav dark desktop"><a href="https://newssitedesign.com/newsflash/#" class="menu-toggle full"><span class="bars"><span></span><span></span><span></span></span> </a><ul id="menu-main-menu" class="menu"><li id="menu-item-89" class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home menu-item-89"><a href="https://newssitedesign.com/newsflash" aria-current="page"> <i class="fa-solid fa-house-user"></i>  HOME</a></li>
+<div class="stellarnav dark desktop"><a href="https://newssitedesign.com/newsflash/#" class="menu-toggle full"><span class="bars"><span></span><span></span><span></span></span> </a><ul id="menu-main-menu" class="menu"><li id="menu-item-89" class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home menu-item-89"><a href="{{route('homepage')}}" aria-current="page"> <i class="fa-solid fa-house-user"></i>  HOME</a></li>
 
 @php
     $categories = App\Models\Category::orderBy('category_name','ASC')->get();
@@ -69,7 +69,7 @@ $cdate = new DateTime();
 
 @foreach($categories as $category)
 <li id="menu-item-291" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-291">
-    <a href=" ">{{ $category->category_name }}</a>
+    <a href="{{url('category/' . $category['id'] . '/' . $category['category_slug'])}}">{{ $category->category_name }}</a>
 
         @php
             $subcategories = App\Models\Subcategory::where('category_id', $category->id)->orderBy('subcategory_name','ASC')->get();
