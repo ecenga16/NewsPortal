@@ -25,7 +25,7 @@
 </div>
 <div class="col-lg-11 col-md-10">
 <div class="reportar-title">
-{{ Auth::user()->name }}
+{{$news['user']['name']}}
 
 </div>
 <div class="viwe-count">
