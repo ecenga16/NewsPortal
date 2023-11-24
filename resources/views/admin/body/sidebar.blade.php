@@ -45,7 +45,7 @@
                 </li>
 
                 <li>
-                    <a href="#sidebarEcommerce1" data-bs-toggle="collapse">
+                    <a href="#sidebarEcommerce" data-bs-toggle="collapse">
                         <i class="mdi mdi-cart-outline"></i>
                         <span> Subategories </span>
                         <span class="menu-arrow"></span>
@@ -62,12 +62,12 @@
                     </div>
                 </li>
                 <li>
-                    <a href="#sidebarEcommerce1" data-bs-toggle="collapse">
+                    <a href="#sidebarEcommerce2" data-bs-toggle="collapse">
                         <i class="mdi mdi-cart-outline"></i>
                         <span> Posts </span>
                         <span class="menu-arrow"></span>
                     </a>
-                    <div class="collapse" id="sidebarEcommerce1">
+                    <div class="collapse" id="sidebarEcommerce2">
                         <ul class="nav-second-level">
                             <li>
                                 <a href="{{route('all.news.post')}}">All Posts</a>
@@ -97,25 +97,17 @@
                 </li>
 
                 <li>
-                    <a href="#sidebarEmail" data-bs-toggle="collapse">
+                    <a href="#Gallery" data-bs-toggle="collapse">
                         <i class="mdi mdi-email-multiple-outline"></i>
-                        <span> Email </span>
+                        <span> Home Gallery </span>
                         <span class="menu-arrow"></span>
                     </a>
-                    <div class="collapse" id="sidebarEmail">
+                    <div class="collapse" id="Gallery">
                         <ul class="nav-second-level">
                             <li>
-                                <a href="email-inbox.html">Inbox</a>
+                                <a href="{{route('all.photo.gallery')}}}">Images</a>
                             </li>
-                            <li>
-                                <a href="email-read.html">Read Email</a>
-                            </li>
-                            <li>
-                                <a href="email-compose.html">Compose Email</a>
-                            </li>
-                            <li>
-                                <a href="email-templates.html">Email Templates</a>
-                            </li>
+                            
                         </ul>
                     </div>
                 </li>

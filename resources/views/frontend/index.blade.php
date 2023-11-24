@@ -17,6 +17,8 @@
 
 @php
 $news_slider = App\Models\Posts::where('status',1)->where('top_slider',1)->limit(5)->get();
+@endphp
+@php
 $banner = App\Models\Banner::find(1);
 @endphp
 
@@ -115,10 +117,13 @@ $section_nine = App\Models\Posts::where('status',1)->where('first_section_nine',
 <div class="themesBazar_widget">
 <h3 style="margin-top:5px"> OLD NEWS </h3>
 </div>
-<form class="wordpress-date" action=" " method="post">
-<input type="date" id="wordpress" placeholder="Select Date" autocomplete="off" value="" name="m" required="" class="hasDatepicker">
+<form class="wordpress-date" action="{{ route('search-by-date') }}" method="post">
+  @csrf 
+
+<input type="date" id="wordpress" placeholder="Select Date" autocomplete="off"  name="date" class="hasDatepicker">
 <input type="submit" value="Search">
 </form>
+
 <div class="recentPopular">
 <ul class="nav nav-pills" id="recentPopular-tab" role="tablist">
 <li class="nav-item" role="presentation">
@@ -176,7 +181,7 @@ $section_nine = App\Models\Posts::where('status',1)->where('first_section_nine',
 <div class="container">
 <div class="row">
 <div class="col-lg-6 col-md-6">
-<div class="themesBazar_widget"> <div class="textwidget"><p><img loading="lazy" class="aligncenter size-full wp-image-74" src="{{ asset(isset($banner->home_one)) }}" alt="" width="100%" height="auto"></p></div>
+  <div class="themesBazar_widget"> <div class="textwidget"><p><img loading="lazy" class="aligncenter size-full wp-image-74" src="{{ asset(isset($banner->home_one)) }}" alt="" width="100%" height="auto"></p></div>
 </div> </div>
 <div class="col-lg-6 col-md-6">
   <div class="themesBazar_widget"> <div class="textwidget"><p><img loading="lazy" class="aligncenter size-full wp-image-74" src="{{ asset(isset($banner->home_two)) }}" alt="" width="100%" height="auto"></p></div>
