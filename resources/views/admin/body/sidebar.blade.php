@@ -97,17 +97,17 @@
                 </li>
 
                 <li>
-                    <a href="#Gallery" data-bs-toggle="collapse">
+                    <a href="#sidebarEmail" data-bs-toggle="collapse">
                         <i class="mdi mdi-email-multiple-outline"></i>
-                        <span> Home Gallery </span>
+                        <span> Gallery </span>
                         <span class="menu-arrow"></span>
                     </a>
-                    <div class="collapse" id="Gallery">
+                    <div class="collapse" id="sidebarEmail">
                         <ul class="nav-second-level">
                             <li>
-                                <a href="{{route('all.photo.gallery')}}}">Images</a>
+                                <a href="{{ route('all.photos') }}">Images</a>
                             </li>
-                            
+    
                         </ul>
                     </div>
                 </li>

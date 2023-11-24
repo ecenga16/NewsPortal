@@ -9,6 +9,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\PostController;
 use App\Http\Controllers\Backend\BannerController;
+use App\Http\Controllers\Backend\GalleryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -132,6 +133,11 @@ Route::middleware(['auth','role:admin'])->group(function(){
 
         Route::get('/all/banners','AllBanners')->name('all.banners');
         Route::post('/update/banners','UpdateBanners')->name('update.banners');    
+    });
+
+    Route::controller(GalleryController::class)->group(function(){
+
+        Route::get('/all/images','GalleryAllImages')->name('all.photos');
     });
     
 });
