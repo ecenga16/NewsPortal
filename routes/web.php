@@ -8,7 +8,7 @@ use App\Http\Controllers\Frontend\IndexController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\PostController;
-
+use App\Http\Controllers\Backend\BannerController;
 
 /*
 |--------------------------------------------------------------------------
@@ -128,7 +128,17 @@ Route::middleware(['auth','role:admin'])->group(function(){
     });
 
 
+    Route::controller(BannerController::class)->group(function(){
+
+        Route::get('/all/banners','AllBanners')->name('all.banners');
+        Route::post('/update/banners','UpdateBanners')->name('update.banners');
+    
+    });
+    
 });
+
 
 Route::get('/news/details/{id}/{slug}', [IndexController::class, 'PostDetails']);
 Route::get('/category/{id}/{category_slug}', [IndexController::class, 'CategoryDetails']);
+Route::get('/subcategory/{id}/{subcategory_slug}', [IndexController::class, 'SubcategoryDetails']);
+

@@ -13,7 +13,7 @@
 <i class="la la-home"> </i><a href=" "> HOME </a>
 </div>
 <div class="single-cats">
-<a href=" " rel="category tag">{{$news['category']['category_name']}}</a> <a href=" " rel="category tag">{{isset($news['subcategory']['subcategory_name']) ? $news['subcategory']['subcategory_name'] : ''}}</a> </div>
+<a href=" " rel="category tag">{{isset($news['category']['category_name'])}}</a> <a href=" " rel="category tag">{{isset($news['subcategory']['subcategory_name']) ? $news['subcategory']['subcategory_name'] : ''}}</a> </div>
 </div>
 <h1 class="single-page-title">
 {{$news['news_title']}}</h1>

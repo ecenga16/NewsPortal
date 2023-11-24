@@ -138,7 +138,7 @@
                     <td>{{ $key+1 }}</td>
                     <td><img src="{{asset($item['news_image'])}}" style="width:50px; height:50px;"></td>
                     <td>{{ Str::limit($item['news_title'], 40) }}</td>
-                    <td>{{ $item['category']['category_name'] }}</td>
+                    <td>{{ optional($item['category'])['category_name'] }}</td>
                     <td>{{ $item['user']['name'] }}</td>
                     <td>{{ $item['post_date'] }}</td>
                     <td>

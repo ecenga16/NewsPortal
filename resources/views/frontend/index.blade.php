@@ -17,6 +17,7 @@
 
 @php
 $news_slider = App\Models\Posts::where('status',1)->where('top_slider',1)->limit(5)->get();
+$banner = App\Models\Banner::find(1);
 @endphp
 
 <div class="owl-stage-outer"><div class="owl-stage" style="transform: translate3d(-1578px, 0px, 0px); transition: all 1s ease 0s; width: 3684px;">
@@ -175,12 +176,10 @@ $section_nine = App\Models\Posts::where('status',1)->where('first_section_nine',
 <div class="container">
 <div class="row">
 <div class="col-lg-6 col-md-6">
-<div class="themesBazar_widget"> <div class="textwidget"><p><img loading="lazy" class="aligncenter size-full wp-image-74" src="assets/images/biggapon-1.gif" alt="" width="100%" height="auto"></p>
-</div>
+<div class="themesBazar_widget"> <div class="textwidget"><p><img loading="lazy" class="aligncenter size-full wp-image-74" src="{{ asset(isset($banner->home_one)) }}" alt="" width="100%" height="auto"></p></div>
 </div> </div>
 <div class="col-lg-6 col-md-6">
-<div class="themesBazar_widget"> <div class="textwidget"><p><img loading="lazy" class="aligncenter size-full wp-image-74" src="assets/images/biggapon-1.gif" alt="" width="100%" height="auto"></p>
-</div>
+  <div class="themesBazar_widget"> <div class="textwidget"><p><img loading="lazy" class="aligncenter size-full wp-image-74" src="{{ asset(isset($banner->home_two)) }}" alt="" width="100%" height="auto"></p></div>
 </div> </div>
 </div>
 </div>
@@ -543,12 +542,10 @@ SPORTS </div>
 <div class="container">
 <div class="row">
 <div class="col-lg-6 col-md-6">
-<div class="themesBazar_widget"> <div class="textwidget"><p><img loading="lazy" class="aligncenter size-full wp-image-74" src="assets/images/biggapon-1.gif" alt="" width="100%" height="auto"></p>
-</div>
+  <div class="themesBazar_widget"> <div class="textwidget"><p><img loading="lazy" class="aligncenter size-full wp-image-74" src="{{ asset(isset($banner->home_three)) }}" alt="" width="100%" height="auto"></p></div>
 </div> </div>
 <div class="col-lg-6 col-md-6">
-<div class="themesBazar_widget"> <div class="textwidget"><p><img loading="lazy" class="aligncenter size-full wp-image-74" src="assets/images/biggapon-1.gif" alt="" width="100%" height="auto"></p>
-</div>
+  <div class="themesBazar_widget"> <div class="textwidget"><p><img loading="lazy" class="aligncenter size-full wp-image-74" src="{{ asset(isset($banner->home_four)) }}" alt="" width="100%" height="auto"></p></div>
 </div> </div>
 </div>
 </div>
