@@ -138,6 +138,11 @@ Route::middleware(['auth','role:admin'])->group(function(){
     Route::controller(GalleryController::class)->group(function(){
 
         Route::get('/all/images','GalleryAllImages')->name('all.photos');
+        Route::get('/add/image','AddImageGallery')->name('add.image');
+        Route::post('/store/images','StoreGalleryImages')->name('store.images');
+        Route::get('/edit/image{id}','EditImageGallery')->name('edit.image.gallery');
+        Route::post('/update/image','UpdatePhotoGallery')->name('update.image.gallery');
+        Route::get('/delete/image{id}', 'DeleteImageGallery')->name('delete.image.gallery');
     });
     
 });

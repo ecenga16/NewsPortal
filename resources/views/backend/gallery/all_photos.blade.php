@@ -12,7 +12,7 @@
                                 <div class="page-title-box">
             <div class="page-title-right">
                 <ol class="breadcrumb m-0">
-                    <a href="{{ route('add.category') }}" class="btn btn-blue waves-effect waves-light">Add Photo</a>
+                    <a href="{{ route('add.image') }}" class="btn btn-blue waves-effect waves-light">Add Photo</a>
                 </ol>
             </div>
                                     <h4 class="page-title">Photo Gallery All </h4>
@@ -45,9 +45,9 @@
                     <td><img src="{{ asset($item->photo_gallery ) }}"  style="width:50px; height:50px;"> </td>
                     <td>{{ $item->post_date }}</td>
                     <td>
-      <a href="{{ route('edit.category',$item->id) }}" class="btn btn-primary rounded-pill waves-effect waves-light">Edit</a>
+      <a href="{{ route('edit.image.gallery',$item->id) }}" class="btn btn-primary rounded-pill waves-effect waves-light">Edit</a>
 
-      <a href="{{ route('delete.category',$item->id) }}" class="btn btn-danger rounded-pill waves-effect waves-light" id="delete">Delete</a>
+      <a href="{{ route('delete.image.gallery',$item->id) }}" class="btn btn-danger rounded-pill waves-effect waves-light" id="delete">Delete</a>
 
                     </td> 
                 </tr>
