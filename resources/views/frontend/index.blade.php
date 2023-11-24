@@ -21,6 +21,9 @@ $news_slider = App\Models\Posts::where('status',1)->where('top_slider',1)->limit
 @php
 $banner = App\Models\Banner::find(1);
 @endphp
+@php
+$live = App\Models\LiveTv::find(1);
+@endphp
 
 <div class="owl-stage-outer"><div class="owl-stage" style="transform: translate3d(-1578px, 0px, 0px); transition: all 1s ease 0s; width: 3684px;">
 
@@ -100,15 +103,13 @@ $section_nine = App\Models\Posts::where('status',1)->where('first_section_nine',
 </div>
 <div class="popup-wrpp">
 <div class="live_image">
-<img width="700" height="400" src="assets/images/lazy.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" loading="lazy">
-<div data-mfp-src="#mymodal" class="live-icon modal-live"> <i class="las la-play"></i> </div>
+  <img width="700" height="400" src="{{ asset($live->live_image) }}" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" loading="lazy"><div data-mfp-src="#mymodal" class="live-icon modal-live"> <i class="las la-play"></i> </div>
 </div>
 <div class="live-popup"> 
 <div id="mymodal" class="mfp-hide" role="dialog" aria-labelledby="modal-titles" aria-describedby="modal-contents">
 <div id="modal-contents">
 <div class="embed-responsive embed-responsive-16by9 embed-responsive-item">
-<iframe class="" src=" "  allowfullscreen="allowfullscreen" width="100%" height="400px"></iframe>
-</div>
+  <iframe width="560" height="315" src="{{ $live->live_url }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
 </div>
 </div>
 </div> 
@@ -1338,51 +1339,21 @@ If filmmakers recover their money from selling OTT, satellite and music rights, 
 <h2 class="themesBazar_cat01"> <a href=" "> <i class="las la-video"></i> VIDEO GALLERY </a></h2>
 
 <div class="white-bg">
-<div class="secFive-smallItem">
-<div class="secFive-smallImg">
-<img src="assets/images/lazy.jpg">
-<a href="https://www.youtube.com/watch?v=z3ZM1TUNoUY" class="home-video-icon popup"><i class="las la-video"></i></a>
-<h5 class="secFive_title2">
-<a href="https://www.youtube.com/watch?v=z3ZM1TUNoUY" class="popup"> Pakistan set up Asia Cup final </a>
-</h5>
-</div>
-</div>
-<div class="secFive-smallItem">
-<div class="secFive-smallImg">
-<img src="assets/images/lazy.jpg">
-<a href="https://www.youtube.com/watch?v=XTUg53YVaqQ" class="home-video-icon popup"><i class="las la-video"></i></a>
-<h5 class="secFive_title2">
-<a href="https://www.youtube.com/watch?v=XTUg53YVaqQ" class="popup">  Pakistan set up Asia Cup final</a>
-</h5>
-</div>
-</div>
-<div class="secFive-smallItem">
-<div class="secFive-smallImg">
-<img src="assets/images/lazy.jpg">
-<a href="https://www.youtube.com/watch?v=qr3CeJJ_mkM" class="home-video-icon popup"><i class="las la-video"></i></a>
-<h5 class="secFive_title2">
-<a href="https://www.youtube.com/watch?v=qr3CeJJ_mkM" class="popup">  Pakistan set up Asia Cup final </a>
-</h5>
-</div>
-</div>
-<div class="secFive-smallItem">
-<div class="secFive-smallImg">
-<img src="assets/images/lazy.jpg">
-<a href="https://www.youtube.com/watch?v=BU12aHPjoNo" class="home-video-icon popup"><i class="las la-video"></i></a>
-<h5 class="secFive_title2">
-<a href="https://www.youtube.com/watch?v=BU12aHPjoNo" class="popup"> Pakistan set up Asia Cup final </a>
-</h5>
-</div>
-</div>
-<div class="secFive-smallItem">
-<div class="secFive-smallImg">
-<img src="assets/images/lazy.jpg">
-<a href="https://www.youtube.com/watch?v=TH0kuBADgSI" class="home-video-icon popup"><i class="las la-video"></i></a>
-<h5 class="secFive_title2">
-<a href="https://www.youtube.com/watch?v=TH0kuBADgSI" class="popup">  Pakistan set up Asia Cup final </a>
-</h5>
-</div>
-</div>
+  @php
+  $video_gallery = App\Models\VideoGallery::latest()->get();
+  @endphp
+  
+  @foreach($video_gallery as $video)
+  <div class="secFive-smallItem">
+  <div class="secFive-smallImg">
+  <img src="{{ asset($video->video_image ) }}">
+  <a href="{{ $video->video_url }}" class="home-video-icon popup"><i class="las la-video"></i></a>
+  <h5 class="secFive_title2">
+  <a href="{{ $video->video_url }}" class="popup"> {{ $video->video_title }} </a>
+  </h5>
+  </div>
+  </div>
+  @endforeach
 </div>
 </div>
 </div>

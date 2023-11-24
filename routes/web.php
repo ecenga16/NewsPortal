@@ -10,7 +10,7 @@ use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\PostController;
 use App\Http\Controllers\Backend\BannerController;
 use App\Http\Controllers\Backend\GalleryController;
-
+use App\Http\Controllers\Backend\VideoGalleryController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -143,6 +143,18 @@ Route::middleware(['auth','role:admin'])->group(function(){
         Route::get('/edit/image{id}','EditImageGallery')->name('edit.image.gallery');
         Route::post('/update/image','UpdatePhotoGallery')->name('update.image.gallery');
         Route::get('/delete/image{id}', 'DeleteImageGallery')->name('delete.image.gallery');
+    });
+
+    Route::controller(VideoGalleryController::class)->group(function(){
+
+        Route::get('/all/video/gallery','AllVideoGallery')->name('all.video.gallery'); 
+        Route::get('/add/video/gallery','AddVideoGallery')->name('add.video.gallery');
+        Route::post('/store/video/gallery','StoreVideoGallery')->name('store.video.gallery');
+        Route::get('/edit/video/gallery/{id}','EditVideoGallery')->name('edit.video.gallery');
+        Route::post('/update/video/gallery','UpdateVideoGallery')->name('update.video.gallery');
+        Route::get('/delete/video/gallery/{id}','DeleteVideoGallery')->name('delete.video.gallery');
+        Route::get('/update/live/tv','UpdateLiveTv')->name('update.live.tv');
+        Route::post('/update/live','UpdateLiveData')->name('update.live');
     });
     
 });
