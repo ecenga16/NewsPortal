@@ -103,13 +103,13 @@ $section_nine = App\Models\Posts::where('status',1)->where('first_section_nine',
 </div>
 <div class="popup-wrpp">
 <div class="live_image">
-  <img width="700" height="400" src="{{ asset($live->live_image) }}" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" loading="lazy"><div data-mfp-src="#mymodal" class="live-icon modal-live"> <i class="las la-play"></i> </div>
+  <img width="700" height="400" src="{{ asset(isset($live->live_image)) }}" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" loading="lazy"><div data-mfp-src="#mymodal" class="live-icon modal-live"> <i class="las la-play"></i> </div>
 </div>
 <div class="live-popup"> 
 <div id="mymodal" class="mfp-hide" role="dialog" aria-labelledby="modal-titles" aria-describedby="modal-contents">
 <div id="modal-contents">
 <div class="embed-responsive embed-responsive-16by9 embed-responsive-item">
-  <iframe width="560" height="315" src="{{ $live->live_url }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+  <iframe width="560" height="315" src="{{ isset($live->live_url) }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
 </div>
 </div>
 </div> 

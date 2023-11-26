@@ -34,7 +34,7 @@
         <div class="row">
             <div class="form-group col-md-6 mb-3">
                 <label for="inputEmail4" class="form-label">Live Url</label>
-                <input type="text" name="live_url" class="form-control" id="inputEmail4" value="{{ $live->live_url }}" >
+                <input type="text" name="live_url" class="form-control" id="inputEmail4" value="{{ isset($live->live_url) }}" >
             </div>
   
              <div class="form-group col-md-6 mb-3">
@@ -43,7 +43,7 @@
             </div>
              <div class="form-group col-md-6 mb-3">
                 <label for="inputEmail4" class="form-label">  </label>
-                <img id="showImage" src="{{ asset($live->live_image)  }} " class="rounded-circle avatar-lg img-thumbnail" alt="profile-image">
+                <img id="showImage" src="{{ asset(isset($live->live_image))  }} " class="rounded-circle avatar-lg img-thumbnail" alt="profile-image">
             </div>
              
            
