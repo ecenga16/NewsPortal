@@ -1,129 +1,50 @@
 @extends('frontend.home_dashboard')
 @section('home') 
-
+@section('title') 
+{{$breadcat->category_name}}
+@endsection
 <div class="container">
 <div class="row">
-<div class="col-lg-12">
-<div class="archive-topAdd">
-</div>
-</div>
-</div>
- <div class="row">
-<div class="col-lg-8 col-md-8">
-<div class="rachive-info-cats">
-<a href=" "><i class="las la-home"></i> </a> <i class="las la-chevron-right"></i> {{ $breadcat->category_name }}
-</div>
-<div class="row">
-
-@foreach($news as $item)
-@if($loop->index < 1 )
-<div class="col-lg-8 col-md-8">
-<div class="archive-shadow arch_margin">
-<div class="archive1_image">
-<a href="{{ url('news/details/'.$item->id.'/'.$item->news_title_slug) }}"><img class="lazyload" src="{{ asset($item->news_image) }}" ></a>
-<div class="archive1-meta">
-<a href=" "><i class="la la-tags"> </i>
-{{ $item->created_at->format('l M d Y') }}
-</a>
-</div>
-</div>
-<div class="archive1-padding">
-<div class="archive1-title"><a href="{{ url('news/details/'.$item->id.'/'.$item->news_title_slug) }}">{{ $item->news_title }}</a></div>
-<div class="content-details"> {!! Str::limit($item->news_details, 100) !!} <a href="{{ url('news/details/'.$item->id.'/'.$item->news_title_slug) }}"> Read More </a>
-</div>
-</div>
-</div>
-</div>
-@endif
-@endforeach
-
-
-<div class="col-md-4 col-sm-4">
-<div class="row">
-
-@foreach($newstwo as $item)
-@if($loop->index > 0 )
-<div class="archive1-custom-col-12">
-<div class="archive-item-wrpp2">
-<div class="archive-shadow arch_margin">
-<div class="archive1_image2">
-<a href="{{ url('news/details/'.$item->id.'/'.$item->news_title_slug) }}"><img class="lazyload" src="{{ asset($item->image) }}"  ></a> <div class="archive1-meta">
-<a href=" "><i class="la la-tags"> </i>
-{{ $item->created_at->format('l M d Y') }}
-</a>
-</div>
-</div>
-<div class="archive1-padding">
-<div class="archive1-title2"><a href="{{ url('news/details/'.$item->id.'/'.$item->news_title_slug) }}">{{ $item->news_title }}</a></div>
-</div>
-</div>
-</div>
-</div>
-@endif
-@endforeach
-
-
-</div>
-</div>
-</div>
-
-
-
-<div class="row">
-
-@foreach($news as $item)
-@if($loop->index > 1 )
-<div class="archive1-custom-col-3">
-<div class="archive-item-wrpp2">
-<div class="archive-shadow arch_margin">
-<div class="archive1_image2">
-<a href="{{ url('news/details/'.$item->id.'/'.$item->news_title_slug) }}"><img class="lazyload" src="{{ asset($item->image) }}"  ></a>
-<div class="archive1-meta">
-<a href=" "><i class="la la-tags"> </i>
-{{ $item->created_at->format('l M d Y') }}
-</a>
-</div>
-</div>
-<div class="archive1-padding">
-<div class="archive1-title2"><a href="{{ url('news/details/'.$item->id.'/'.$item->news_title_slug) }}"> {{ $item->news_title }} </a></div>
-</div>
-</div>
-</div>
-</div>
-@endif
-@endforeach
-
-
-
-
-</div>
-<div class="archive1-margin">
-<div class="archive-content">
-<div class="row">
-</div>
-</div>
-</div>
-
-
-<div class="row">
 <div class="col-md-12">
-<span aria-current="page" class="page-numbers current">1</span>
-<a class="page-numbers" href=" ">2</a>
-<a class="next page-numbers" href=" ">Next »</a>
-</div>
-</div>
-
-<br><br>
-
 <div class="row">
-<div class="col-lg-12 col-md-12"></div>
+
+@foreach($news as $item )
+<div class="custom-col-3">
+ <div class="author-wrpp">
+<div class="authorNews-image">
+
+<a href="{{ url('news/details/'.$item->id.'/'.$item->news_title_slug) }}  "><img class="lazyload" src="{{ asset($item->news_image) }}" ></a>
+</div>
+<div class="authorPage-content">
+<h2 class="authorPage-title">
+<a href="{{ url('news/details/'.$item->id.'/'.$item->news_title_slug) }} ">{{ $item->news_title }}</a>
+</h2>
+<div class="author-date">
+<a href=" "> {{ $item->user->name }}</a> <span> <i class="las la-clock"></i>
+{{ $item->created_at->format('l M d Y') }}
+</span>
 </div>
 </div>
+</div>
+</div>
+@endforeach
+
+
+
 
 </div>
+<div class="row">
+<div class="col-lg-8 col-md-8">
+<div class="post-nav"><ul class="pager"><li class="previous"><a href=" "><i class="las la-step-backward"></i>
+</a></li><li><a href=" " title="previous"><i class="la la-backward" aria-hidden="true"></i>
+</a></li><li><a href=" ">01</a></li><li class="active"><span class="active">02</span></li><li><a href=" ">03</a></li><li><a href=" ">04</a></li><li><a href=" " title="next"><i class="la la-forward" aria-hidden="true"></i>
+</a></li><li class="next"><a href=" "><i class="las la-step-forward"></i>
+</a></li></ul></div> </div>
 </div>
 </div>
-
-
-
+ 
+</div>
+</div>
+</div>
+</div>
 @endsection
