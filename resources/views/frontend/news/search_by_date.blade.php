@@ -1,6 +1,10 @@
 @extends('frontend.home_dashboard')
 @section('home') 
 
+@section('title') 
+Seach By Date  
+@endsection
+
 <div class="container">
     <div class="row">
     <div class="col-lg-12">
@@ -29,7 +33,7 @@
     </div>
     </div>
     <div class="archive1-padding">
-    <div class="archive1-title2"><a href="{{ url('news/details/'.$item->id.'/'.$item->news_title_slug) }} ">{{  GoogleTranslate::trans($item->news_title, app()->getLocale() )  }} </a></div>
+    <div class="archive1-title2"><a href="{{ url('news/details/'.$item->id.'/'.$item->news_title_slug) }} ">{{  $item->news_title  }} </a></div>
     </div>
     </div>
     </div>

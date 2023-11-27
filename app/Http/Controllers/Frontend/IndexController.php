@@ -20,7 +20,13 @@ class IndexController extends Controller
 
         $newposts = Posts::orderBy('id','DESC')->limit(3)->get();
         $pop_posts = Posts::orderBy('view_count','DESC')->limit(3)->get();
-        return view('frontend.index', compact('newposts', 'pop_posts'));
+
+        $cat_0 = Category::skip(8)->first();
+        $news_0 = Posts::where('status',1)->where('category_id', $cat_0['id'])->orderBy('id', 'DESC')->limit(8)->get();
+
+
+
+        return view('frontend.index', compact('newposts', 'pop_posts', 'cat_0', 'news_0'));
     }
 
     public function PostDetails($id, $slug){
@@ -79,6 +85,22 @@ class IndexController extends Controller
         $newspopular = Posts::orderBy('view_count','DESC')->limit(8)->get();
 
         return view('frontend.news.search_by_date', compact('news', 'formatDate', 'newnewspost', 'newspopular'));
+
+    }
+
+    public function NewsSearch(Request $request){
+
+
+        $request->validate(['search' => "required"]);
+
+        $item = $request->search;
+
+        $news = Posts::where('news_title','LIKE',"%$item%")->get();
+        $newnewspost = Posts::orderBy('id','DESC')->limit(8)->get();
+        $newspopular = Posts::orderBy('view_count','DESC')->limit(8)->get();
+
+        return view('frontend.news.search',compact('news','newnewspost','newspopular','item'));
+
 
     }
 }
