@@ -1,6 +1,11 @@
 @extends('frontend.home_dashboard')
 @section('home') 
 
+@section('title')
+
+{{$news['news_title']}}
+
+@endsection
 <div class="container">
 <div class="row">
 <div class="col-lg-8 col-md-8">
@@ -25,7 +30,7 @@
 </div>
 <div class="col-lg-11 col-md-10">
 <div class="reportar-title">
-{{$news['user']['name']}}
+{{$news['user']['name']}}</a>
 
 </div>
 <div class="viwe-count">

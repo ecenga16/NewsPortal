@@ -11,6 +11,9 @@ use App\Http\Controllers\Backend\PostController;
 use App\Http\Controllers\Backend\BannerController;
 use App\Http\Controllers\Backend\GalleryController;
 use App\Http\Controllers\Backend\VideoGalleryController;
+use App\Http\Controllers\Backend\SeoController;
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -156,6 +159,13 @@ Route::middleware(['auth','role:admin'])->group(function(){
         Route::get('/update/live/tv','UpdateLiveTv')->name('update.live.tv');
         Route::post('/update/live','UpdateLiveData')->name('update.live');
     });
+
+    Route::controller(SeoController::class)->group(function(){
+
+        Route::get('/seo/setting','SeoSetting')->name('seo.setting'); 
+        Route::post('/update/seo/setting','UpdateSeoSetting')->name('update.seo.setting');
+    });
+    
     
 });
 
@@ -164,4 +174,4 @@ Route::get('/news/details/{id}/{slug}', [IndexController::class, 'PostDetails'])
 Route::get('/category/{id}/{category_slug}', [IndexController::class, 'CategoryDetails']);
 Route::get('/subcategory/{id}/{subcategory_slug}', [IndexController::class, 'SubcategoryDetails']);
 Route::post('/search', [IndexController::class, 'SearchByDate'])->name('search-by-date');
-
+Route::post('/news', [IndexController::class, 'NewsSearch'])->name('news.search');

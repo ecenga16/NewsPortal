@@ -1,5 +1,11 @@
 @extends('frontend.home_dashboard')
 @section('home')
+
+@section('title')
+
+Faqja Kryesore
+
+@endsection
 @include('frontend.body.breaking_news')
 <div class="container">
 <div class="row">
@@ -163,16 +169,17 @@ $section_nine = App\Models\Posts::where('status',1)->where('first_section_nine',
 </div>
 </div>
 <div class="themesBazar_widget">
-<h3 style="margin-top:5px"> Our Like Page </h3>
+  <h3 style="margin-top:5px"> Reklamo </h3>
 </div>
 <div class="facebook-content">
-<iframe src=" " width="260" height="170" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+<img src="{{asset('backend/assets/images/reklama-1.png')}} " width="280" height="170" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
 </div>
 <div class="themesBazar_widget">
-<h3 style="margin-top:5px"> Our Like Page </h3>
+<h3 style="margin-top:5px"> Reklamo </h3>
 </div>
 <div class="facebook-content">
-<div class="twitter-timeline twitter-timeline-rendered" style="display: flex; width: 410px; max-width: 100%; margin-top: 0px; margin-bottom: 0px;"><iframe id="twitter-widget-0" scrolling="no" frameborder="0" allowtransparency="true" allowfullscreen="true" class="" style="position: static; visibility: visible; width: 279px; height: 220px; display: block; flex-grow: 1;" title="Twitter Timeline" src=" "></iframe></div> <script async="" src="assets/js/widgets.js" charset="utf-8"></script>
+<div class="twitter-timeline twitter-timeline-rendered" style="display: flex; width: 410px; max-width: 100%; margin-top: 0px; margin-bottom: 0px;"><img src="{{asset('backend/assets/images/reklama-1.png')}} " width="280" height="170" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
+</div> <script async="" src="assets/js/widgets.js" charset="utf-8"></script>
 </div>
 </div>
 </div>
@@ -190,6 +197,13 @@ $section_nine = App\Models\Posts::where('status',1)->where('first_section_nine',
 </div>
 </div>
 
+@php
+
+$news = App\Models\Posts::where('status',1)->orderBy('id','ASC')->limit(8)->get();
+$categories = App\Models\Category::orderBy('category_name', 'ASC')->get();
+
+@endphp
+
 <section class="section-two">
 <div class="container">
 <div class="secTwo-color">
@@ -202,342 +216,68 @@ $section_nine = App\Models\Posts::where('status',1)->where('first_section_nine',
 ALL 
 </div>
 </li>
+
+@foreach($categories as $category)
 <li class="nav-item" role="presentation">
-<div class="nav-link" id="categori-tab2" data-bs-toggle="pill" data-bs-target="#Info-tabs2" role="tab" aria-controls="Info-tabs2" aria-selected="false">
-NATIONAL </div>
+<div class="nav-link" id="categori-tab2" data-bs-toggle="pill" data-bs-target="#category{{$category['id']}}" role="tab" aria-controls="Info-tabs2" aria-selected="false">
+{{$category['category_name']}}</div>
 </li>
-<li class="nav-item" role="presentation">
-<div class="nav-link" id="categori-tab3" data-bs-toggle="pill" data-bs-target="#Info-tabs3" role="tab" aria-controls="Info-tabs3" aria-selected="false">
-POLITICS
-</div>
-</li>
-<li class="nav-item" role="presentation">
-<div class="nav-link" id="categori-tab4" data-bs-toggle="pill" data-bs-target="#Info-tabs4" role="tab" aria-controls="Info-tabs4" aria-selected="false">
-SPORTS </div>
-</li>
-<span class="themeBazar6"></span>
+@endforeach
 </ul>
 </div>
 
 <div class="tab-content" id="pills-tabContent">
 <div class="tab-pane fade active show" id="Info-tabs1" role="tabpanel" aria-labelledby="categori-tab1 ">
 <div class="row">
+
+  @foreach($news as $item)
 <div class="themesBazar-4 themesBazar-m2">
 <div class="sec-two-wrpp">
 <div class="section-two-image">
 
-<a href=" "><img class="lazyload" src="assets/images/lazy.jpg"  ></a>
+<a href="{{url('news/details/'.$item['id'].'/'.$item['news_title_slug'])}} "><img class="lazyload" src="{{asset($item->news_image)}}"  ></a>
 </div>
 <h5 class="sec-two-title">
-<a href=" ">Coaching centers to stay closed during SSC exams </a>
+<a href="{{url('news/details/'.$item['id'].'/'.$item['news_title_slug'])}}  ">{{$item['news_title']}}</a>
 </h5>
 </div>
 </div>
-<div class="themesBazar-4 themesBazar-m2">
-<div class="sec-two-wrpp">
-<div class="section-two-image">
-<a href=" "><img class="lazyload" src="assets/images/lazy.jpg"  ></a>
-</div>
-<h5 class="sec-two-title">
-<a href=" ">Coaching centers to stay closed during SSC exams </a>
-</h5>
-</div>
-</div>
-<div class="themesBazar-4 themesBazar-m2">
-<div class="sec-two-wrpp">
-<div class="section-two-image">
-<a href=" "><img class="lazyload" src="assets/images/lazy.jpg"  ></a>
-</div>
-<h5 class="sec-two-title">
-<a href=" ">Coaching centers to stay closed during SSC exams </a>
- </h5>
-</div>
-</div>
-<div class="themesBazar-4 themesBazar-m2">
-<div class="sec-two-wrpp">
-<div class="section-two-image">
-<a href=" "><img class="lazyload" src="assets/images/lazy.jpg"  ></a> <a href=" " class="mediam-icon"><i class="la la-play"></i></a>
-</div>
-<h5 class="sec-two-title">
-<a href=" ">Coaching centers to stay closed during SSC exams </a>
-</h5>
-</div>
-</div>
-<div class="themesBazar-4 themesBazar-m2">
-<div class="sec-two-wrpp">
-<div class="section-two-image">
-<a href=" "><img class="lazyload" src="assets/images/lazy.jpg"  ></a> <a href=" " class="mediam-icon"><i class="la la-play"></i></a>
-</div>
-<h5 class="sec-two-title">
-<a href=" ">Coaching centers to stay closed during SSC exams </a>
-</h5>
-</div>
-</div>
-<div class="themesBazar-4 themesBazar-m2">
-<div class="sec-two-wrpp">
-<div class="section-two-image">
-<a href=" "><img class="lazyload" src="assets/images/lazy.jpg"  ></a>
-</div>
-<h5 class="sec-two-title">
-<a href=" ">Coaching centers to stay closed during SSC exams </a>
-</h5>
-</div>
-</div>
-<div class="themesBazar-4 themesBazar-m2">
-<div class="sec-two-wrpp">
-<div class="section-two-image">
-<a href=" "><img class="lazyload" src="assets/images/lazy.jpg"  ></a>
-</div>
-<h5 class="sec-two-title">
-<a href=" ">Coaching centers to stay closed during SSC exams </a>
-</h5>
-</div>
-</div>
-<div class="themesBazar-4 themesBazar-m2">
-<div class="sec-two-wrpp">
-<div class="section-two-image">
-<a href=" "><img class="lazyload" src="assets/images/lazy.jpg" ></a>
-</div>
-<h5 class="sec-two-title">
-<a href=" ">Coaching centers to stay closed during SSC exams </a>
-</h5>
- </div>
-</div>
-</div>
-</div>
-<div class="tab-pane fade" id="Info-tabs2" role="tabpanel" aria-labelledby="categori-tab2">
-<div class="row">
-<div class="themesBazar-4 themesBazar-m2">
-<div class="sec-two-wrpp">
-<div class="section-two-image">
-<a href=" "><img class="lazyload" src="assets/images/lazy.jpg"  ></a>
-</div>
-<h5 class="sec-two-title">
-<a href=" ">Coaching centers to stay closed during SSC exams </a>
-</h5>
-</div>
-</div>
-<div class="themesBazar-4 themesBazar-m2">
-<div class="sec-two-wrpp">
-<div class="section-two-image">
-<a href=" "><img class="lazyload" src="assets/images/lazy.jpg" ></a>
-</div>
-<h5 class="sec-two-title">
-<a href=" ">Coaching centers to stay closed during SSC exams </a>
-</h5>
-</div>
-</div>
-<div class="themesBazar-4 themesBazar-m2">
-<div class="sec-two-wrpp">
-<div class="section-two-image">
-<a href=" "><img class="lazyload" src="assets/images/lazy.jpg"  ></a>
-</div>
-<h5 class="sec-two-title">
-<a href=" ">Coaching centers to stay closed during SSC exams </a>
-</h5>
-</div>
-</div>
-<div class="themesBazar-4 themesBazar-m2">
-<div class="sec-two-wrpp">
-<div class="section-two-image">
-<a href=" "><img class="lazyload" src="assets/images/lazy.jpg"  ></a>
-</div>
-<h5 class="sec-two-title">
-<a href=" ">Coaching centers to stay closed during SSC exams </a>
-</h5>
-</div>
-</div>
-<div class="themesBazar-4 themesBazar-m2">
-<div class="sec-two-wrpp">
-<div class="section-two-image">
-<a href=" "><img class="lazyload" src="assets/images/lazy.jpg"  ></a>
-</div>
-<h5 class="sec-two-title">
-<a href=" ">Coaching centers to stay closed during SSC exams </a>
-</h5>
+  @endforeach
 </div>
 </div>
 
-<div class="themesBazar-4 themesBazar-m2">
-<div class="sec-two-wrpp">
-<div class="section-two-image">
-<a href=" "><img class="lazyload" src="assets/images/lazy.jpg" ></a>
-</div>
-<h5 class="sec-two-title">
-<a href=" ">Coaching centers to stay closed during SSC exams </a>
-</h5>
-</div>
-</div>
-</div>
-</div>
-<div class="tab-pane fade" id="Info-tabs3" role="tabpanel" aria-labelledby="categori-tab3">
-<div class="row">
-<div class="themesBazar-4 themesBazar-m2">
-<div class="sec-two-wrpp">
-<div class="section-two-image">
-<a href=" "><img class="lazyload" src="assets/images/lazy.jpg"  ></a>
-</div>
-<h5 class="sec-two-title">
-<a href=" ">NU Master's admission begins on Monday </a>
-</h5>
-</div>
-</div>
-<div class="themesBazar-4 themesBazar-m2">
-<div class="sec-two-wrpp">
-<div class="section-two-image">
-<a href=" "><img class="lazyload" src="assets/images/lazy.jpg"  ></a>
-</div>
-<h5 class="sec-two-title">
-<a href=" ">NU Master's admission begins on Monday </a>
-</h5>
+
+@foreach($categories as $category)
+  <div class="tab-pane fade" id="category{{$category['id']}}" role="tabpanel" aria-labelledby="categori-tab2">
+  <div class="row">
+
+@php
+
+$catwisenews = App\Models\Posts::where('category_id', $category['id'])->orderBy('id', 'DESC')->limit(8)->get();
+
+@endphp
+
+@foreach($catwisenews as $item)
+  <div class="themesBazar-4 themesBazar-m2">
+  <div class="sec-two-wrpp">
+  <div class="section-two-image">
+  <<a href="{{url('news/details/'.$item['id'].'/'.$item['news_title_slug'])}}  "><img class="lazyload" src="{{asset($item['news_image'])}}"  ></a>
+  </div>
+  <h5 class="sec-two-title">
+    <a href="{{url('news/details/'.$item['id'].'/'.$item['news_title_slug'])}}  ">{{$item['news_title']}}</a>
+  </h5>
+  </div>
+  </div>
+
+@endforeach
+
+
+
 </div>
 </div>
-<div class="themesBazar-4 themesBazar-m2">
-<div class="sec-two-wrpp">
-<div class="section-two-image">
-<a href=" "><img class="lazyload" src="assets/images/lazy.jpg" ></a>
-</div>
-<h5 class="sec-two-title">
-<a href=" ">NU Master's admission begins on Monday </a>
-</h5>
-</div>
-</div>
-<div class="themesBazar-4 themesBazar-m2">
-<div class="sec-two-wrpp">
-<div class="section-two-image">
-<a href=" "><img class="lazyload" src="assets/images/lazy.jpg" ></a>
-</div>
-<h5 class="sec-two-title">
-<a href=" ">NU Master's admission begins on Monday </a>
-</h5>
-</div>
-</div>
-<div class="themesBazar-4 themesBazar-m2">
- <div class="sec-two-wrpp">
-<div class="section-two-image">
-<a href=" "><img class="lazyload" src="assets/images/lazy.jpg"  ></a>
-</div>
-<h5 class="sec-two-title">
-<a href=" ">NU Master's admission begins on Monday </a>
-</h5>
-</div>
-</div>
-<div class="themesBazar-4 themesBazar-m2">
-<div class="sec-two-wrpp">
-<div class="section-two-image">
-<a href=" "><img class="lazyload" src="assets/images/lazy.jpg"  ></a>
-</div>
-<h5 class="sec-two-title">
-<a href=" ">NU Master's admission begins on Monday </a>
-</h5>
-</div>
-</div>
-<div class="themesBazar-4 themesBazar-m2">
-<div class="sec-two-wrpp">
-<div class="section-two-image">
-<a href=" "><img class="lazyload" src="assets/images/lazy.jpg"  ></a>
-</div>
-<h5 class="sec-two-title">
-<a href=" ">NU Master's admission begins on Monday </a>
-</h5>
-</div>
-</div>
-<div class="themesBazar-4 themesBazar-m2">
-<div class="sec-two-wrpp">
-<div class="section-two-image">
-<a href=" "><img class="lazyload" src="assets/images/lazy.jpg"  ></a>
-</div>
-<h5 class="sec-two-title">
-<a href=" ">NU Master's admission begins on Monday </a>
-</h5>
-</div>
-</div>
-</div>
-</div>
-<div class="tab-pane fade" id="Info-tabs4" role="tabpanel" aria-labelledby="categori-tab4">
-<div class="row">
-<div class="themesBazar-4 themesBazar-m2">
-<div class="sec-two-wrpp">
-<div class="section-two-image">
-<a href=" "><img class="lazyload" src="assets/images/lazy.jpg" ></a>
-</div>
-<h5 class="sec-two-title">
-<a href=" ">NU Master's admission begins on Monday </a>
-</h5>
-</div>
-</div>
-<div class="themesBazar-4 themesBazar-m2">
-<div class="sec-two-wrpp">
-<div class="section-two-image">
-<a href=" "><img class="lazyload" src="assets/images/lazy.jpg"  ></a> <a href=" " class="mediam-icon"><i class="la la-play"></i></a>
-</div>
-<h5 class="sec-two-title">
-<a href=" ">NU Master's admission begins on Monday </a>
-</h5>
-</div>
-</div>
-<div class="themesBazar-4 themesBazar-m2">
-<div class="sec-two-wrpp">
-<div class="section-two-image">
-<a href=" "><img class="lazyload" src="assets/images/lazy.jpg"  ></a> <a href=" " class="mediam-icon"><i class="la la-play"></i></a>
-</div>
-<h5 class="sec-two-title">
-<a href=" ">NU Master's admission begins on Monday </a>
-</h5>
-</div>
-</div>
-<div class="themesBazar-4 themesBazar-m2">
-<div class="sec-two-wrpp">
-<div class="section-two-image">
-<a href=" "><img class="lazyload" src="assets/images/lazy.jpg"  ></a> 
-</div>
-<h5 class="sec-two-title">
-<a href=" ">NU Master's admission begins on Monday </a>
-</h5>
-</div>
-</div>
-<div class="themesBazar-4 themesBazar-m2">
-<div class="sec-two-wrpp">
-<div class="section-two-image">
-<a href=" "><img class="lazyload" src="assets/images/lazy.jpg"  ></a>
-</div>
-<h5 class="sec-two-title">
-<a href=" ">NU Master's admission begins on Monday </a>
-</h5>
-</div>
-</div>
-<div class="themesBazar-4 themesBazar-m2">
-<div class="sec-two-wrpp">
-<div class="section-two-image">
-<a href=" "><img class="lazyload" src="assets/images/lazy.jpg"  ></a>
-</div>
-<h5 class="sec-two-title">
-<a href=" ">NU Master's admission begins on Monday </a>
-</h5>
-</div>
-</div>
-<div class="themesBazar-4 themesBazar-m2">
-<div class="sec-two-wrpp">
-<div class="section-two-image">
-<a href=" "><img class="lazyload" src="assets/images/lazy.jpg" ></a>
-</div>
-<h5 class="sec-two-title">
-<a href=" ">NU Master's admission begins on Monday </a>
-</h5>
-</div>
-</div>
-<div class="themesBazar-4 themesBazar-m2">
-<div class="sec-two-wrpp">
-<div class="section-two-image">
-<a href=" "><img class="lazyload" src="assets/images/lazy.jpg"  ></a>
-</div>
-<h5 class="sec-two-title">
-<a href=" ">NU Master's admission begins on Monday </a>
-</h5>
-</div>
-</div>
-</div>
-</div>
+@endforeach
+
+
 </div>
 </div>
 </div>
@@ -556,108 +296,7 @@ SPORTS </div>
 </div>
 </div>
 
-<section class="section-three">
-<div class="container">
-<div class="row">
-<div class="col-lg-8 col-md-8">
 
-<h2 class="themesBazar_cat07"> <a href=" "> <i class="las la-align-justify"></i> NATIONAL </a> </h2>
-
-<div class="row">
-<div class="col-lg-6 col-md-6">
-<div class="secThree-bg">
-<div class="sec-theee-image">
-<a href=" "><img class="lazyload" src="assets/images/lazy.jpg"  ></a>
-</div>
-<h4 class="secThree-title">
-<a href=" ">College tops the best list again </a>
-</h4>
-</div>
-<div class="row">
-<div class="themesBazar-2 themesBazar-m2">
-<div class="secThree-wrpp">
-<div class="sec-theee-image2">
-<a href=" "><img class="lazyload" src="assets/images/lazy.jpg"  ></a>
-</div>
-<h4 class="secThree-title2">
-<a href=" ">College tops the best list again </a>
-</h4>
-</div>
-</div>
-<div class="themesBazar-2 themesBazar-m2">
- <div class="secThree-wrpp">
-<div class="sec-theee-image2">
-<a href=" "><img class="lazyload" src="assets/images/lazy.jpg"  ></a>
-</div>
-<h4 class="secThree-title2">
-<a href=" ">College tops the best list again </a>
-</h4>
-</div>
-</div>
-</div>
-</div>
-<div class="col-lg-6 col-md-6">
-<div class="bg2">
-<div class="secThree-smallItem">
-<div class="secThree-smallImg">
-<a href=" "><img class="lazyload" src="assets/images/lazy.jpg"  ></a>
-<a href=" " class="small-icon3"><i class="la la-play"></i></a>
-<h5 class="secOne_smallTitle">
-<a href=" ">College tops the best list again </a>
-</h5>
-</div>
-</div>
-<div class="secThree-smallItem">
-<div class="secThree-smallImg">
-<a href="  "><img class="lazyload" src="assets/images/lazy.jpg" ></a>
-<h5 class="secOne_smallTitle">
-<a href=" ">College tops the best list again </a>
-</h5>
-</div>
-</div>
-<div class="secThree-smallItem">
-<div class="secThree-smallImg">
-<a href=" "><img class="lazyload" src="assets/images/lazy.jpg"  ></a>
-<h5 class="secOne_smallTitle">
-<a href=" ">College tops the best list again </a>
-</h5>
-</div>
-</div>
-<div class="secThree-smallItem">
-<div class="secThree-smallImg">
-<a href=" "><img class="lazyload" src="assets/images/lazy.jpg" ></a>
-<h5 class="secOne_smallTitle">
-<a href=" ">College tops the best list again </a>
-</h5>
-</div>
-</div>
-<div class="secThree-smallItem">
-<div class="secThree-smallImg">
-<a href=" "><img class="lazyload" src="assets/images/lazy.jpg"  ></a>
-<h5 class="secOne_smallTitle">
-<a href=" ">College tops the best list again </a>
-</h5>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="col-lg-4 col-md-4">
-
-<h2 class="themesBazar_cat07"> <a href=" "> <i class="las la-map-marker"></i>POLITICS </a> </h2>
-
-<div class="map-area" style="width:100%; background: #eff3f4;">
-<div style="padding:5px 35px 0px 35px;">
- <img class="lazyload" src="assets/images/lazy.jpg"  ></a>
- <br> <br> 
-  <img class="lazyload" src="assets/images/lazy.jpg"  ></a>
-
-</div>
-</div>
-</div>
-</div>
-</section>
 
 <div class="container">
 <div class="row">
@@ -677,138 +316,48 @@ SPORTS </div>
 </div>
 
 <section class="section-four">
-<div class="container">
-<div class="row">
-<div class="col-lg-12 col-md-12">
-
-<h2 class="themesBazar_cat04"> <a href=" "> <i class="las la-align-justify"></i> POLITICS </a> </h2>
-
-<div class="secFour-slider owl-carousel owl-loaded owl-drag">
-
-
-
-
-
-
-
-
-<div class="owl-stage-outer"><div class="owl-stage" style="transform: translate3d(-3294px, 0px, 0px); transition: all 1s ease 0s; width: 4792px;"><div class="owl-item cloned" style="width: 289.5px; margin-right: 10px;"><div class="secFour-wrpp ">
-<div class="secFour-image">
-<a href=" "><img class="lazyload" src="assets/images/lazy.jpg" ></a>
-<h5 class="secFour-title">
-<a href=" ">How Bollywood movies recover money when</a>
-</h5>
-</div>
-</div></div><div class="owl-item cloned" style="width: 289.5px; margin-right: 10px;"><div class="secFour-wrpp ">
-<div class="secFour-image">
-<a href=" "><img class="lazyload" src="assets/images/lazy.jpg"  ></a>
-<h5 class="secFour-title">
-<a href=" ">How Bollywood movies recover money when</a>
-</h5>
- </div>
-</div></div><div class="owl-item cloned" style="width: 289.5px; margin-right: 10px;"><div class="secFour-wrpp ">
-<div class="secFour-image">
-<a href=" "><img class="lazyload" src="assets/images/lazy.jpg"  ></a>
-<h5 class="secFour-title">
-<a href=" ">How Bollywood movies recover money when</a>
-</h5>
-</div>
-</div></div><div class="owl-item cloned" style="width: 289.5px; margin-right: 10px;"><div class="secFour-wrpp ">
-<div class="secFour-image">
-<a href=" "><img class="lazyload" src="assets/images/lazy.jpg" ></a>
-<h5 class="secFour-title">
-<a href=" ">How Bollywood movies recover money when</a>
-</h5>
-</div>
-</div></div><div class="owl-item" style="width: 289.5px; margin-right: 10px;"><div class="secFour-wrpp ">
-<div class="secFour-image">
-<a href=" "><img class="lazyload" src="assets/images/lazy.jpg"  ></a>
-<h5 class="secFour-title">
-<a href=" ">How Bollywood movies recover money when</a>
-</h5>
-</div>
-</div></div><div class="owl-item" style="width: 289.5px; margin-right: 10px;"><div class="secFour-wrpp ">
-<div class="secFour-image">
-<a href=" "><img class="lazyload" src="assets/images/lazy.jpg"  ></a>
-<h5 class="secFour-title">
-<a href=" ">How Bollywood movies recover money when</a>
-</h5>
-</div>
-</div></div><div class="owl-item" style="width: 289.5px; margin-right: 10px;"><div class="secFour-wrpp ">
-<div class="secFour-image">
-<a href=" "><img class="lazyload" src="assets/images/lazy.jpg" ></a>
-<h5 class="secFour-title">
-<a href=" ">How Bollywood movies recover money when</a>
-</h5>
-</div>
-</div></div><div class="owl-item" style="width: 289.5px; margin-right: 10px;"><div class="secFour-wrpp ">
-<div class="secFour-image">
-<a href=" "><img class="lazyload" src="assets/images/lazy.jpg"  ></a>
-<h5 class="secFour-title">
-<a href=" ">How Bollywood movies recover money when</a>
-</h5>
-</div>
-</div></div><div class="owl-item" style="width: 289.5px; margin-right: 10px;"><div class="secFour-wrpp ">
-<div class="secFour-image">
-<a href=" "><img class="lazyload" src="assets/images/lazy.jpg"  ></a>
-<h5 class="secFour-title">
-<a href=" ">How Bollywood movies recover money when</a>
-</h5>
-</div>
-</div></div><div class="owl-item" style="width: 289.5px; margin-right: 10px;"><div class="secFour-wrpp ">
-<div class="secFour-image">
-<a href=" "><img class="lazyload" src="assets/images/lazy.jpg"  ></a>
-<h5 class="secFour-title">
-<a href=" ">How Bollywood movies recover money when</a>
-</h5>
- </div>
-</div></div><div class="owl-item" style="width: 289.5px; margin-right: 10px;"><div class="secFour-wrpp ">
-<div class="secFour-image">
-<a href=" "><img class="lazyload" src="assets/images/lazy.jpg"  ></a>
-<h5 class="secFour-title">
-<a href=" ">How Bollywood movies recover money when</a>
-</h5>
-</div>
-</div></div><div class="owl-item active" style="width: 289.5px; margin-right: 10px;"><div class="secFour-wrpp ">
-<div class="secFour-image">
-<a href=" "><img class="lazyload" src="assets/images/lazy.jpg" ></a>
-<h5 class="secFour-title">
-<a href=" ">How Bollywood movies recover money when</a>
-</h5>
-</div>
-</div></div><div class="owl-item cloned active" style="width: 289.5px; margin-right: 10px;"><div class="secFour-wrpp ">
-<div class="secFour-image">
-<a href=" "><img class="lazyload" src="assets/images/lazy.jpg"  ></a>
-<h5 class="secFour-title">
-<a href=" ">How Bollywood movies recover money when</a>
-</h5>
-</div>
-</div></div><div class="owl-item cloned active" style="width: 289.5px; margin-right: 10px;"><div class="secFour-wrpp ">
-<div class="secFour-image">
-<a href=" "><img class="lazyload" src="assets/images/lazy.jpg"  ></a>
-<h5 class="secFour-title">
-<a href=" ">How Bollywood movies recover money when</a>
-</h5>
-</div>
-</div></div><div class="owl-item cloned active" style="width: 289.5px; margin-right: 10px;"><div class="secFour-wrpp ">
-<div class="secFour-image">
-<a href=" "><img class="lazyload" src="assets/images/lazy.jpg" ></a>
-<h5 class="secFour-title">
-<a href=" ">How Bollywood movies recover money when</a>
-</h5>
-</div>
-</div></div><div class="owl-item cloned" style="width: 289.5px; margin-right: 10px;"><div class="secFour-wrpp ">
-<div class="secFour-image">
-<a href=" "><img class="lazyload" src="assets/images/lazy.jpg" ></a>
-<h5 class="secFour-title">
-<a href=" ">How Bollywood movies recover money when</a>
-</h5>
-</div>
-</div></div></div></div><div class="owl-nav disabled"><button type="button" role="presentation" class="owl-prev"><i class="las la-angle-left"></i></button><button type="button" role="presentation" class="owl-next"><i class="las la-angle-right"></i></button></div><div class="owl-dots"><button role="button" class="owl-dot"><span></span></button><button role="button" class="owl-dot active"><span></span></button></div></div>
-</div>
-</div>
-</div>
-</section>
+  <div class="container">
+  <div class="row">
+  <div class="col-lg-12 col-md-12">
+  
+  <h2 class="themesBazar_cat04">
+      @if ($cat_0)
+          <a href="{{ url('category/'.$cat_0->id.'/'.$cat_0->category_slug) }}">
+              <i class="las la-align-justify"></i> {{ $cat_0->category_name }}
+          </a>
+      @else
+          <span>Default Category Name or Handle Null Case</span>
+      @endif
+  </h2>
+  <div class="secFour-slider owl-carousel owl-loaded owl-drag">
+  
+  
+  
+  
+  
+  
+  
+  
+  <div class="owl-stage-outer"><div class="owl-stage" style="transform: translate3d(-3294px, 0px, 0px); transition: all 1s ease 0s; width: 4792px;">
+  
+  @foreach($news_0 as $item)
+    <div class="owl-item" style="width: 289.5px; margin-right: 10px;"><div class="secFour-wrpp ">
+  <div class="secFour-image">
+  <a href=" "><img class="lazyload" src="{{ asset($item->news_image) }}" ></a>
+  <h5 class="secFour-title">
+  <a href="{{ url('news/details/'.$item->id.'/'.$item->news_title_slug) }} ">{{ $item->news_title }}</a>
+  </h5>
+  </div>
+  </div></div>
+  @endforeach
+   
+  
+  
+   </div></div><div class="owl-nav disabled"><button type="button" role="presentation" class="owl-prev"><i class="las la-angle-left"></i></button><button type="button" role="presentation" class="owl-next"><i class="las la-angle-right"></i></button></div><div class="owl-dots"><button role="button" class="owl-dot"><span></span></button><button role="button" class="owl-dot active"><span></span></button></div></div>
+  </div>
+  </div>
+  </div>
+  </section>
 
 <div class="container">
 <div class="row">
@@ -1148,125 +697,6 @@ If filmmakers recover their money from selling OTT, satellite and music rights, 
 </div> </div>
 </div>
 </div>
-
-<section class="section-five">
-<div class="container">
-<div class="row">
-<div class="col-lg-4 col-md-4">
-
-<h2 class="themesBazar_cat04"> <a href=" "> <i class="las la-align-justify"></i> ENTERTAINMENT </a> </h2>
-
-<div class="white-bg">
-<div class="secFive-image">
-<a href=" "><img class="lazyload" src="assets/images/lazy.jpg"  ></a>
-<div class="secFive-title">
-<a href=" ">Dowry case: Cricketer Al-Amin gets anticipatory bail</a>
-</div>
-</div>
-<div class="secFive-smallItem">
-<div class="secFive-smallImg">
-<a href=" "><img class="lazyload" src="assets/images/lazy.jpg"  ></a>
-<h5 class="secFive_title2">
-<a href=" ">Dowry case: Cricketer Al-Amin gets anticipatory bail</a>
-</h5>
-</div>
-</div>
-<div class="secFive-smallItem">
-<div class="secFive-smallImg">
-<a href=" "><img class="lazyload" src="assets/images/lazy.jpg"  ></a>
-<h5 class="secFive_title2">
-<a href=" ">Dowry case: Cricketer Al-Amin gets anticipatory bail</a>
-</h5>
-</div>
-</div>
-<div class="secFive-smallItem">
-<div class="secFive-smallImg">
-<a href=" "><img class="lazyload" src="assets/images/lazy.jpg"  ></a>
-<h5 class="secFive_title2">
-<a href=" ">Dowry case: Cricketer Al-Amin gets anticipatory bail</a>
-</h5>
-</div>
-</div>
-</div>
-</div>
-<div class="col-lg-4 col-md-4">
-
-<h2 class="themesBazar_cat04"> <a href=" "> <i class="las la-align-justify"></i> FEATURE </a> </h2>
-
-<div class="white-bg">
-<div class="secFive-image">
-<a href=" "><img class="lazyload" src="assets/images/lazy.jpg"  ></a>
-<div class="secFive-title">
-<a href=" ">Liverpool thrashed by Napoli in Champions League </a>
-</div>
-</div>
-<div class="secFive-smallItem">
-<div class="secFive-smallImg">
-<a href=" "><img class="lazyload" src="assets/images/lazy.jpg"  ></a>
-<h5 class="secFive_title2">
-<a href=" ">Liverpool thrashed by Napoli in Champions League </a>
-</h5>
-</div>
-</div>
-<div class="secFive-smallItem">
-<div class="secFive-smallImg">
-<a href=" "><img class="lazyload" src="assets/images/lazy.jpg"  ></a>
-<h5 class="secFive_title2">
-<a href=" ">Liverpool thrashed by Napoli in Champions League </a>
-</h5>
-</div>
-</div>
-
-<div class="secFive-smallItem">
-<div class="secFive-smallImg">
-<a href=" "><img class="lazyload" src="assets/images/lazy.jpg" ></a>
-<h5 class="secFive_title2">
-<a href=" ">Liverpool thrashed by Napoli in Champions League </a>
-</h5>
-</div>
-</div>
-</div>
-</div>
-<div class="col-lg-4 col-md-4">
-
-<h2 class="themesBazar_cat04"> <a href=" "> <i class="las la-align-justify"></i> FACEBOOK NEWS </a> </h2>
-
-<div class="white-bg">
-<div class="secFive-image">
-<a href=" "><img class="lazyload" src="assets/images/lazy.jpg" ></a>
-<div class="secFive-title">
-<a href=" ">Lewandowski hits Barca hit-trick before Bayern return </a>
-</div>
-</div>
-<div class="secFive-smallItem">
-<div class="secFive-smallImg">
-<a href=" "><img class="lazyload" src="assets/images/lazy.jpg"  ></a>
-<h5 class="secFive_title2">
-<a href=" ">Lewandowski hits Barca hit-trick before Bayern return </a>
-</h5>
-</div>
-</div>
-<div class="secFive-smallItem">
-<div class="secFive-smallImg">
-<a href=" "><img class="lazyload" src="assets/images/lazy.jpg"  ></a>
-<h5 class="secFive_title2">
-<a href=" ">Lewandowski hits Barca hit-trick before Bayern return </a>
-</h5>
-</div>
-</div>
-<div class="secFive-smallItem">
-<div class="secFive-smallImg">
-<a href=" "><img class="lazyload" src="assets/images/lazy.jpg"  ></a>
-<h5 class="secFive_title2">
-<a href=" ">Lewandowski hits Barca hit-trick before Bayern return </a>
-</h5>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</section>
 
 
 
