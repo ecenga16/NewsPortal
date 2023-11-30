@@ -11,7 +11,7 @@ $breaking_news = App\Models\Posts::where('status', 1)->where('breaking_news', 1)
                         <div class="col-md-12 top_scroll2">
                             <div class="scroll5-left">
                                 <div id="scroll5-left">
-                                    <span> Lajmi Fundit :: </span>
+                                    <span> Lajmi Fundit:</span>
                                 </div>
                             </div>
                             <div class="scroll5-right">

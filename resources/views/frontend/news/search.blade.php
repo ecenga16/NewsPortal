@@ -26,7 +26,7 @@ Seach Page
 <div class="archive-item-wrpp2">
 <div class="archive-shadow arch_margin">
 <div class="archive1_image2">
-<a href=" "><img class="lazyload" src="{{ asset($item->image) }}"  ></a>
+<a href=" "><img class="lazyload" src="{{ asset($item->news_image) }}"  ></a>
 <div class="archive1-meta">
 <a href=" "><i class="la la-tags"> </i>
 {{ $item->created_at->format('M d Y') }}

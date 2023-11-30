@@ -13,19 +13,13 @@
 <div class="single-add">
 </div>
 
-<div class="single-cat-info">
-<div class="single-home">
-<i class="la la-home"> </i><a href=" "> HOME </a>
-</div>
-<div class="single-cats">
-<a href=" " rel="category tag">{{isset($news['category']['category_name'])}}</a> <a href=" " rel="category tag">{{isset($news['subcategory']['subcategory_name']) ? $news['subcategory']['subcategory_name'] : ''}}</a> </div>
-</div>
+
 <h1 class="single-page-title">
 {{$news['news_title']}}</h1>
 <div class="row g-2">
 <div class="col-lg-1 col-md-2 ">
 <div class="reportar-image">
-<img src="assets/images/lazy.jpg">
+<img src="{{asset('backend/assets/images/lazy.jpg')}}">
 </div>
 </div>
 <div class="col-lg-11 col-md-10">
