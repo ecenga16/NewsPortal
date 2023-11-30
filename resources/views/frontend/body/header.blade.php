@@ -8,6 +8,7 @@ $cdate = new DateTime();
     text-align: center;
     border: 1px solid #eee;
     border-collapse: collapse;
+    background-color: white;
 }
 .large-2 {
     width: 16.66667%;
@@ -35,123 +36,105 @@ span.todayPrayerName {
 
 </style>
 <script>
-    var latitude = 41.3275; // Tirana's latitude
-    var longitude = 19.8187; // Tirana's longitude
-    var method = 13; // Umm al-Qura University method
+    function fetchPrayerTimes() {
+        console.log('Button clicked!');
+        const city = document.getElementById('cityInput').value;
+        window.fetchAndDisplayPrayerTimes(city);
+    }
 
-    var API = `https://api.aladhan.com/v1/timings?latitude=${latitude}&longitude=${longitude}&method=${method}`;
+    document.addEventListener('DOMContentLoaded', function () {
+        document.querySelector('form').addEventListener('submit', function (event) {
+            event.preventDefault();
 
-    fetch(API)
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Network response was not ok: ' + response.status);
+            const city = document.getElementById('cityInput').value;
+            fetchAndDisplayPrayerTimes(city);
+        });
+
+        window.fetchAndDisplayPrayerTimes = function (city) {
+            const apiKey = "6bba7cc8778c98be3c08672a88c5a045";
+            const apiUrl = `https://muslimsalat.com/${city}/daily.json?key=${apiKey}&callback=displayPrayerTimes`;
+
+            const script = document.createElement('script');
+            script.src = apiUrl;
+
+            document.head.appendChild(script);
+        }
+
+        window.displayPrayerTimes = function (times) {
+            var prayerTimesElement = document.querySelector('.prayerTimesExample');
+
+            if (prayerTimesElement) {
+                document.getElementById('title').innerText = 'Sot: ' + times.title;
+
+                document.getElementById('fajr').innerText = times.items[0].fajr;
+                document.getElementById('shurooq').innerText = times.items[0].shurooq;
+                document.getElementById('dhuhr').innerText = times.items[0].dhuhr;
+                document.getElementById('asr').innerText = times.items[0].asr;
+                document.getElementById('maghrib').innerText = times.items[0].maghrib;
+                document.getElementById('isha').innerText = times.items[0].isha;
+
+                document.head.removeChild(script);
+            } else {
+                console.error('Element with class "prayerTimesExample" not found');
             }
-            return response.json();
-        })
-        .then(data => {
-            if (!data || !data.data || !data.data.timings) {
-                throw new Error('Invalid response format');
-            }
+        };
 
-            var prayerTimes = [
-                data.data.timings.Fajr,
-                data.data.timings.Sunrise,
-                data.data.timings.Dhuhr,
-                data.data.timings.Asr,
-                data.data.timings.Maghrib,
-                data.data.timings.Isha
-            ];
-
-            var currentTime = new Date();
-            var currentHour = currentTime.getHours();
-            var currentMinute = currentTime.getMinutes();
-            var currentTimeString = currentHour + ':' + (currentMinute < 10 ? '0' : '') + currentMinute;
-
-            for (var i = 0; i < prayerTimes.length; i++) {
-    var prayerTime = prayerTimes[i];
-    var prayerTimeDiv = document.getElementById('box');
-    var prayerTimeId = '';
-
-    switch (i) {
-        case 0: prayerTimeId = 'fajrTime'; break;
-        case 1: prayerTimeId = 'lindja'; break;
-        case 2: prayerTimeId = 'yleja'; break;
-        case 3: prayerTimeId = 'ikindia'; break;
-        case 4: prayerTimeId = 'akshami'; break;
-        case 5: prayerTimeId = 'jacia'; break;
-    }
-
-    if (currentTimeString === prayerTime) {
-        prayerTimeDiv.style.backgroundColor = '#1d5562';
-    } else {
-        prayerTimeDiv.style.backgroundColor = '';
-    }
-
-    // Highlight the current prayer time
-    if (isCurrentTimePassed(prayerTime, currentTimeString) && isCurrentTimePassed(currentTimeString, prayerTimes[i + 1])) {
-        document.getElementById(prayerTimeId).style.color = '#FF0000';
-    } else {
-        document.getElementById(prayerTimeId).style.color = ''; 
-    }
-}
-
-            // Update the HTML with prayer times
-            document.getElementById('fajrTime').textContent = data.data.timings.Fajr;
-            document.getElementById('lindja').textContent = data.data.timings.Sunrise;
-            document.getElementById('yleja').textContent = data.data.timings.Dhuhr;
-            document.getElementById('ikindia').textContent = data.data.timings.Asr;
-            document.getElementById('akshami').textContent = data.data.timings.Maghrib;
-            document.getElementById('jacia').textContent = data.data.timings.Isha;
-        })
-        .catch(error => console.error('Error fetching prayer times:', error));
-
-    function isCurrentTimePassed(timeToCheck, currentTime) {
-        var timeToCheckParts = timeToCheck.split(':');
-        var currentTimeParts = currentTime.split(':');
-
-        var timeToCheckMinutes = parseInt(timeToCheckParts[0]) * 60 + parseInt(timeToCheckParts[1]);
-        var currentTimeMinutes = parseInt(currentTimeParts[0]) * 60 + parseInt(currentTimeParts[1]);
-
-        return currentTimeMinutes >= timeToCheckMinutes;
-    }
+        fetchAndDisplayPrayerTimes('Tirana');
+    });
 </script>
-<header class="themesbazar_header">
-    <div class="container">
-        <div class="row">
+<header class="themesbazar_header" style="background-color:#F0F0ED;">
+    <div class="container" >
+        <div class="row" >
             <div class="col-12">
                 <div class="row mb-1 justify-content-between">
                     <!-- Prayers Section -->
                     <div class="col-sm-12 col-md-6">
-                        <i class="lar la-calendar"></i>
-                        {{ $cdate->format('l d-m-Y') }}
-                        <div class="date">
+                        <div class="prayerTimesExample">
+                        <i class="lar la-calendar" style="color:#1d5562"></i>
+                        <span style="color:#1d5562"> {{ $cdate->format('l d-m-Y') }}</span>
+                        <div><span id="title" style="color:#1d5562"></span></div>
+                        <div class="row" >
+                            <div class="col-6">
+                                <form>
+                                <input type="text" id="cityInput" class="form-control" placeholder="Enter City">
+                            </div>
+                            <div class="col-6 md-col-4">
+                                <button class="btn btn-success" type="button" onclick="fetchPrayerTimes()">Get Prayer Times</button>
+                            </form>
+                            </div>
+                           
+                        </div>
+                        <div><span id="title"></span></div>
+
+                        <div class="date ml-md-2">
                             <div class="row todayPrayersContainer">
                                 <div class="large-2 medium-2 small-2 columns todayPrayer" id="box">
                                     <div class="todayPrayerNameContainer"><span class="todayPrayerName">Imsaku</span></div>
-                                    <div class="todayPrayerDetailContainer"><span class="todayPrayerTime" id="fajrTime"></span></div>
+                                    <div class="todayPrayerDetailContainer"><span class="todayPrayerTime" id="fajr"></span></div>
                                 </div>
                                 <div class="large-2 medium-2 small-2 columns todayPrayer" id="box">
-                                    <div class="todayPrayerNameContainer"><span class="todayPrayerName">L. Diellit </span></div>
-                                    <div class="todayPrayerDetailContainer"><span class="todayPrayerTime" id="lindja"></span></div>
+                                    <div class="todayPrayerNameContainer"><span class="todayPrayerName">L. Diellit</span></div>
+                                    <div class="todayPrayerDetailContainer"><span class="todayPrayerTime" id="shurooq"></span></div>
                                 </div>
                                 <div class="large-2 medium-2 small-2 columns todayPrayer" id="box">
                                     <div class="todayPrayerNameContainer"><span class="todayPrayerName">Yleja</span></div>
-                                    <div class="todayPrayerDetailContainer"><span class="todayPrayerTime" id="yleja"></span></div>
+                                    <div class="todayPrayerDetailContainer"><span class="todayPrayerTime" id="dhuhr"></span></div>
                                 </div>
                                 <div class="large-2 medium-2 small-2 columns todayPrayer" id="box">
                                     <div class="todayPrayerNameContainer"><span class="todayPrayerName">Ikindia</span></div>
-                                    <div class="todayPrayerDetailContainer"><span class="todayPrayerTime" id="ikindia"></span></div>
+                                    <div class="todayPrayerDetailContainer"><span class="todayPrayerTime" id="asr"></span></div>
                                 </div>
                                 <div class="large-2 medium-2 small-2 columns todayPrayer" id="box">
                                     <div class="todayPrayerNameContainer"><span class="todayPrayerName">Akshami</span></div>
-                                    <div class="todayPrayerDetailContainer"><span class="todayPrayerTime" id="akshami"></span></div>
+                                    <div class="todayPrayerDetailContainer"><span class="todayPrayerTime" id="maghrib"></span></div>
                                 </div>
                                 <div class="large-2 medium-2 small-2 columns todayPrayer" id="box">
                                     <div class="todayPrayerNameContainer"><span class="todayPrayerName">Jacia</span></div>
-                                    <div class="todayPrayerDetailContainer"><span class="todayPrayerTime" id="jacia"></span></div>
+                                    <div class="todayPrayerDetailContainer"><span class="todayPrayerTime" id="isha"></span></div>
                                 </div>
                             </div>
                         </div>
+                    </div>
                     </div>
 
                     <!-- Search Section -->
@@ -161,8 +144,8 @@ span.todayPrayerName {
                                 <form class="header-search" action="{{ route('news.search') }}" method="post">
                                     @csrf 
                                 
-                                <input type="text"  name="search" placeholder=" Search Here " required="">
-                                <button type="submit" value="Search"> <i class="las la-search"></i> </button>
+                                <input type="text"  name="search" placeholder="Search Here">
+                                <button type="submit" value="Search"> <i class="las la-search text-white"></i> </button>
                                 </form>
                             </ul>
                         </div>
