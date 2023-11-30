@@ -27,12 +27,16 @@ span.todayPrayerName {
     font-weight: 600;
     color: #1d5562;
 }
+span.todayPrayerTime {
+    font-size: 0.9rem;
+}
 .row::after {
     clear: both;
 }
 .medium-2 {
     width: 16.66667%;
 }
+
 
 </style>
 <script>
@@ -64,7 +68,7 @@ span.todayPrayerName {
             var prayerTimesElement = document.querySelector('.prayerTimesExample');
 
             if (prayerTimesElement) {
-                document.getElementById('title').innerText = 'Sot: ' + times.title;
+                document.getElementById('title').innerText = times.title;
 
                 document.getElementById('fajr').innerText = times.items[0].fajr;
                 document.getElementById('shurooq').innerText = times.items[0].shurooq;
