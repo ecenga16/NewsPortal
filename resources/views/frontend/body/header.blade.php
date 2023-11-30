@@ -37,6 +37,10 @@ span.todayPrayerTime {
     width: 16.66667%;
 }
 
+.align-bottom-custom {
+    align-self: flex-end;
+}
+
 
 </style>
 <script>
@@ -142,7 +146,7 @@ span.todayPrayerTime {
                     </div>
 
                     <!-- Search Section -->
-                    <div class="col-md-4 mt-5 d-none d-md-block">
+                    <div class="col-md-4 align-bottom-custom mb-4 d-none d-md-block">
                         <div class="header-social">
                             <ul>
                                 <form class="header-search" action="{{ route('news.search') }}" method="post">
