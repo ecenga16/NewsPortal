@@ -22,7 +22,11 @@ class IndexController extends Controller
         $pop_posts = Posts::orderBy('view_count','DESC')->limit(3)->get();
 
         $cat_0 = Category::skip(8)->first();
-        $news_0 = Posts::where('status',1)->where('category_id', $cat_0['id'])->orderBy('id', 'DESC')->limit(8)->get();
+        $news_0 = [];
+
+        if ($cat_0 !== null) {
+            $news_0 = Posts::where('status', 1)->where('category_id', $cat_0['id'])->orderBy('id', 'DESC')->limit(8)->get();
+        }
 
 
 
