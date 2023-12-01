@@ -16,8 +16,10 @@ use Auth;
 class PostController extends Controller
 {
     public function AllPosts() {
-        $all_news = Posts::latest()->get();
-
+        $perPage = 15;
+    
+        $all_news = Posts::latest()->paginate($perPage);
+    
         return view('backend.posts.all_posts', compact('all_news'));
     }
 
@@ -145,21 +147,24 @@ class PostController extends Controller
         }
 
     }
-    public function DeletePost($id){
-
-        $post_image = Posts::findOrFail($id);
-        $img = $post_image->news_image;
-        unlink($img);
-
-        Posts::findOrFail($id)->delete();
-
+    public function DeletePost($id) {
+        $post = Posts::findOrFail($id);
+        
+        if (!empty($post->news_image)) {
+            $img = $post->news_image;            
+        }
+        if (file_exists($img)) {
+            unlink($img);
+        }
+    
+        $post->delete();
+    
         $notification = array(
             'message' => 'Post Deleted Successfully',
             'alert-type' => 'success'
-
         );
+    
         return redirect()->back()->with($notification);
-
     }
 
     public function InactivePost($id){

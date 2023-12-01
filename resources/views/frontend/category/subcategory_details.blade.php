@@ -31,18 +31,10 @@
 
 
 
+{{ $news->links('frontend.category.custom-pagination') }}
 
 </div>
-<div class="row">
-<div class="col-lg-8 col-md-8">
-<div class="post-nav"><ul class="pager"><li class="previous"><a href=" "><i class="las la-step-backward"></i>
-</a></li><li><a href=" " title="previous"><i class="la la-backward" aria-hidden="true"></i>
-</a></li><li><a href=" ">01</a></li><li class="active"><span class="active">02</span></li><li><a href=" ">03</a></li><li><a href=" ">04</a></li><li><a href=" " title="next"><i class="la la-forward" aria-hidden="true"></i>
-</a></li><li class="next"><a href=" "><i class="las la-step-forward"></i>
-</a></li></ul></div> </div>
-</div>
-</div>
- 
+
 </div>
 </div>
 </div>

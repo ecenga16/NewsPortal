@@ -14,10 +14,9 @@
      --}}
     <div class="copy_right_section">
     <div class="row">
-        <div class="col-lg-6 col-md-6 text-center !d-flex !align-items-center">
-            © All rights reserved 
+        <div class="col-lg-6 col-md-6 text-start !d-flex !align-items-center">
+            © 2023 All rights reserved - Bota Islame
         </div>
     </div>
-    <a href=" " class="scrollToTop" style=""><i class="las la-long-arrow-alt-up"></i></a>
     </div>
     </footer>

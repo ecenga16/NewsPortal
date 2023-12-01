@@ -69,77 +69,24 @@ Read
 </div>
 </div> </div>
 
-<h3 class="single-social-title">
-Share News </h3>
+<h3 class="single-social-title">Share News</h3>
 <div class="single-page-social">
-<a href=" " target="_blank" title="Facebook"><i class="lab la-facebook-f"></i></a><a href=" " target="_blank"><i class="lab la-twitter"></i></a><a href=" " target="_blank"><i class="lab la-linkedin-in"></i></a><a href=" " target="_blank"><i class="lab la-digg"></i></a><a href=" " target="_blank"><i class="lab la-pinterest-p"></i></a><a onclick="printFunction()" target="_blank"><i class="las la-print"></i> <script>
-					function printFunction() {
-						window.print();
-					}
-					</script> </a>
+    <a href="https://www.facebook.com/sharer/sharer.php?u={{ url()->current() }}" target="_blank" title="Facebook"><i class="lab la-facebook-f"></i></a>
+    <a href="whatsapp://send?text={{ url()->current() }}" target="_blank" title="WhatsApp"><i class="lab la-whatsapp"></i></a>
+	<a href="https://twitter.com/intent/tweet?url={{ url()->current() }}" target="_blank" title="Twitter"><i class="lab la-twitter"></i></a>
+    <a href="https://www.linkedin.com/shareArticle?url={{ url()->current() }}" target="_blank" title="LinkedIn"><i class="lab la-linkedin-in"></i></a>
 </div>
 
- <div class="author2">
-<div class="author-content2">
-<h6 class="author-caption2">
-<span> COMMENTS </span>
-</h6>
-<div class="author-image2">
-<img alt="" src="assets/images/lazy.jpg
-"   class="avatar avatar-96 photo" height="96" width="96" loading="lazy"> </div>
-<div class="authorContent">
-<h1 class="author-name2">
-<a href=" "> Jack MA </a>
-</h1>
-<div class="author-details">It will take the Queen's coffin on a final journey through London and on to Windsor Castle for a second service</div>
-</div>
+<script>
+    function printFunction() {
+        window.print();
+    }
+</script>
 
-</div>
-</div>
 
 
  <hr>
 
-<form action=" " method="post" class="wpcf7-form init" enctype="multipart/form-data" novalidate="novalidate" data-status="init">
-<div style="display: none;">
-
-</div>
-<div class="main_section">
-<div class="row">
-<div class="col-md-12 col-sm-12">
-<div class="contact-title ">
-Subject *
-</div>
-<div class="contact-form">
-<span class="wpcf7-form-control-wrap sub_title"><input type="text" name="sub_title" value="" size="40" class="wpcf7-form-control wpcf7-text" aria-invalid="false" placeholder="News Sub Title"></span>
-</div>
-</div>
-</div>
-
-<div class="row">
-<div class="col-lg-12">
-<div class="contact-title">
-Comments *
-</div>
-<div class="contact-form">
-<span class="wpcf7-form-control-wrap news_details"><textarea name="news_details" cols="20" rows="5" class="wpcf7-form-control wpcf7-textarea wpcf7-validates-as-required" aria-required="true" aria-invalid="false" placeholder="News Details...."></textarea></span>
-</div>
-</div>
-</div>
-
-
-
-</div>
-
-<div class="row">
-<div class="col-md-12">
-<div class="contact-btn">
-<input type="submit" value="Submit Comments" class="wpcf7-form-control has-spinner wpcf7-submit"><span class="wpcf7-spinner"></span>
-</div>
-</div>
-</div>
-
-<div class="wpcf7-response-output" aria-hidden="true"></div></form>
 
 
 
@@ -202,7 +149,7 @@ Comments *
 			<a href="{{ url('news/details/'.$newsitem->id.'/'.$newsitem->news_title_slug) }}"><img class="lazyload" src="{{ asset($newsitem->news_image) }}"  ></a> </div>
 				<h4 class="archiveTab_hadding">
 					<a href="{{ url('news/details/'.$newsitem->id.'/'.$newsitem->news_title_slug) }}">
-						{{ $newsitem->news_title }} 
+						<span style="font-size: 16px;">{{ $newsitem->news_title }}</span>
 					</a>
 				</h4>
 
@@ -219,7 +166,10 @@ Comments *
 <div class="archive-tabWrpp archiveTab-border">
 <div class="archiveTab-image ">
 <a href="{{ url('news/details/'.$newsitem->id.'/'.$newsitem->news_title_slug) }}"><img class="lazyload" src="{{ asset($newsitem->news_image) }}"  ></a> </div>
-<h4 class="archiveTab_hadding"><a href="{{ url('news/details/'.$newsitem->id.'/'.$newsitem->news_title_slug) }}">{{ $newsitem->news_title }} </a>
+<h4 class="archiveTab_hadding">
+	<a href="{{ url('news/details/'.$newsitem->id.'/'.$newsitem->news_title_slug) }}">						
+		<span style="font-size: 16px;">{{ $newsitem->news_title }}</span>
+	</a>
 </h4>
 
 </div>

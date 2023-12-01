@@ -26,7 +26,7 @@ news-font{
 	padding: 9px 5px 9px 10px;
 	font-size: 18px;
 	color: #fff;
-	background-color: #19232D;
+	background-color: #1d5562;
 	font-weight: 400;
 
 
@@ -39,7 +39,7 @@ news-font{
 	content: "";
 	width: 0;
 	height: 0;
-	border-left: 20px solid #19232D;
+	border-left: 20px solid #1d5562 ;
 	border-top: 20px solid transparent;
 	border-bottom: 20px solid transparent;
 }
@@ -49,13 +49,13 @@ news-font{
 	height: 40px;
 	width: 100%;
 	background: #F1FCFF;
-	color: #000000;	
+	color: #1d5562;	
 	line-height: 40px;
 }
 
 .scroll5-right a {
 	font-size: 18px;
-	color: #000000;	
+	color: #1d5562;	
 	font-weight: 400;
 	margin-right: 12px;
 	display: inline-block;
@@ -69,16 +69,15 @@ news-font{
 	float: right;
 	width: 59px;
 	height: 40px;
-	background: #19232D;
-	color: #fff;
+	background: #1d5562;
 	cursor: pointer;
 
 }
 
 .footer-area {
-	background: #000000;
-	color: #ffffff;
-	padding: 40px 0 20px;
+	background-color:#F0F0ED;;
+	color: #000;
+	padding: 5px;
 	margin-top: 10px;
 }
 .footer-area ‍a{
@@ -156,7 +155,7 @@ news-font{
 }
 
 .section-two {
-	background: #1d5562;
+	/* background: #1d5562; */
 	margin: 10px 0 0;
 	padding: 28px 0 32px;
 }
@@ -307,7 +306,7 @@ a:hover {
 }
 
 .stellarnav.dark .current-menu-item {
-	background: #012E48;
+	background: #1d5562;
 }
 
 .stellarnav.dark .current-menu-item a {

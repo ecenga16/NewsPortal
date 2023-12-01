@@ -108,12 +108,9 @@ Seach By Date
     <div class="archive-tabWrpp archiveTab-border">
     <div class="archiveTab-image ">
     <a href="{{ url('news/details/'.$newsitem->id.'/'.$newsitem->news_title_slug) }}"><img class="lazyload" src="{{ asset($newsitem->image) }}"  ></a> </div>
-    <a href=" " class="archiveTab-icon2"><i class="la la-play"></i></a>
     <h4 class="archiveTab_hadding"><a href="{{ url('news/details/'.$newsitem->id.'/'.$newsitem->news_title_slug) }}">{{ $newsitem->news_title }} </a>
     </h4>
-    <div class="archive-conut">
-    {{$key+1}}
-    </div>
+   
     
     </div>
      @endforeach
@@ -131,13 +128,9 @@ Seach By Date
     <div class="archive-tabWrpp archiveTab-border">
     <div class="archiveTab-image ">
     <a href="{{ url('news/details/'.$newsitem->id.'/'.$newsitem->news_title_slug) }}"><img class="lazyload" src="{{ asset($newsitem->image) }}"  ></a> </div>
-    <a href=" " class="archiveTab-icon2"><i class="la la-play"></i></a>
     <h4 class="archiveTab_hadding"><a href="{{ url('news/details/'.$newsitem->id.'/'.$newsitem->news_title_slug) }}">{{ $newsitem->news_title }} </a>
     </h4>
-    <div class="archive-conut">
-    {{$key+1}}
-    </div>
-    
+ 
     </div>
      @endforeach
     

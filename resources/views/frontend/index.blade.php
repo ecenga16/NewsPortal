@@ -61,9 +61,9 @@ $section_three = App\Models\Posts::where('status',1)->where('first_section_three
  @foreach($section_three as $three)
 <div class="secOne-smallItem">
 <div class="secOne-smallImg">
-<a href=" "><img class="lazyload" src="{{ asset($three->news_image) }}"  ></a>
+<a href="{{url('news/details/'.$three['id'].'/'.$three['news_title_slug'])}}  "><img class="lazyload" src="{{ asset($three->news_image) }}"  ></a>
 <h5 class="secOne_smallTitle">
-<a href=" ">{{ $three->news_title }} </a>
+<a href="{{url('news/details/'.$three['id'].'/'.$three['news_title_slug'])}}  ">{{ $three->news_title }} </a>
 </h5>
 </div>
 </div>
@@ -197,6 +197,94 @@ $section_nine = App\Models\Posts::where('status',1)->where('first_section_nine',
 </div>
 </div>
 
+
+<section class="section-ten">
+  <div class="container">
+  <div class="row">
+  <div class="col-lg-8 col-md-8">
+  
+  <h2 class="themesBazar_cat01"> <a href=" "> <i class="las la-camera"></i> PHOTO GALLERY </a></h2>
+  
+  <div class="homeGallery owl-carousel owl-loaded owl-drag">
+  
+  
+  
+  
+  
+  
+  
+    <div class="owl-stage-outer"><div class="owl-stage" style="transform: translate3d(-4764px, 0px, 0px); transition: all 1s ease 0s; width: 5558px;">
+  
+      @php
+      $photo_gallery1 = App\Models\Gallery::latest()->get();
+      @endphp
+      
+      @foreach($photo_gallery1 as $item)
+       <div class="owl-item" style="width: 784px; margin-right: 10px;"><div class="item">
+      <div class="photo">
+      <a class="themeGallery" href="{{ asset($item->photo_gallery) }}">
+      <img src="{{ asset($item->photo_gallery) }}" alt="PHOTO"></a>
+      <h3 class="photoCaption">
+      <a href=" ">{{$item->post_date}} </a>
+      </h3>
+      </div>
+      </div></div>
+      @endforeach
+      
+      
+      
+       </div></div><div class="owl-nav"><button type="button" role="presentation" class="owl-prev"><i class="las la-angle-left"></i></button><button type="button" role="presentation" class="owl-next disabled"><i class="las la-angle-right"></i></button></div><div class="owl-dots disabled"></div></div>
+      <div class="homeGallery1 owl-carousel owl-loaded owl-drag">
+      
+      
+      
+      
+      
+      <div class="owl-stage-outer"><div class="owl-stage" style="transition: all 1s ease 0s; width: 2515px; transform: translate3d(-463px, 0px, 0px);">
+      
+      @php
+      $photo_gallery = App\Models\Gallery::latest()->get();
+      @endphp
+      
+      @foreach($photo_gallery as $item)
+       <div class="owl-item " style="width: 122.333px; margin-right: 10px;"><div class="item">
+      <div class="phtot2">
+      <a class="themeGallery" href="{{ asset($item->photo_gallery) }}">
+      <img src="{{ asset($item->photo_gallery) }}" alt="PHOTO"></a>
+      </div>
+      </div></div>
+      @endforeach
+      
+      
+      
+        </div></div><div class="owl-nav disabled"><button type="button" role="presentation" class="owl-prev"><span aria-label="Previous">‹</span></button><button type="button" role="presentation" class="owl-next"><span aria-label="Next">›</span></button></div><div class="owl-dots"><button role="button" class="owl-dot active"><span></span></button><button role="button" class="owl-dot"><span></span></button><button role="button" class="owl-dot"><span></span></button><button role="button" class="owl-dot"><span></span></button><button role="button" class="owl-dot"><span></span></button><button role="button" class="owl-dot"><span></span></button><button role="button" class="owl-dot"><span></span></button></div></div>
+      </div>
+      <div class="col-lg-4 col-md-4">
+  
+  <h2 class="themesBazar_cat01"> <a href=" "> <i class="las la-video"></i> VIDEO GALLERY </a></h2>
+  
+  <div class="white-bg">
+    @php
+    $video_gallery = App\Models\VideoGallery::latest()->get();
+    @endphp
+    
+    @foreach($video_gallery as $video)
+    <div class="secFive-smallItem">
+    <div class="secFive-smallImg">
+    <img src="{{ asset($video->video_image ) }}">
+    <a href="{{ $video->video_url }}" class="home-video-icon popup"><i class="las la-video"></i></a>
+    <h5 class="secFive_title2">
+    <a href="{{ $video->video_url }}" class="popup"> {{ $video->video_title }} </a>
+    </h5>
+    </div>
+    </div>
+    @endforeach
+  </div>
+  </div>
+  </div>
+  </div>
+  </section>
+
 @php
 
 $news = App\Models\Posts::where('status',1)->orderBy('id','ASC')->limit(8)->get();
@@ -205,7 +293,7 @@ $categories = App\Models\Category::orderBy('category_name', 'ASC')->get();
 @endphp
 
 <section class="section-two">
-<div class="container">
+<div class="container p-5" style="background-color:#1d5562;">
 <div class="secTwo-color">
 <div class="row">
 <div class="col-lg-12 col-md-12">
@@ -315,480 +403,349 @@ $catwisenews = App\Models\Posts::where('category_id', $category['id'])->orderBy(
 </div>
 </div>
 
-<section class="section-four">
+{{-- <section class="section-four">
+  <div class="container">
+      <div class="row">
+          <div class="col-lg-12 col-md-12">
+            <pre>{{ var_dump($category) }}</pre>
+            <h2 class="themesBazar_cat04">
+                @if (!empty($category) && !empty($category->id))
+                    <a href="{{ url('category/'.$category->id.'/'.$category->category_slug) }}">
+                        <i class="las la-align-justify"></i> {{ $category->category_name }}
+                    </a>
+                @else
+                    <span>
+                        <i class="las la-align-justify"></i> Default Category
+                    </span>
+                @endif
+            </h2>
+
+              <div class="secFour-slider owl-carousel owl-loaded owl-drag">
+                  <div class="owl-stage-outer">
+                      <div class="owl-stage" style="transform: translate3d(-3294px, 0px, 0px); transition: all 1s ease 0s; width: 4792px;">
+
+                              @foreach($category->posts as $post)
+                                  <div class="owl-item" style="width: 289.5px; margin-right: 10px;">
+                                      <div class="secFour-wrpp">
+                                          <div class="secFour-image">
+                                              <a href="{{ url('news/details/'.$post->id.'/'.$post->news_title_slug) }}">
+                                                  <img class="lazyload" src="{{ asset($post->news_image) }}" >
+                                              </a>
+                                              <h5 class="secFour-title">
+                                                  <a href="{{ url('news/details/'.$post->id.'/'.$post->news_title_slug) }}">
+                                                      {{ $post->news_title }}
+                                                  </a>
+                                              </h5>
+                                          </div>
+                                      </div>
+                                  </div>
+                              @endforeach
+
+                      </div>
+                  </div>
+                  <div class="owl-nav disabled">
+                      <button type="button" role="presentation" class="owl-prev"><i class="las la-angle-left"></i></button>
+                      <button type="button" role="presentation" class="owl-next"><i class="las la-angle-right"></i></button>
+                  </div>
+                  <div class="owl-dots">
+                      <button role="button" class="owl-dot"><span></span></button>
+                      <button role="button" class="owl-dot active"><span></span></button>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div> --}}
+{{-- </section> --}}
+
+<div class="container">
+<div class="row">
+<div class="col-lg-6 col-md-6">
+<div class="themesBazar_widget"> <div class="textwidget"><p><img loading="lazy" class="aligncenter size-full wp-image-74" src="assets/images/biggapon-1.gif" alt="" width="100%" height="auto"></p>
+</div>
+</div> </div>
+<div class="col-lg-6 col-md-6">
+<div class="themesBazar_widget"> <div class="textwidget"><p><img loading="lazy" class="aligncenter size-full wp-image-74" src="assets/images/biggapon-1.gif" alt="" width="100%" height="auto"></p>
+</div>
+</div> </div>
+</div>
+</div>
+
+<section class="section-five">
+<div class="container">
+<div class="row">
+<div class="col-lg-4 col-md-4">
+
+<h2 class="themesBazar_cat01"> <a href=" ">{{$skip_cat_0['category_name']}}</a> <span> <a href=" "> More <i class="las la-arrow-circle-right"></i> </a></span> </h2>
+
+<div class="white-bg">
+  @foreach($skip_news_0 as $key => $item)
+  @if($key === 0)
+      <div class="secFive-image">
+          <a href="{{ url('news/details/'.$item->id.'/'.$item->news_title_slug) }}"><img class="lazyload" src="{{$item->news_image}}"  ></a>
+          <div class="secFive-title">
+              <a href="{{ url('news/details/'.$item->id.'/'.$item->news_title_slug) }} ">{{$item->news_title}}</a>
+          </div>
+      </div>
+  @else
+      <div class="secFive-smallItem">
+          <div class="secFive-smallImg">
+              <a href="{{ url('news/details/'.$item->id.'/'.$item->news_title_slug) }}"><img class="lazyload" src="{{$item->news_image}}"  ></a>
+              <h5 class="secFive_title2">
+                  <a href="{{ url('news/details/'.$item->id.'/'.$item->news_title_slug) }} ">{{$item->news_title}}</a>
+              </h5>
+          </div>
+      </div>
+  @endif
+@endforeach
+
+</div>
+</div>
+<div class="col-lg-4 col-md-4">
+
+<h2 class="themesBazar_cat01"> <a href=" "> {{$skip_cat_1['category_name']}} </a> <span> <a href=" ">More <i class="las la-arrow-circle-right"></i> </a></span> </h2>
+
+<div class="white-bg">
+  @foreach($skip_news_1 as $key => $item)
+  @if($key === 0)
+      <div class="secFive-image">
+          <a href="{{ url('news/details/'.$item->id.'/'.$item->news_title_slug) }}"><img class="lazyload" src="{{$item->news_image}}"  ></a>
+          <div class="secFive-title">
+              <a href="{{ url('news/details/'.$item->id.'/'.$item->news_title_slug) }} ">{{$item->news_title}}</a>
+          </div>
+      </div>
+  @else
+      <div class="secFive-smallItem">
+          <div class="secFive-smallImg">
+              <a href="{{ url('news/details/'.$item->id.'/'.$item->news_title_slug) }}"><img class="lazyload" src="{{$item->news_image}}"  ></a>
+              <h5 class="secFive_title2">
+                  <a href="{{ url('news/details/'.$item->id.'/'.$item->news_title_slug) }} ">{{$item->news_title}}</a>
+              </h5>
+          </div>
+      </div>
+  @endif
+@endforeach
+</div>
+</div>
+<div class="col-lg-4 col-md-4">
+
+<h2 class="themesBazar_cat01"> <a href=" "> {{$skip_cat_2['category_name']}} </a> <span> <a href=" "> More <i class="las la-arrow-circle-right"></i> </a></span> </h2>
+
+<div class="white-bg">
+  @foreach($skip_news_2 as $key => $item)
+  @if($key === 0)
+      <div class="secFive-image">
+          <a href="{{ url('news/details/'.$item->id.'/'.$item->news_title_slug) }}"><img class="lazyload" src="{{$item->news_image}}"  ></a>
+          <div class="secFive-title">
+              <a href="{{ url('news/details/'.$item->id.'/'.$item->news_title_slug) }} ">{{$item->news_title}}</a>
+          </div>
+      </div>
+  @else
+      <div class="secFive-smallItem">
+          <div class="secFive-smallImg">
+              <a href="{{ url('news/details/'.$item->id.'/'.$item->news_title_slug) }}"><img class="lazyload" src="{{$item->news_image}}"  ></a>
+              <h5 class="secFive_title2">
+                  <a href="{{ url('news/details/'.$item->id.'/'.$item->news_title_slug) }} ">{{$item->news_title}}</a>
+              </h5>
+          </div>
+      </div>
+  @endif
+@endforeach
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<section class="section-seven">
+  <div class="container p-5" style="background-color:#1d5562">
+      <h2 class="themesBazar_cat01">
+          <a href=" ">{{ $skip_cat_3['category_name'] }}</a>
+          <span>
+              <a href=" "> More <i class="las la-arrow-circle-right"></i> </a>
+          </span>
+      </h2>
+
+      <div class="secSecven-color">
+          <div class="row">
+            @foreach($skip_news_3 as $key => $item)
+                @if($key === 0)
+                      <div class="col-lg-5 col-md-5">
+                          <div class="black-bg mt-5">
+                              <div class="secSeven-image">
+                                  <a href="{{ url('news/details/'.$item->id.'/'.$item->news_title_slug) }} "><img class="lazyload" src="{{ $item['news_image'] }}" ></a>
+                              </div>
+                              <h6 class="secSeven-title">
+                                  <a href="{{ url('news/details/'.$item->id.'/'.$item->news_title_slug) }} ">{{ $item['news_title'] }}</a>
+                              </h6>
+                              <div class="secSeven-details">
+                                  {{ $item['news_content'] }}
+                                  <a href="{{ url('news/details/'.$item->id.'/'.$item->news_title_slug) }} "> More..</a>
+                              </div>
+                          </div>
+                      </div>
+                  
+                      <div class="col-lg-7 col-md-7">
+                          <div class="row">
+                            @else
+                              <div class="themesBazar-2 themesBazar-m2">
+                                  <div class="secSeven-wrpp">
+                                      <div class="secSeven-image2">
+                                          <a href="{{ url('news/details/'.$item->id.'/'.$item->news_title_slug) }} "><img class="lazyload" src="{{ $item['news_image'] }}" ></a>
+                                          <h5 class="secSeven-title2">
+                                              <a href="{{ url('news/details/'.$item->id.'/'.$item->news_title_slug) }} ">{{ $item['news_title'] }}</a>
+                                          </h5>
+                                      </div>
+                                  </div>
+                              </div>
+                              @endif
+                          @endforeach
+                          </div> 
+                      </div>
+          </div>
+      </div>
+  </div>
+</section>
+<div class="container">
+<div class="row">
+<div class="col-lg-6 col-md-6">
+<div class="themesBazar_widget"> <div class="textwidget"><p><img loading="lazy" class="aligncenter size-full wp-image-74" src="assets/images/biggapon-1.gif" alt="" width="100%" height="auto"></p>
+</div>
+</div> </div>
+<div class="col-lg-6 col-md-6">
+<div class="themesBazar_widget"> <div class="textwidget"><p><img loading="lazy" class="aligncenter size-full wp-image-74" src="assets/images/biggapon-1.gif" alt="" width="100%" height="auto"></p>
+</div>
+</div> </div>
+</div>
+</div>
+
+
+
+<section class="section-five">
   <div class="container">
   <div class="row">
-  <div class="col-lg-12 col-md-12">
+  <div class="col-lg-4 col-md-4">
   
-  <h2 class="themesBazar_cat04">
-      @if ($cat_0)
-          <a href="{{ url('category/'.$cat_0->id.'/'.$cat_0->category_slug) }}">
-              <i class="las la-align-justify"></i> {{ $cat_0->category_name }}
-          </a>
-      @else
-          <span>Default Category Name or Handle Null Case</span>
-      @endif
-  </h2>
-  <div class="secFour-slider owl-carousel owl-loaded owl-drag">
+  <h2 class="themesBazar_cat01"> <a href=" ">{{$skip_cat_4['category_name']}}</a> <span> <a href=" "> More <i class="las la-arrow-circle-right"></i> </a></span> </h2>
   
-  
-  
-  
-  
-  
-  
-  
-  <div class="owl-stage-outer"><div class="owl-stage" style="transform: translate3d(-3294px, 0px, 0px); transition: all 1s ease 0s; width: 4792px;">
-  
-  @foreach($news_0 as $item)
-    <div class="owl-item" style="width: 289.5px; margin-right: 10px;"><div class="secFour-wrpp ">
-  <div class="secFour-image">
-  <a href=" "><img class="lazyload" src="{{ asset($item->news_image) }}" ></a>
-  <h5 class="secFour-title">
-  <a href="{{ url('news/details/'.$item->id.'/'.$item->news_title_slug) }} ">{{ $item->news_title }}</a>
-  </h5>
-  </div>
-  </div></div>
+  <div class="white-bg">
+    @foreach($skip_news_4 as $key => $item)
+    @if($key === 0)
+        <div class="secFive-image">
+            <a href="{{ url('news/details/'.$item->id.'/'.$item->news_title_slug) }}"><img class="lazyload" src="{{$item->news_image}}"  ></a>
+            <div class="secFive-title">
+                <a href="{{ url('news/details/'.$item->id.'/'.$item->news_title_slug) }} ">{{$item->news_title}}</a>
+            </div>
+        </div>
+    @else
+        <div class="secFive-smallItem">
+            <div class="secFive-smallImg">
+                <a href="{{ url('news/details/'.$item->id.'/'.$item->news_title_slug) }}"><img class="lazyload" src="{{$item->news_image}}"  ></a>
+                <h5 class="secFive_title2">
+                    <a href="{{ url('news/details/'.$item->id.'/'.$item->news_title_slug) }} ">{{$item->news_title}}</a>
+                </h5>
+            </div>
+        </div>
+    @endif
   @endforeach
-   
   
+  </div>
+  </div>
+  <div class="col-lg-4 col-md-4">
   
-   </div></div><div class="owl-nav disabled"><button type="button" role="presentation" class="owl-prev"><i class="las la-angle-left"></i></button><button type="button" role="presentation" class="owl-next"><i class="las la-angle-right"></i></button></div><div class="owl-dots"><button role="button" class="owl-dot"><span></span></button><button role="button" class="owl-dot active"><span></span></button></div></div>
+  <h2 class="themesBazar_cat01"> <a href=" "> {{$skip_cat_5['category_name']}} </a> <span> <a href=" ">More <i class="las la-arrow-circle-right"></i> </a></span> </h2>
+  
+  <div class="white-bg">
+    @foreach($skip_news_5 as $key => $item)
+    @if($key === 0)
+        <div class="secFive-image">
+            <a href="{{ url('news/details/'.$item->id.'/'.$item->news_title_slug) }}"><img class="lazyload" src="{{$item->news_image}}"  ></a>
+            <div class="secFive-title">
+                <a href="{{ url('news/details/'.$item->id.'/'.$item->news_title_slug) }} ">{{$item->news_title}}</a>
+            </div>
+        </div>
+    @else
+        <div class="secFive-smallItem">
+            <div class="secFive-smallImg">
+                <a href="{{ url('news/details/'.$item->id.'/'.$item->news_title_slug) }}"><img class="lazyload" src="{{$item->news_image}}"  ></a>
+                <h5 class="secFive_title2">
+                    <a href="{{ url('news/details/'.$item->id.'/'.$item->news_title_slug) }} ">{{$item->news_title}}</a>
+                </h5>
+            </div>
+        </div>
+    @endif
+  @endforeach
+  </div>
+  </div>
+  <div class="col-lg-4 col-md-4">
+  
+  <h2 class="themesBazar_cat01"> <a href=" "> {{$skip_cat_6['category_name']}} </a> <span> <a href=" "> More <i class="las la-arrow-circle-right"></i> </a></span> </h2>
+  
+  <div class="white-bg">
+    @foreach($skip_news_6 as $key => $item)
+    @if($key === 0)
+        <div class="secFive-image">
+            <a href="{{ url('news/details/'.$item->id.'/'.$item->news_title_slug) }}"><img class="lazyload" src="{{$item->news_image}}"  ></a>
+            <div class="secFive-title">
+                <a href="{{ url('news/details/'.$item->id.'/'.$item->news_title_slug) }} ">{{$item->news_title}}</a>
+            </div>
+        </div>
+    @else
+        <div class="secFive-smallItem">
+            <div class="secFive-smallImg">
+                <a href="{{ url('news/details/'.$item->id.'/'.$item->news_title_slug) }}"><img class="lazyload" src="{{$item->news_image}}"  ></a>
+                <h5 class="secFive_title2">
+                    <a href="{{ url('news/details/'.$item->id.'/'.$item->news_title_slug) }} ">{{$item->news_title}}</a>
+                </h5>
+            </div>
+        </div>
+    @endif
+  @endforeach
+  </div>
   </div>
   </div>
   </div>
   </section>
-
-<div class="container">
-<div class="row">
-<div class="col-lg-6 col-md-6">
-<div class="themesBazar_widget"> <div class="textwidget"><p><img loading="lazy" class="aligncenter size-full wp-image-74" src="assets/images/biggapon-1.gif" alt="" width="100%" height="auto"></p>
-</div>
-</div> </div>
-<div class="col-lg-6 col-md-6">
-<div class="themesBazar_widget"> <div class="textwidget"><p><img loading="lazy" class="aligncenter size-full wp-image-74" src="assets/images/biggapon-1.gif" alt="" width="100%" height="auto"></p>
-</div>
-</div> </div>
-</div>
-</div>
-
-<section class="section-five">
-<div class="container">
-<div class="row">
-<div class="col-lg-4 col-md-4">
-
-<h2 class="themesBazar_cat01"> <a href=" "> BIZ-ECON </a> <span> <a href=" "> More <i class="las la-arrow-circle-right"></i> </a></span> </h2>
-
-<div class="white-bg">
-<div class="secFive-image">
-<a href=" "><img class="lazyload" src="assets/images/lazy.jpg"  ></a>
-<div class="secFive-title">
-<a href=" ">Recovering money from selling rights</a>
-</div>
-</div>
-<div class="secFive-smallItem">
-<div class="secFive-smallImg">
-<a href=" "><img class="lazyload" src="assets/images/lazy.jpg"  ></a>
-<h5 class="secFive_title2">
-<a href=" ">Recovering money from selling rights</a>
-</h5>
-</div>
-</div>
-<div class="secFive-smallItem">
-<div class="secFive-smallImg">
-<a href=" "><img class="lazyload" src="assets/images/lazy.jpg"  ></a>
-<h5 class="secFive_title2">
-<a href=" ">Recovering money from selling rights</a>
-</h5>
- </div>
-</div>
-</div>
-</div>
-<div class="col-lg-4 col-md-4">
-
-<h2 class="themesBazar_cat01"> <a href=" "> INTERNATIONAL </a> <span> <a href=" ">More <i class="las la-arrow-circle-right"></i> </a></span> </h2>
-
-<div class="white-bg">
-<div class="secFive-image">
-<a href=" "><img class="lazyload" src="assets/images/lazy.jpg"  ></a>
-<div class="secFive-title">
-<a href=" ">How important are box office numbers</a>
-</div>
-</div>
-<div class="secFive-smallItem">
-<div class="secFive-smallImg">
-<a href=" "><img class="lazyload" src="assets/images/lazy.jpg" ></a>
-<h5 class="secFive_title2">
-<a href=" ">How important are box office numbers</a>
-</h5>
-</div>
-</div>
-<div class="secFive-smallItem">
-<div class="secFive-smallImg">
-<a href=" "><img class="lazyload" src="assets/images/lazy.jpg" ></a>
-<h5 class="secFive_title2">
-<a href=" ">How important are box office numbers</a>
-</h5>
-</div>
-</div>
-</div>
-</div>
-<div class="col-lg-4 col-md-4">
-
-<h2 class="themesBazar_cat01"> <a href=" "> SPORTS </a> <span> <a href=" "> More <i class="las la-arrow-circle-right"></i> </a></span> </h2>
-
-<div class="white-bg">
-<div class="secFive-image">
-<a href=" "><img class="lazyload" src="assets/images/lazy.jpg"  ></a>
-<div class="secFive-title">
-<a href=" ">Britney Spears says "I don't believe in God anymore" </a>
-</div>
-</div>
-<div class="secFive-smallItem">
-<div class="secFive-smallImg">
-<a href=" "><img class="lazyload" src="assets/images/lazy.jpg" ></a>
-<h5 class="secFive_title2">
-<a href=" ">Britney Spears says "I don't believe in God anymore" </a>
-</h5>
-</div>
-</div>
-<div class="secFive-smallItem">
-<div class="secFive-smallImg">
-<a href=" "  ><img class="lazyload" src="assets/images/lazy.jpg" ></a>
-<h5 class="secFive_title2">
-<a href=" ">Britney Spears says "I don't believe in God anymore" </a>
-</h5>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</section>
-
-<div class="container">
-<div class="row">
-<div class="col-lg-6 col-md-6">
-<div class="themesBazar_widget"> <div class="textwidget"><p><img loading="lazy" class="aligncenter size-full wp-image-74" src="assets/images/biggapon-1.gif" alt="" width="100%" height="auto"></p>
-</div>
-</div> </div>
-<div class="col-lg-6 col-md-6">
-<div class="themesBazar_widget"> <div class="textwidget"><p><img loading="lazy" class="aligncenter size-full wp-image-74" src="assets/images/biggapon-1.gif" alt="" width="100%" height="auto"></p>
-</div>
-</div> </div>
-</div>
-</div>
-
-
-
-<section class="section-five">
-<div class="container">
-<div class="row">
-<div class="col-lg-4 col-md-4">
-
-<h2 class="themesBazar_cat01"> <a href=" "> EDUCATION </a> <span> <a href=" "> More <i class="las la-arrow-circle-right"></i> </a></span> </h2>
-
-<div class="white-bg">
-<div class="secFive-image">
-<a href=" "><img class="lazyload" src="assets/images/lazy.jpg"  ></a>
-<div class="secFive-title">
-<a href=" ">Nora Fatehi questioned in Rs 200cr extortion case </a>
-</div>
-</div>
-<div class="secFive-smallItem">
-<div class="secFive-smallImg">
-<a href=" "><img class="lazyload" src="assets/images/lazy.jpg"  ></a>
-<h5 class="secFive_title2">
-<a href=" ">Nora Fatehi questioned in Rs 200cr extortion case </a>
-</h5>
-</div>
-</div>
-<div class="secFive-smallItem">
-<div class="secFive-smallImg">
-<a href=" "><img class="lazyload" src="assets/images/lazy.jpg"  ></a>
-<h5 class="secFive_title2">
-<a href=" ">Nora Fatehi questioned in Rs 200cr extortion case </a>
-</h5>
-</div>
-</div>
-<div class="secFive-smallItem">
-<div class="secFive-smallImg">
-<a href=" "><img class="lazyload" src="assets/images/lazy.jpg"  ></a>
-<h5 class="secFive_title2">
-<a href=" ">Nora Fatehi questioned in Rs 200cr extortion case </a>
-</h5>
-</div>
-</div>
-</div>
-</div>
-<div class="col-lg-4 col-md-4">
-
-<h2 class="themesBazar_cat01"> <a href=" "> SCI-TECH </a> <span> <a href=" "> More <i class="las la-arrow-circle-right"></i> </a></span> </h2>
-
-<div class="white-bg">
-<div class="secFive-image">
-<a href=" "><img class="lazyload" src="assets/images/lazy.jpg"  ></a>
-<div class="secFive-title">
-<a href=" ">Nora Fatehi questioned in Rs 200cr extortion case </a>
-</div>
-</div>
-<div class="secFive-smallItem">
-<div class="secFive-smallImg">
-<a href=" "><img class="lazyload" src="assets/images/lazy.jpg"  ></a>
-<h5 class="secFive_title2">
-<a href=" ">Nora Fatehi questioned in Rs 200cr extortion case </a>
-</h5>
-</div>
-</div>
-<div class="secFive-smallItem">
- <div class="secFive-smallImg">
-<a href=" "><img class="lazyload" src="assets/images/lazy.jpg"  ></a>
-<h5 class="secFive_title2">
-<a href=" ">Nora Fatehi questioned in Rs 200cr extortion case </a>
-</h5>
-</div>
-</div>
-<div class="secFive-smallItem">
-<div class="secFive-smallImg">
-<a href=" "><img class="lazyload" src="assets/images/lazy.jpg" ></a>
-<h5 class="secFive_title2">
-<a href=" ">Nora Fatehi questioned in Rs 200cr extortion case </a>
-</h5>
-</div>
-</div>
-</div>
-</div>
-<div class="col-lg-4 col-md-4">
-
-<h2 class="themesBazar_cat01"> <a href=" "> SCI-TECH </a> <span> <a href=" ">More <i class="las la-arrow-circle-right"></i> </a></span> </h2>
-
-<div class="white-bg">
-<div class="secFive-image">
-<a href=" "><img class="lazyload" src="assets/images/lazy.jpg"  ></a>
-<div class="secFive-title">
-<a href=" ">Gazi Mazharul Anwar buried in mother's grave </a>
-</div>
-</div>
-<div class="secFive-smallItem">
-<div class="secFive-smallImg">
-<a href=" "><img class="lazyload" src="assets/images/lazy.jpg"  ></a>
-<h5 class="secFive_title2">
-<a href=" ">Gazi Mazharul Anwar buried in mother's grave </a>
-</h5>
-</div>
-</div>
-<div class="secFive-smallItem">
-<div class="secFive-smallImg">
-<a href=" "><img class="lazyload" src="assets/images/lazy.jpg"  ></a>
-<h5 class="secFive_title2">
-<a href=" ">Gazi Mazharul Anwar buried in mother's grave </a>
-</h5>
-</div>
-</div>
-<div class="secFive-smallItem">
-<div class="secFive-smallImg">
-<a href=" "><img class="lazyload" src="assets/images/lazy.jpg"  ></a>
-<h5 class="secFive_title2">
-<a href=" ">Gazi Mazharul Anwar buried in mother's grave </a></h5>
-</div>
-</div>
-
-</div>
-</div>
-</div>
-</div>
-</section>
-
-
-
-
-
-<div class="container">
-<div class="row">
-<div class="col-lg-6 col-md-6">
-<div class="themesBazar_widget"> <div class="textwidget"><p><img loading="lazy" class="aligncenter size-full wp-image-74" src="assets/images/biggapon-1.gif" alt="" width="100%" height="auto"></p>
-</div>
-</div> </div>
-<div class="col-lg-6 col-md-6">
-<div class="themesBazar_widget"> <div class="textwidget"><p><img loading="lazy" class="aligncenter size-full wp-image-74" src="assets/images/biggapon-1.gif" alt="" width="100%" height="auto"></p>
-</div>
-</div> </div>
-</div>
-</div>
-
-<section class="section-seven">
-<div class="container">
-
-<h2 class="themesBazar_cat01"> <a href=" "> SPORTS </a> <span> <a href=" "> More <i class="las la-arrow-circle-right"></i> </a></span> </h2>
-
-<div class="secSecven-color">
-<div class="row">
-<div class="col-lg-5 col-md-5">
-<div class="black-bg">
-<div class="secSeven-image">
-<a href=" "><img class="lazyload" src="assets/images/lazy.jpg"  ></a> <a href=" " class="video-icon6"><i class="la la-play"></i></a>
-</div>
-<h6 class="secSeven-title">
-<a href=" ">Sachin backs Arshdeep after crucial dropped catch </a>
-</h6>
-<div class="secSeven-details">
-If filmmakers recover their money from selling OTT, satellite and music rights, how much do ticket sales matter? According to Johar, ticket sales is of utmost<a href=" "> More..</a>
-</div>
-</div>
-</div>
-<div class="col-lg-7 col-md-7">
-<div class="row">
-<div class="themesBazar-2 themesBazar-m2">
-<div class="secSeven-wrpp ">
-<div class="secSeven-image2">
-<a href=" "><img class="lazyload" src="assets/images/lazy.jpg"  ></a>
-<h5 class="secSeven-title2">
-<a href=" ">How Neymar, Mbappe & Messi are finally thriving at PSG </a>
-</h5>
-</div>
-</div>
-</div>
-<div class="themesBazar-2 themesBazar-m2">
-<div class="secSeven-wrpp ">
-<div class="secSeven-image2">
-<a href=" "><img class="lazyload" src="assets/images/lazy.jpg"  ></a>
-<h5 class="secSeven-title2">
-<a href=" ">How Neymar, Mbappe & Messi are finally thriving at PSG </a>
-</h5>
-</div>
-</div>
-</div>
-<div class="themesBazar-2 themesBazar-m2">
-<div class="secSeven-wrpp ">
-<div class="secSeven-image2">
-<a href=" "><img class="lazyload" src="assets/images/lazy.jpg"  ></a>
-<h5 class="secSeven-title2">
-<a href=" ">How Neymar, Mbappe & Messi are finally thriving at PSG </a>
-</h5>
-</div>
-</div>
-</div>
-<div class="themesBazar-2 themesBazar-m2">
-<div class="secSeven-wrpp ">
-<div class="secSeven-image2">
-<a href=" "><img class="lazyload" src="assets/images/lazy.jpg"  ></a>
-<h5 class="secSeven-title2">
-<a href=" ">How Neymar, Mbappe & Messi are finally thriving at PSG </a>
-</h5>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</section>
-
-<div class="container">
-<div class="row">
-<div class="col-lg-6 col-md-6">
-<div class="themesBazar_widget"> <div class="textwidget"><p><img loading="lazy" class="aligncenter size-full wp-image-74" src="assets/images/biggapon-1.gif" alt="" width="100%" height="auto"></p>
-</div>
-</div> </div>
-<div class="col-lg-6 col-md-6">
-<div class="themesBazar_widget"> <div class="textwidget"><p><img loading="lazy" class="aligncenter size-full wp-image-74" src="assets/images/biggapon-1.gif" alt="" width="100%" height="auto"></p>
-</div>
-</div> </div>
-</div>
-</div>
-
-
-
-
-
-
-<section class="section-ten">
-<div class="container">
-<div class="row">
-<div class="col-lg-8 col-md-8">
-
-<h2 class="themesBazar_cat01"> <a href=" "> <i class="las la-camera"></i> PHOTO GALLERY </a></h2>
-
-<div class="homeGallery owl-carousel owl-loaded owl-drag">
-
-
-
-
-
-
-
-  <div class="owl-stage-outer"><div class="owl-stage" style="transform: translate3d(-4764px, 0px, 0px); transition: all 1s ease 0s; width: 5558px;">
-
-    @php
-    $photo_gallery1 = App\Models\Gallery::latest()->get();
-    @endphp
-    
-    @foreach($photo_gallery1 as $item)
-     <div class="owl-item" style="width: 784px; margin-right: 10px;"><div class="item">
-    <div class="photo">
-    <a class="themeGallery" href="{{ asset($item->photo_gallery) }}">
-    <img src="{{ asset($item->photo_gallery) }}" alt="PHOTO"></a>
-    <h3 class="photoCaption">
-    <a href=" ">{{$item->post_date}} </a>
-    </h3>
-    </div>
-    </div></div>
-    @endforeach
-    
-    
-    
-     </div></div><div class="owl-nav"><button type="button" role="presentation" class="owl-prev"><i class="las la-angle-left"></i></button><button type="button" role="presentation" class="owl-next disabled"><i class="las la-angle-right"></i></button></div><div class="owl-dots disabled"></div></div>
-    <div class="homeGallery1 owl-carousel owl-loaded owl-drag">
-    
-    
-    
-    
-    
-    <div class="owl-stage-outer"><div class="owl-stage" style="transition: all 1s ease 0s; width: 2515px; transform: translate3d(-463px, 0px, 0px);">
-    
-    @php
-    $photo_gallery = App\Models\Gallery::latest()->get();
-    @endphp
-    
-    @foreach($photo_gallery as $item)
-     <div class="owl-item " style="width: 122.333px; margin-right: 10px;"><div class="item">
-    <div class="phtot2">
-    <a class="themeGallery" href="{{ asset($item->photo_gallery) }}">
-    <img src="{{ asset($item->photo_gallery) }}" alt="PHOTO"></a>
-    </div>
-    </div></div>
-    @endforeach
-    
-    
-    
-      </div></div><div class="owl-nav disabled"><button type="button" role="presentation" class="owl-prev"><span aria-label="Previous">‹</span></button><button type="button" role="presentation" class="owl-next"><span aria-label="Next">›</span></button></div><div class="owl-dots"><button role="button" class="owl-dot active"><span></span></button><button role="button" class="owl-dot"><span></span></button><button role="button" class="owl-dot"><span></span></button><button role="button" class="owl-dot"><span></span></button><button role="button" class="owl-dot"><span></span></button><button role="button" class="owl-dot"><span></span></button><button role="button" class="owl-dot"><span></span></button></div></div>
-    </div>
-    <div class="col-lg-4 col-md-4">
-
-<h2 class="themesBazar_cat01"> <a href=" "> <i class="las la-video"></i> VIDEO GALLERY </a></h2>
-
-<div class="white-bg">
-  @php
-  $video_gallery = App\Models\VideoGallery::latest()->get();
-  @endphp
   
-  @foreach($video_gallery as $video)
-  <div class="secFive-smallItem">
-  <div class="secFive-smallImg">
-  <img src="{{ asset($video->video_image ) }}">
-  <a href="{{ $video->video_url }}" class="home-video-icon popup"><i class="las la-video"></i></a>
-  <h5 class="secFive_title2">
-  <a href="{{ $video->video_url }}" class="popup"> {{ $video->video_title }} </a>
-  </h5>
-  </div>
-  </div>
-  @endforeach
+
+
+
+
+
+
+<div class="container">
+<div class="row">
+<div class="col-lg-6 col-md-6">
+<div class="themesBazar_widget"> <div class="textwidget"><p><img loading="lazy" class="aligncenter size-full wp-image-74" src="assets/images/biggapon-1.gif" alt="" width="100%" height="auto"></p>
+</div>
+</div> </div>
+<div class="col-lg-6 col-md-6">
+<div class="themesBazar_widget"> <div class="textwidget"><p><img loading="lazy" class="aligncenter size-full wp-image-74" src="assets/images/biggapon-1.gif" alt="" width="100%" height="auto"></p>
+</div>
+</div> </div>
 </div>
 </div>
+
+
+
+<div class="container">
+<div class="row">
+<div class="col-lg-6 col-md-6">
+<div class="themesBazar_widget"> <div class="textwidget"><p><img loading="lazy" class="aligncenter size-full wp-image-74" src="assets/images/biggapon-1.gif" alt="" width="100%" height="auto"></p>
+</div>
+</div> </div>
+<div class="col-lg-6 col-md-6">
+<div class="themesBazar_widget"> <div class="textwidget"><p><img loading="lazy" class="aligncenter size-full wp-image-74" src="assets/images/biggapon-1.gif" alt="" width="100%" height="auto"></p>
+</div>
+</div> </div>
 </div>
 </div>
-</section>
+
+
+
+
+
+
+
 </div>
 
 @endsection

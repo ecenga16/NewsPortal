@@ -177,61 +177,6 @@
                     </div>
                 </li>
 
-                <li>
-                    <a href="#sidebarExpages" data-bs-toggle="collapse">
-                        <i class="mdi mdi-text-box-multiple-outline"></i>
-                        <span> Extra Pages </span>
-                        <span class="menu-arrow"></span>
-                    </a>
-                    <div class="collapse" id="sidebarExpages">
-                        <ul class="nav-second-level">
-                            <li>
-                                <a href="pages-starter.html">Starter</a>
-                            </li>
-                            <li>
-                                <a href="pages-timeline.html">Timeline</a>
-                            </li>
-                        </ul>
-                    </div>
-                </li>
-
-                <li class="menu-title mt-2">Components</li>
-
-                <li>
-                    <a href="#sidebarIcons" data-bs-toggle="collapse">
-                        <i class="mdi mdi-bullseye"></i>
-                        <span> Icons </span>
-                        <span class="menu-arrow"></span>
-                    </a>
-                    <div class="collapse" id="sidebarIcons">
-                        <ul class="nav-second-level">
-                            <li>
-                                <a href="icons-material-symbols.html">Material Symbols Icons</a>
-                            </li>
-                            <li>
-                                <a href="icons-two-tone.html">Two Tone Icons</a>
-                            </li>
-                        </ul>
-                    </div>
-                </li>
-
-                <li>
-                    <a href="#sidebarForms" data-bs-toggle="collapse">
-                        <i class="mdi mdi-bookmark-multiple-outline"></i>
-                        <span> Forms </span>
-                        <span class="menu-arrow"></span>
-                    </a>
-                    <div class="collapse" id="sidebarForms">
-                        <ul class="nav-second-level">
-                            <li>
-                                <a href="forms-elements.html">General Elements</a>
-                            </li>
-                            <li>
-                                <a href="forms-advanced.html">Advanced</a>
-                            </li>
-                        </ul>
-                    </div>
-                </li>
                 @else
                 @endif
             </ul>
