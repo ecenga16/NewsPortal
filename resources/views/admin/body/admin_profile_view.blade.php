@@ -27,8 +27,6 @@
 
                         <h4 class="mb-0">{{ strtoupper($adminData->name) }}</h4>
                         <br>
-                        <button type="button" class="btn btn-success btn-xs waves-effect mb-2 waves-light">Follow</button>
-                        <button type="button" class="btn btn-danger btn-xs waves-effect mb-2 waves-light">Message</button>
 
                         <div class="text-start mt-3">
                             <p class="text-muted mb-2 font-13"><strong>Full Name :</strong> <span class="ms-2">{{ strtoupper($adminData->name) }}</span></p>
