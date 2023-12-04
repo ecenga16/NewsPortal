@@ -38,9 +38,46 @@ span.todayPrayerTime {
 }
 
 .align-bottom-custom {
-    align-self: flex-end;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+
 }
 
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.donate-button {
+    display: inline-block;
+    padding: 15px 25px;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    border-radius: 5px;
+    background: linear-gradient(to right, #3498db, #2ecc71);
+    color: #fff;
+    border: 2px solid #3498db;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    animation: fadeInUp 1s ease-out;
+    transition: background 0.3s, color 0.3s, border-color 0.3s, transform 0.3s;
+}
+
+.donate-button:hover {
+    background: linear-gradient(to right, #2980b9, #27ae60);
+    color: #fff;
+    border-color: #2980b9;
+    transform: scale(1.2);
+}
 
 </style>
 <script>
@@ -146,8 +183,8 @@ span.todayPrayerTime {
                     </div>
 
                     <!-- Search Section -->
-                    <div class="col-md-4 align-bottom-custom mb-4 d-none d-md-block">
-                        
+                    <div class="col-md-4 align-bottom-custom mb-3">
+                        <a href="{{ route('donate.page') }}" class="donate-button animated mt-3 mt-md-5 mr-md-5 mx-auto">Donate Now</a>
                     </div>
                 </div>
             </div>

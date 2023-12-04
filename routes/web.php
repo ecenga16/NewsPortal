@@ -176,3 +176,5 @@ Route::get('/category/{id}/{category_slug}', [IndexController::class, 'CategoryD
 Route::get('/subcategory/{id}/{subcategory_slug}', [IndexController::class, 'SubcategoryDetails']);
 Route::post('/search', [IndexController::class, 'SearchByDate'])->name('search-by-date');
 Route::post('/news', [IndexController::class, 'NewsSearch'])->name('news.search');
+Route::get('/donate', [IndexController::class, 'DonatePage'])->name('donate.page');
+

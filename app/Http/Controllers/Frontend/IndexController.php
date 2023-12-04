@@ -144,4 +144,9 @@ class IndexController extends Controller
 
 
     }
+
+    public function DonatePage () {
+
+        return view('frontend.donate.donate-page');
+    }
 }
