@@ -122,6 +122,17 @@ Read
 </div>
 </div>
 <div class="col-lg-4 col-md-4">
+
+	<div class="header-social mb-3">
+        <ul>
+            <form class="header-search" action="{{ route('news.search') }}" method="post">
+                @csrf 
+            
+            <input type="text"  name="search" placeholder="Search Here">
+            <button type="submit" value="Search"> <i class="las la-search text-white"></i> </button>
+            </form>
+        </ul>
+    </div>
 <div class="sitebar-fixd" style="position: sticky; top: 0;">
 <div class="siteber-add">
 <div class="themesBazar_widget"> <div class="textwidget"><p><img loading="lazy" class="aligncenter size-full wp-image-74" src="assets/images/biggapon-1.gif" alt="" width="100%" height="auto"></p>

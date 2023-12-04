@@ -71,18 +71,19 @@ Seach By Date
     
     
     <div class="col-lg-4 col-md-4">
+
+        <div class="header-social mb-3">
+            <ul>
+                <form class="header-search" action="{{ route('news.search') }}" method="post">
+                    @csrf 
+                
+                <input type="text"  name="search" placeholder="Search Here">
+                <button type="submit" value="Search"> <i class="las la-search text-white"></i> </button>
+                </form>
+            </ul>
+        </div>
     
-    <div class="themesBazar_widget">
-    <h3 style="margin-top:5px"> OLD NEWS </h3>
-    </div>
     
-    
-    <form class="wordpress-date" action="{{ route('search-by-date') }}" method="post">
-        @csrf 
-    
-    <input type="date" id="wordpress" placeholder="Select Date" autocomplete="off"  name="date" class="hasDatepicker">
-    <input type="submit" value="Search">
-    </form>
     
     
     
@@ -141,6 +142,17 @@ Seach By Date
     </div>
     </div>
     <div class="siteber-add2">
+        <div class="themesBazar_widget">
+            <h3 style="margin-top:5px"> Search By Date </h3>
+        </div>
+            
+            
+        <form class="wordpress-date" action="{{ route('search-by-date') }}" method="post">
+                @csrf 
+            
+            <input type="date" id="wordpress" placeholder="Select Date" autocomplete="off"  name="date" class="hasDatepicker">
+            <input type="submit" value="Search">
+        </form>
     </div>
     </div> 
     </div>
