@@ -128,6 +128,7 @@ Route::middleware(['auth','role:admin'])->group(function(){
         Route::get('/delete/post/{id}', 'DeletePost')->name('post.delete');
         Route::get('/inactive/post/{id}','InactivePost')->name('inactive.post');
         Route::get('/active/post/{id}','ActivePost')->name('active.post');
+        Route::post('/posts/search', 'PostSearch')->name('post.search');
 
     });
 

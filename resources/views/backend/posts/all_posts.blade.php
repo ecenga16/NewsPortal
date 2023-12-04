@@ -23,7 +23,7 @@
                                             <a href="{{route('add.post')}}" class="btn btn-blue waves-effect waves-light">Add Post</a>
                                         </ol>
                                     </div>
-                                    <h4 class="page-title">All Posts : {{count($all_news)}}</h4>
+                                    <h4 class="page-title">All Posts : {{$totalNewsCount}}</h4>
                                 </div>
                             </div>
                         </div>     
@@ -41,7 +41,7 @@
                                             </div>
                                             <div class="col-6">
                                                 <div class="text-end">
-                                                    <h3 class="text-dark mt-1"><span>{{count($all_news)}}</span></h3>
+                                                    <h3 class="text-dark mt-1"><span>{{$totalNewsCount}}</span></h3>
                                                     <p class="text-muted mb-1 text-truncate">All Posts</p>
                                                 </div>
                                             </div>

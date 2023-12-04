@@ -5,10 +5,12 @@
             <li class="d-none d-lg-block">
                 <div class="row">
                     <div class="col-md-6">
-                        <form class="app-search">
+                        <form class="app-search" action="{{ route('post.search') }}" method="post">
+                            @csrf
+
                             <div class="app-search-box dropdown">
                                 <div class="input-group">
-                                    <input type="search" class="form-control" placeholder="Search..." id="top-search" style="width:100px;">
+                                    <input type="search" name="search" class="form-control" placeholder="Search..." id="top-search" style="width:100px;">
                                     <button class="btn input-group-text" type="submit">
                                         <i class="fe-search"></i>
                                     </button>
@@ -114,14 +116,7 @@
         <div class="clearfix"></div>
     </div>
 </div>
-<script>
-    // Handle search form submission
-    document.querySelector('.app-search form').addEventListener('submit', function (e) {
-        e.preventDefault();
-        let searchQuery = document.getElementById('top-search').value.trim();
-        window.location.href = '{{ route('all.news.post') }}?query=' + searchQuery;
-    });
-</script>
+
 
 <style>
     .app-search .input-group {

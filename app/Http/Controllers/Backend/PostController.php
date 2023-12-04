@@ -16,11 +16,10 @@ use Auth;
 class PostController extends Controller
 {
     public function AllPosts() {
-        $perPage = 15;
+        $all_news = Posts::latest()->paginate(15);
+        $totalNewsCount = Posts::count();
     
-        $all_news = Posts::latest()->paginate($perPage);
-    
-        return view('backend.posts.all_posts', compact('all_news'));
+        return view('backend.posts.all_posts', compact('all_news', 'totalNewsCount'));
     }
 
     public function AddPost(){
@@ -187,6 +186,18 @@ class PostController extends Controller
 
         );
         return redirect()->back()->with($notification);
+    }
+
+    public function PostSearch(Request $request) {
+
+    
+        $request->validate(['search' => "required"]);
+    
+        $item = $request->search;
+    
+        $news = Posts::where('news_title', 'LIKE', "%$item%")->get();
+    
+        return view('backend.posts.search_posts', compact('news', 'item'));
     }
 
 }
