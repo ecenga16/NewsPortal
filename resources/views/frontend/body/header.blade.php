@@ -90,7 +90,7 @@ span.todayPrayerTime {
         fetchAndDisplayPrayerTimes('Tirana');
     });
 </script>
-<header class="themesbazar_header" style="background-color:#F0F0ED;">
+<header class="themesbazar_header" style="background-color:#1d5562;">
     <div class="container" >
         <div class="row" >
             <div class="col-12">
@@ -98,9 +98,9 @@ span.todayPrayerTime {
                     <!-- Prayers Section -->
                     <div class="col-sm-12 col-md-6">
                         <div class="prayerTimesExample">
-                        <i class="lar la-calendar" style="color:#1d5562"></i>
-                        <span style="color:#1d5562"> {{ $cdate->format('l d-m-Y') }}</span>
-                        <div><span id="title" style="color:#1d5562"></span></div>
+                        <i class="lar la-calendar" style="color:#FFFFFF"></i>
+                        <span style="color:#FFFFFF"> {{ $cdate->format('l d-m-Y') }}</span>
+                        <div><span id="title" style="color:#FFFFFF"></span></div>
                         <div class="row" >
                             <div class="col-6">
                                 <form>
@@ -147,16 +147,7 @@ span.todayPrayerTime {
 
                     <!-- Search Section -->
                     <div class="col-md-4 align-bottom-custom mb-4 d-none d-md-block">
-                        <div class="header-social">
-                            <ul>
-                                <form class="header-search" action="{{ route('news.search') }}" method="post">
-                                    @csrf 
-                                
-                                <input type="text"  name="search" placeholder="Search Here">
-                                <button type="submit" value="Search"> <i class="las la-search text-white"></i> </button>
-                                </form>
-                            </ul>
-                        </div>
+                        
                     </div>
                 </div>
             </div>
