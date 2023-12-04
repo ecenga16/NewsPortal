@@ -22,7 +22,7 @@ Faqja Kryesore
 <div class="themesbazar_led_active owl-carousel owl-loaded owl-drag">
 
 @php
-$news_slider = App\Models\Posts::where('status',1)->where('top_slider',1)->limit(5)->get();
+$news_slider = App\Models\Posts::where('status',1)->where('top_slider',1)->orderBy('id', 'DESC')->limit(5)->get();
 @endphp
 @php
 $banner = App\Models\Banner::find(1);
@@ -55,7 +55,7 @@ $live = App\Models\LiveTv::find(1);
 <div class="col-lg-5 col-md-5">
 
  @php
-$section_three = App\Models\Posts::where('status',1)->where('first_section_three',1)->limit(3)->get();
+$section_three = App\Models\Posts::where('status',1)->where('first_section_three',1)->orderBy('id', 'DESC')->limit(3)->get();
 @endphp
 
  @foreach($section_three as $three)
@@ -77,7 +77,7 @@ $section_three = App\Models\Posts::where('status',1)->where('first_section_three
 <div class="row">
 
 @php
-$section_nine = App\Models\Posts::where('status',1)->where('first_section_nine',1)->limit(9)->get();
+$section_nine = App\Models\Posts::where('status',1)->where('first_section_nine',1)->orderBy('id', 'DESC')->limit(9)->get();
 @endphp
 
 @foreach($section_nine as $nine)
@@ -102,6 +102,18 @@ $section_nine = App\Models\Posts::where('status',1)->where('first_section_nine',
 </div>
 </div>
 <div class="col-lg-3 col-md-4">
+
+    <div class="header-social mb-3">
+        <ul>
+            <form class="header-search" action="{{ route('news.search') }}" method="post">
+                @csrf 
+            
+            <input type="text"  name="search" placeholder="Search Here">
+            <button type="submit" value="Search"> <i class="las la-search text-white"></i> </button>
+            </form>
+        </ul>
+    </div>
+
 <div class="live-item">
 <div class="live_title">
 <a href=" ">LIVE TV </a>
@@ -121,15 +133,7 @@ $section_nine = App\Models\Posts::where('status',1)->where('first_section_nine',
 </div> 
 </div>
 </div>
-<div class="themesBazar_widget">
-<h3 style="margin-top:5px"> OLD NEWS </h3>
-</div>
-<form class="wordpress-date" action="{{ route('search-by-date') }}" method="post">
-  @csrf 
 
-<input type="date" id="wordpress" placeholder="Select Date" autocomplete="off"  name="date" class="hasDatepicker">
-<input type="submit" value="Search">
-</form>
 
 <div class="recentPopular">
 <ul class="nav nav-pills" id="recentPopular-tab" role="tablist">
@@ -181,6 +185,15 @@ $section_nine = App\Models\Posts::where('status',1)->where('first_section_nine',
 <div class="twitter-timeline twitter-timeline-rendered" style="display: flex; width: 410px; max-width: 100%; margin-top: 0px; margin-bottom: 0px;"><img src="{{asset('backend/assets/images/reklama-1.png')}} " width="280" height="170" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
 </div> <script async="" src="assets/js/widgets.js" charset="utf-8"></script>
 </div>
+<div class="themesBazar_widget">
+    <h3 style="margin-top:5px">Search By Date</h3>
+    </div>
+    <form class="wordpress-date" action="{{ route('search-by-date') }}" method="post">
+      @csrf 
+    
+    <input type="date" id="wordpress" placeholder="Select Date" autocomplete="off"  name="date" class="hasDatepicker">
+    <input type="submit" value="Search">
+    </form>
 </div>
 </div>
 </div>
