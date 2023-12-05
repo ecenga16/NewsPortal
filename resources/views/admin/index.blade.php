@@ -1,9 +1,9 @@
 @extends('admin.admin_dashboard')
 @section('admin')
 @php
-    $id = Auth::user()->id;
-    $userid = App\Models\User::find($id);
-    $status = $userid['status'];
+$id = Auth::user()->id;
+$userid = App\Models\User::find($id);
+$status = $userid['status'];
 @endphp
 <div class="content">
     @if($status == 'active')
@@ -14,7 +14,7 @@
     @endif
     <!-- Start Content-->
     <div class="container-fluid">
-        
+
         <!-- start page title -->
         <div class="row">
             <div class="col-12">
@@ -38,8 +38,8 @@
                     <h4 class="page-title">Dashboard</h4>
                 </div>
             </div>
-        </div>     
-        <!-- end page title --> 
+        </div>
+        <!-- end page title -->
 
         <div class="row">
             <div class="col-md-6 col-xl-3">
@@ -129,7 +129,8 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="dropdown float-end">
-                            <a href="#" class="dropdown-toggle arrow-none card-drop" data-bs-toggle="dropdown" aria-expanded="false">
+                            <a href="#" class="dropdown-toggle arrow-none card-drop" data-bs-toggle="dropdown"
+                                aria-expanded="false">
                                 <i class="mdi mdi-dots-vertical"></i>
                             </a>
                             <div class="dropdown-menu dropdown-menu-end">
@@ -147,13 +148,14 @@
                         <h4 class="header-title mb-0">Total Revenue</h4>
 
                         <div class="widget-chart text-center" dir="ltr">
-                            
-                            <div id="total-revenue" class="mt-0"  data-colors="#f1556c"></div>
+
+                            <div id="total-revenue" class="mt-0" data-colors="#f1556c"></div>
 
                             <h5 class="text-muted mt-0">Total sales made today</h5>
                             <h2>$178</h2>
 
-                            <p class="text-muted w-75 mx-auto sp-line-2">Traditional heading elements are designed to work best in the meat of your page content.</p>
+                            <p class="text-muted w-75 mx-auto sp-line-2">Traditional heading elements are designed to
+                                work best in the meat of your page content.</p>
 
                             <div class="row mt-3">
                                 <div class="col-4">
@@ -169,7 +171,7 @@
                                     <h4><i class="fe-arrow-down text-danger me-1"></i>$15k</h4>
                                 </div>
                             </div>
-                            
+
                         </div>
                     </div>
                 </div> <!-- end card -->
@@ -237,7 +239,8 @@
                                         </td>
 
                                         <td>
-                                            <a href="javascript: void(0);" class="btn btn-xs btn-light"><i class="mdi mdi-pencil"></i></a>
+                                            <a href="javascript: void(0);" class="btn btn-xs btn-light"><i
+                                                    class="mdi mdi-pencil"></i></a>
                                         </td>
                                     </tr>
 
@@ -259,7 +262,8 @@
                                         </td>
 
                                         <td>
-                                            <a href="javascript: void(0);" class="btn btn-xs btn-light"><i class="mdi mdi-pencil"></i></a>
+                                            <a href="javascript: void(0);" class="btn btn-xs btn-light"><i
+                                                    class="mdi mdi-pencil"></i></a>
                                         </td>
                                     </tr>
 
@@ -281,7 +285,8 @@
                                         </td>
 
                                         <td>
-                                            <a href="javascript: void(0);" class="btn btn-xs btn-light"><i class="mdi mdi-pencil"></i></a>
+                                            <a href="javascript: void(0);" class="btn btn-xs btn-light"><i
+                                                    class="mdi mdi-pencil"></i></a>
                                         </td>
                                     </tr>
 
@@ -303,7 +308,8 @@
                                         </td>
 
                                         <td>
-                                            <a href="javascript: void(0);" class="btn btn-xs btn-light"><i class="mdi mdi-pencil"></i></a>
+                                            <a href="javascript: void(0);" class="btn btn-xs btn-light"><i
+                                                    class="mdi mdi-pencil"></i></a>
                                         </td>
                                     </tr>
 
@@ -325,7 +331,8 @@
                                         </td>
 
                                         <td>
-                                            <a href="javascript: void(0);" class="btn btn-xs btn-light"><i class="mdi mdi-pencil"></i></a>
+                                            <a href="javascript: void(0);" class="btn btn-xs btn-light"><i
+                                                    class="mdi mdi-pencil"></i></a>
                                         </td>
                                     </tr>
 
@@ -347,7 +354,8 @@
                                         </td>
 
                                         <td>
-                                            <a href="javascript: void(0);" class="btn btn-xs btn-light"><i class="mdi mdi-pencil"></i></a>
+                                            <a href="javascript: void(0);" class="btn btn-xs btn-light"><i
+                                                    class="mdi mdi-pencil"></i></a>
                                         </td>
                                     </tr>
 
@@ -359,7 +367,7 @@
             </div> <!-- end col -->
         </div>
         <!-- end row -->
-        
+
     </div> <!-- container -->
 
 </div> <!-- content -->

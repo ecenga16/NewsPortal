@@ -4,66 +4,67 @@
 
 <div class="content">
 
-                    <!-- Start Content-->
-                    <div class="container-fluid">
+    <!-- Start Content-->
+    <div class="container-fluid">
 
-                        <!-- start page title -->
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="page-title-box">
-                                    <div class="page-title-right">
-                                        <ol class="breadcrumb m-0">
-
-                                            <li class="breadcrumb-item active">Add Multi Photo</li>
-                                        </ol>
-                                    </div>
-                                    <h4 class="page-title">Add Multi Photo</h4>
-                                </div>
-                            </div>
-                        </div>     
-                        <!-- end page title --> 
-
-                        <!-- Form row -->
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="card">
-                                    <div class="card-body">
-
-    <form id="myForm" method="post" enctype="multipart/form-data" action="{{ route('store.images') }}">
-    	@csrf 
-
+        <!-- start page title -->
         <div class="row">
-            <div class="form-group col-md-8 mb-3">
-                <label for="inputEmail4" class="form-label">Multi Photo Gallery </label>
-  <input type="file" name="multi_image[]" class="form-control" id="multiImg" multiple="" >
+            <div class="col-12">
+                <div class="page-title-box">
+                    <div class="page-title-right">
+                        <ol class="breadcrumb m-0">
 
-                <div class="row" id="preview_img"></div>
-
+                            <li class="breadcrumb-item active">Add Multi Photo</li>
+                        </ol>
+                    </div>
+                    <h4 class="page-title">Add Multi Photo</h4>
+                </div>
             </div>
-
         </div>
+        <!-- end page title -->
+
+        <!-- Form row -->
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+
+                        <form id="myForm" method="post" enctype="multipart/form-data"
+                            action="{{ route('store.images') }}">
+                            @csrf
+
+                            <div class="row">
+                                <div class="form-group col-md-8 mb-3">
+                                    <label for="inputEmail4" class="form-label">Multi Photo Gallery </label>
+                                    <input type="file" name="multi_image[]" class="form-control" id="multiImg"
+                                        multiple="">
+
+                                    <div class="row" id="preview_img"></div>
+
+                                </div>
+
+                            </div>
 
 
 
-   <button type="submit" class="btn btn-primary waves-effect waves-light">Save Changes</button>
+                            <button type="submit" class="btn btn-primary waves-effect waves-light">Save Changes</button>
 
-                                        </form>
+                        </form>
 
-                                    </div> <!-- end card-body -->
-                                </div> <!-- end card-->
-                            </div> <!-- end col -->
-                        </div>
-                        <!-- end row -->
+                    </div> <!-- end card-body -->
+                </div> <!-- end card-->
+            </div> <!-- end col -->
+        </div>
+        <!-- end row -->
 
 
 
-                    </div> <!-- container -->
+    </div> <!-- container -->
 
-                </div> <!-- content -->
+</div> <!-- content -->
 
- <script> 
- 
-  $(document).ready(function(){
+<script>
+    $(document).ready(function(){
    $('#multiImg').on('change', function(){ //on file input change
       if (window.File && window.FileReader && window.FileList && window.Blob) //check File API supported browser
       {
@@ -89,8 +90,8 @@
    });
   });
    
-  </script>
+</script>
 
 
 
-@endsection 
+@endsection

@@ -10,7 +10,8 @@
 
                             <div class="app-search-box dropdown">
                                 <div class="input-group">
-                                    <input type="search" name="search" class="form-control" placeholder="Search..." id="top-search" style="width:100px;">
+                                    <input type="search" name="search" class="form-control" placeholder="Search..."
+                                        id="top-search" style="width:100px;">
                                     <button class="btn input-group-text" type="submit">
                                         <i class="fe-search"></i>
                                     </button>
@@ -19,19 +20,21 @@
                         </form>
                     </div>
                 </div>
-                
+
             </li>
 
             <li class="dropdown d-none d-lg-inline-block">
-                <a class="nav-link dropdown-toggle arrow-none waves-effect waves-light" data-toggle="fullscreen" href="#">
+                <a class="nav-link dropdown-toggle arrow-none waves-effect waves-light" data-toggle="fullscreen"
+                    href="#">
                     <i class="fe-maximize noti-icon"></i>
                 </a>
             </li>
 
             <li class="dropdown notification-list topbar-dropdown">
-                <a class="nav-link dropdown-toggle nav-user me-0 waves-effect waves-light" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
+                <a class="nav-link dropdown-toggle nav-user me-0 waves-effect waves-light" data-bs-toggle="dropdown"
+                    href="#" role="button" aria-haspopup="false" aria-expanded="false">
                     <span class="pro-user-name ms-1">
-                        ADMIN <i class="mdi mdi-chevron-down"></i> 
+                        ADMIN <i class="mdi mdi-chevron-down"></i>
                     </span>
                 </a>
                 <div class="dropdown-menu dropdown-menu-end profile-dropdown ">
@@ -110,7 +113,7 @@
                     </div>
                 </a>
                 <!-- End mobile menu toggle-->
-            </li>   
+            </li>
         </ul>
         <div class="clearfix"></div>
     </div>
@@ -119,14 +122,14 @@
 
 <style>
     .app-search .input-group {
-    width: 200px; 
-}
+        width: 200px;
+    }
 
-.app-search input {
-    border-radius: 0; 
-}
+    .app-search input {
+        border-radius: 0;
+    }
 
-.app-search button {
-    border-radius: 0; 
-}
+    .app-search button {
+        border-radius: 0;
+    }
 </style>

@@ -2,7 +2,9 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-6">
-                <script>document.write(new Date().getFullYear())</script> &copy; Copyright - Bota Islame 
+                <script>
+                    document.write(new Date().getFullYear())
+                </script> &copy; Copyright - Bota Islame
             </div>
         </div>
     </div>

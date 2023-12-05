@@ -1,7 +1,7 @@
 @php
-    $id = Auth::user()->id;
-    $userid = App\Models\User::find($id);
-    $status = $userid->status;
+$id = Auth::user()->id;
+$userid = App\Models\User::find($id);
+$status = $userid->status;
 @endphp
 <div class="left-side-menu">
 
@@ -90,8 +90,8 @@
                             <li>
                                 <a href="{{ route('all.banners') }}">All Banner</a>
                             </li>
-        
-        
+
+
                         </ul>
                     </div>
                 </li>
@@ -107,7 +107,7 @@
                             <li>
                                 <a href="{{ route('all.photos') }}">Images</a>
                             </li>
-    
+
                         </ul>
                     </div>
                 </li>
@@ -122,7 +122,7 @@
                             <li>
                                 <a href="{{ route('all.video.gallery') }}">Video Gallery</a>
                             </li>
-    
+
                         </ul>
                     </div>
                 </li>
@@ -137,7 +137,7 @@
                             <li>
                                 <a href="{{ route('update.live.tv') }}">Update Live TV</a>
                             </li>
-    
+
                         </ul>
                     </div>
                 </li>
@@ -152,7 +152,7 @@
                             <li>
                                 <a href="{{ route('seo.setting') }}">Update SEO</a>
                             </li>
-    
+
                         </ul>
                     </div>
                 </li>

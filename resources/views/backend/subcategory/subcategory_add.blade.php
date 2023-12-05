@@ -4,72 +4,73 @@
 
 <div class="content">
 
-                    <!-- Start Content-->
-                    <div class="container-fluid">
+    <!-- Start Content-->
+    <div class="container-fluid">
 
-                        <!-- start page title -->
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="page-title-box">
-                                    <div class="page-title-right">
-                                        <ol class="breadcrumb m-0">
-
-                                            <li class="breadcrumb-item active">Add SubCategory</li>
-                                        </ol>
-                                    </div>
-                                    <h4 class="page-title">Add SubCategory</h4>
-                                </div>
-                            </div>
-                        </div>     
-                        <!-- end page title --> 
-
-                        <!-- Form row -->
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="card">
-                                    <div class="card-body">
-
-    <form id="myForm" method="post" action="{{ route('subcategory.store') }}">
-    	@csrf 
-
+        <!-- start page title -->
         <div class="row">
-            <div class="form-group col-md-6 mb-3">
-                <label for="inputEmail4" class="form-label">Category Name </label>
-                <select name="category_id" class="form-select" id="example-select">
-                    <option> Select One Category </option>
-                    @foreach($categories as $category)
-                    <option value="{{ $category->id }}">{{ $category->category_name }}</option>
-                   @endforeach
-                </select>
+            <div class="col-12">
+                <div class="page-title-box">
+                    <div class="page-title-right">
+                        <ol class="breadcrumb m-0">
+
+                            <li class="breadcrumb-item active">Add SubCategory</li>
+                        </ol>
+                    </div>
+                    <h4 class="page-title">Add SubCategory</h4>
+                </div>
             </div>
-
         </div>
+        <!-- end page title -->
 
-         <div class="row">
-            <div class="form-group col-md-6 mb-3">
-                <label for="inputEmail4" class="form-label">SubCategory Name </label>
-                <input type="text" name="subcategory_name" class="form-control" id="inputEmail4" placeholder="Add SubCategory">
-            </div>
+        <!-- Form row -->
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
 
+                        <form id="myForm" method="post" action="{{ route('subcategory.store') }}">
+                            @csrf
+
+                            <div class="row">
+                                <div class="form-group col-md-6 mb-3">
+                                    <label for="inputEmail4" class="form-label">Category Name </label>
+                                    <select name="category_id" class="form-select" id="example-select">
+                                        <option> Select One Category </option>
+                                        @foreach($categories as $category)
+                                        <option value="{{ $category->id }}">{{ $category->category_name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+
+                            </div>
+
+                            <div class="row">
+                                <div class="form-group col-md-6 mb-3">
+                                    <label for="inputEmail4" class="form-label">SubCategory Name </label>
+                                    <input type="text" name="subcategory_name" class="form-control" id="inputEmail4"
+                                        placeholder="Add SubCategory">
+                                </div>
+
+                            </div>
+
+
+
+                            <button type="submit" class="btn btn-primary waves-effect waves-light">Save Changes</button>
+
+                        </form>
+
+                    </div> <!-- end card-body -->
+                </div> <!-- end card-->
+            </div> <!-- end col -->
         </div>
+        <!-- end row -->
 
 
 
-   <button type="submit" class="btn btn-primary waves-effect waves-light">Save Changes</button>
+    </div> <!-- container -->
 
-                                        </form>
-
-                                    </div> <!-- end card-body -->
-                                </div> <!-- end card-->
-                            </div> <!-- end col -->
-                        </div>
-                        <!-- end row -->
-
-
-
-                    </div> <!-- container -->
-
-                </div> <!-- content -->
+</div> <!-- content -->
 
 <script type="text/javascript">
     $(document).ready(function (){
@@ -100,4 +101,4 @@
     
 </script>
 
-@endsection 
+@endsection
