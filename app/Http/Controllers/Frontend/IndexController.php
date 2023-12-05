@@ -117,16 +117,15 @@ class IndexController extends Controller
 
     public function SearchByDate(Request $request) {
         $date = new DateTime($request['date']);
-        $formatDate = $date->format('d-m-y');
-
-        $news = Posts::where('post_date', $formatDate)->latest()->get();
-
+        $formatDate = $date->format('y-m-d');
+    
+        $news = Posts::whereDate('created_at', $formatDate)->latest()->get();
+    
         $newnewspost = Posts::orderBy('id','DESC')->limit(8)->get();
-
+    
         $newspopular = Posts::orderBy('view_count','DESC')->limit(8)->get();
-
+    
         return view('frontend.news.search_by_date', compact('news', 'formatDate', 'newnewspost', 'newspopular'));
-
     }
 
     public function NewsSearch(Request $request){
