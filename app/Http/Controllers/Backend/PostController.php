@@ -6,6 +6,7 @@ use Carbon\Carbon;
 use Intervention\Image\Facades\Image;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 use App\Models\Category;
 use App\Models\Subcategory;
 use App\Models\Posts;
@@ -44,7 +45,7 @@ class PostController extends Controller
             'subcategory_id' => $request->subcategory_id,
             'user_id' => Auth::user()->id,
             'news_title' => $request->news_title,
-            'news_title_slug' => strtolower(str_replace(' ','-', $request['news_title'])),
+            'news_title_slug' => strtolower(preg_replace('/[^a-zA-Z0-9ë]+/', '-', $request['news_title'])),
             'news_image' => $save_url,
             'news_details' => $request->news_details,
             'tags' => $request->tags,
@@ -92,7 +93,7 @@ class PostController extends Controller
             'subcategory_id' => $request->subcategory_id,
             'user_id' => Auth::user()->id,
             'news_title' => $request->news_title,
-            'news_title_slug' => strtolower(str_replace(' ','-', $request['news_title'])),
+            'news_title_slug' => strtolower(preg_replace('/[^a-zA-Z0-9ë]+/', '-', $request['news_title'])),
             'news_image' => $save_url,
             'news_details' => $request->news_details,
             'tags' => $request->tags,
@@ -122,7 +123,7 @@ class PostController extends Controller
             'subcategory_id' => $request->subcategory_id,
             'user_id' => Auth::user()->id,
             'news_title' => $request->news_title,
-            'news_title_slug' => strtolower(str_replace(' ','-', $request['news_title'])),
+            'news_title_slug' => strtolower(preg_replace('/[^a-zA-Z0-9ë]+/', '-', $request['news_title'])),
             'news_details' => $request->news_details,
             'tags' => $request->tags,
             'breaking_news' => $request->breaking_news,
