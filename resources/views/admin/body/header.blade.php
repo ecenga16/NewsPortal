@@ -2,8 +2,8 @@
     <div class="container-fluid">
         <ul class="list-unstyled topnav-menu float-end mb-0">
 
-            <li class="d-none d-lg-block">
-                <div class="row">
+            <li>
+                <div class=" row">
                     <div class="col-md-6">
                         <form class="app-search" action="{{ route('post.search') }}" method="post">
                             @csrf

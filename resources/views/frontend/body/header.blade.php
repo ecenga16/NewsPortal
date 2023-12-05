@@ -261,6 +261,17 @@ $cdate = new DateTime();
                         </li>
                         @endforeach
 
+                        <div class="header-social d-block d-md-none">
+                            <li>
+                                <form class="header-search" action="{{ route('news.search') }}" method="post"
+                                    style="height:60px;"> @csrf <input type="text" name="search"
+                                        placeholder="Search Here" style="height:60px;">
+                                    <button type="submit" value="Search"> <i class=" las la-search text-white"></i>
+                                    </button>
+                                </form>
+                            </li>
+                        </div>
+
                     </ul>
                     <a class="dd-toggle" href=" "><span class="icon-plus"></span></a></li>
                     </ul>

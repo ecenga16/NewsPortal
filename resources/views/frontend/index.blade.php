@@ -131,7 +131,7 @@ Faqja Kryesore
             </div>
             <div class="col-lg-3 col-md-4">
 
-                <div class="header-social mb-3">
+                <div class="header-social mb-3 d-none d-md-block">
                     <ul>
                         <form class="header-search" action="{{ route('news.search') }}" method="post">
                             @csrf
@@ -221,7 +221,7 @@ Faqja Kryesore
                     <h3 style="margin-top:5px"> Reklamo </h3>
                 </div>
                 <div class="facebook-content">
-                    <img src="{{asset('backend/assets/images/reklama-1.png')}} " width="280" height="170"
+                    <img src="{{asset('backend/assets/images/reklama-1.png')}} " width="388" height="170"
                         style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true"
                         allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
                 </div>
@@ -231,13 +231,13 @@ Faqja Kryesore
                 <div class="facebook-content">
                     <div class="twitter-timeline twitter-timeline-rendered"
                         style="display: flex; width: 410px; max-width: 100%; margin-top: 0px; margin-bottom: 0px;"><img
-                            src="{{asset('backend/assets/images/reklama-1.png')}} " width="280" height="170"
+                            src="{{asset('backend/assets/images/reklama-1.png')}} " width="388" height="170"
                             style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true"
                             allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
                     </div>
                     <script async="" src="assets/js/widgets.js" charset="utf-8"></script>
                 </div>
-                <div class="themesBazar_widget">
+                <div class="themesBazar_widget mt-3">
                     <h3 style="margin-top:5px">Search By Date</h3>
                 </div>
                 <form class="wordpress-date" action="{{ route('search-by-date') }}" method="post">

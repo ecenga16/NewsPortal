@@ -42,13 +42,7 @@ Search By Date
                 @endforeach
             </div>
 
-            <div class="row">
-                <div class="col-md-12">
-                    <span aria-current="page" class="page-numbers current">1</span>
-                    <a class="page-numbers" href=" ">2</a>
-                    <a class="next page-numbers" href=" ">Next »</a>
-                </div>
-            </div>
+
 
             <br><br>
 
@@ -58,7 +52,7 @@ Search By Date
         </div>
 
         <div class="col-lg-4 col-md-4">
-            <div class="header-social mb-3">
+            <div class="header-social mb-3 d-none d-md-block">
                 <ul>
                     <form class="header-search" action="{{ route('news.search') }}" method="post">
                         @csrf

@@ -28,7 +28,7 @@ $status = $userid->status;
 
                 <li>
                     <a href="#sidebarEcommerce" data-bs-toggle="collapse">
-                        <i class="mdi mdi-cart-outline"></i>
+                        <i class="mdi mdi-format-list-bulleted"></i>
                         <span> Categories </span>
                         <span class="menu-arrow"></span>
                     </a>
@@ -46,7 +46,7 @@ $status = $userid->status;
 
                 <li>
                     <a href="#sidebarEcommerce" data-bs-toggle="collapse">
-                        <i class="mdi mdi-cart-outline"></i>
+                        <i class="mdi mdi-format-list-bulleted"></i>
                         <span> Subategories </span>
                         <span class="menu-arrow"></span>
                     </a>
@@ -63,7 +63,7 @@ $status = $userid->status;
                 </li>
                 <li>
                     <a href="#sidebarEcommerce2" data-bs-toggle="collapse">
-                        <i class="mdi mdi-cart-outline"></i>
+                        <i class="mdi mdi-file-document-outline"></i>
                         <span> Posts </span>
                         <span class="menu-arrow"></span>
                     </a>
@@ -81,7 +81,7 @@ $status = $userid->status;
 
                 <li>
                     <a href="#banner" data-bs-toggle="collapse">
-                        <i class="mdi mdi-cart-outline"></i>
+                        <i class="fas fa-image"></i>
                         <span> Banner Setting </span>
                         <span class="menu-arrow"></span>
                     </a>
@@ -98,7 +98,7 @@ $status = $userid->status;
 
                 <li>
                     <a href="#sidebarEmail" data-bs-toggle="collapse">
-                        <i class="mdi mdi-email-multiple-outline"></i>
+                        <i class="mdi mdi-image-multiple"></i>
                         <span> Gallery </span>
                         <span class="menu-arrow"></span>
                     </a>
@@ -113,7 +113,7 @@ $status = $userid->status;
                 </li>
                 <li>
                     <a href="#video" data-bs-toggle="collapse">
-                        <i class="mdi mdi-email-multiple-outline"></i>
+                        <i class="mdi mdi-video-vintage"></i>
                         <span> Video Setting </span>
                         <span class="menu-arrow"></span>
                     </a>
@@ -128,7 +128,7 @@ $status = $userid->status;
                 </li>
                 <li>
                     <a href="#video" data-bs-toggle="collapse">
-                        <i class="mdi mdi-email-multiple-outline"></i>
+                        <i class="mdi mdi-television"></i>
                         <span> Live Tv Setting </span>
                         <span class="menu-arrow"></span>
                     </a>
@@ -143,7 +143,7 @@ $status = $userid->status;
                 </li>
                 <li>
                     <a href="#seo" data-bs-toggle="collapse">
-                        <i class="mdi mdi-email-multiple-outline"></i>
+                        <i class="mdi mdi-search-web"></i>
                         <span> Seo Setting </span>
                         <span class="menu-arrow"></span>
                     </a>
@@ -161,7 +161,7 @@ $status = $userid->status;
 
                 <li>
                     <a href="#sidebarAuth" data-bs-toggle="collapse">
-                        <i class="mdi mdi-account-circle-outline"></i>
+                        <i class="mdi mdi-account-settings"></i>
                         <span> Setting Admin User </span>
                         <span class="menu-arrow"></span>
                     </a>
