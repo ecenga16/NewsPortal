@@ -18,7 +18,7 @@ $breaking_news = App\Models\Posts::where('status', 1)->where('breaking_news', 1)
                             <marquee direction="left" scrollamount="5px" onmouseover="this.stop()"
                                 onmouseout="this.start()">
                                 @foreach($breaking_news as $post)
-                                <a href="">
+                                <a href="{{url('news/details/'.$post['id'].'/'.$post['news_title_slug'])}}  ">
                                     <img src="{{ $post->news_image }}" alt="Logo" title="Logo" width="30px"
                                         height="auto">
                                     {{ $post->news_title }}
