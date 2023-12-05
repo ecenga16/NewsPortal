@@ -2,15 +2,12 @@
 @section('admin')
 
 @php
-
 $active_news = App\Models\Posts::where('status', 1)->get();
 $inactive_news = App\Models\Posts::where('status', 0)->get();
 $breaking_news = App\Models\Posts::where('breaking_news', 1)->get();
-
 @endphp
 
 <div class="content">
-
     <!-- Start Content-->
     <div class="container-fluid">
 
@@ -48,8 +45,7 @@ $breaking_news = App\Models\Posts::where('breaking_news', 1)->get();
                         </div> <!-- end row-->
                     </div>
                 </div> <!-- end widget-rounded-circle-->
-            </div> <!-- end col-->
-
+            </div>
             <div class="col-md-6 col-xl-3">
                 <div class="widget-rounded-circle card">
                     <div class="card-body">
@@ -68,8 +64,7 @@ $breaking_news = App\Models\Posts::where('breaking_news', 1)->get();
                         </div> <!-- end row-->
                     </div>
                 </div> <!-- end widget-rounded-circle-->
-            </div> <!-- end col-->
-
+            </div>
             <div class="col-md-6 col-xl-3">
                 <div class="widget-rounded-circle card">
                     <div class="card-body">
@@ -111,33 +106,39 @@ $breaking_news = App\Models\Posts::where('breaking_news', 1)->get();
             </div> <!-- end col-->
         </div>
 
-        <div class="row">
-            <div class="col-12">
-                <div class="card">
-                    <div class="card-body">
+        <div class="col-sm-6 col-md-12">
+            <!-- Data Table -->
+            <div class="card">
+                <div class="card-body p-0 p-md-3">
+                    <div class="table-responsive">
                         <table class="table dt-responsive nowrap w-100">
                             <thead>
                                 <tr>
                                     <th>Sl</th>
                                     <th>Image</th>
                                     <th>Title</th>
-                                    <th>Category</th>
-                                    <th>User</th>
-                                    <th>Date</th>
-                                    <th>Status</th>
+                                    <th class="d-none d-md-table-cell">Category</th>
+                                    <th class="d-none d-md-table-cell">User</th>
+                                    <th class="d-none d-md-table-cell">Date</th>
+                                    <th class="d-none d-md-table-cell">Status</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach($all_news as $key=> $item)
+                                @foreach($all_news as $key => $item)
                                 <tr>
-                                    <td>{{ $key+1 }}</td>
-                                    <td><img src="{{asset($item['news_image'])}}" style="width:50px; height:50px;"></td>
-                                    <td>{{ Str::limit($item['news_title'], 40) }}</td>
-                                    <td>{{ optional($item['category'])['category_name'] }}</td>
-                                    <td>{{ $item['user']['name'] }}</td>
-                                    <td>{{ $item['post_date'] }}</td>
+                                    <td>{{ $key + 1 }}</td>
                                     <td>
+                                        <img src="{{ asset($item['news_image']) }}" class="img-fluid"
+                                            style="max-width: 50px; height: auto;">
+                                    </td>
+                                    <td>{{ Str::limit($item['news_title'], 40) }}</td>
+                                    <td class="d-none d-md-table-cell">
+                                        {{ optional($item['category'])['category_name'] }}
+                                    </td>
+                                    <td class="d-none d-md-table-cell">{{ $item['user']['name'] }}</td>
+                                    <td class="d-none d-md-table-cell">{{ $item['post_date'] }}</td>
+                                    <td class="d-none d-md-table-cell">
                                         @if($item->status == '1')
                                         <span class="badge badge-pill bg-success">Active</span>
                                         @else
@@ -146,40 +147,43 @@ $breaking_news = App\Models\Posts::where('breaking_news', 1)->get();
                                     </td>
                                     <td>
                                         <a href="{{ route('edit.post',$item->id) }}"
-                                            class="btn btn-primary rounded-pill waves-effect waves-light">Edit</a>
-
-                                        <a href="{{route('post.delete',$item->id)}}"
-                                            class="btn btn-danger rounded-pill waves-effect waves-light">Delete</a>
-
+                                            class="btn btn-primary rounded-pill waves-effect waves-light">
+                                            Edit
+                                        </a>
+                                        <a href="{{ route('post.delete',$item->id) }}"
+                                            class="btn btn-danger rounded-pill waves-effect waves-light">
+                                            Delete
+                                        </a>
                                         @if($item['status'] == 1)
-
-                                        <a href="{{route('inactive.post',$item->id)}}"
+                                        <a href="{{ route('inactive.post',$item->id) }}"
                                             class="btn btn-primary rounded-pill waves-effect waves-light"
-                                            title="Inactive"><i class="fa-solid fa-thumbs-up"></i></a>
-
+                                            title="Inactive">
+                                            <i class="fa-solid fa-thumbs-up"></i>
+                                        </a>
                                         @else
-
-                                        <a href="{{route('active.post',$item->id)}}"
+                                        <a href="{{ route('active.post',$item->id) }}"
                                             class="btn btn-primary rounded-pill waves-effect waves-light"
-                                            title="Active"><i class="fa-solid fa-thumbs-down"></i></a>
-
+                                            title="Active">
+                                            <i class="fa-solid fa-thumbs-down"></i>
+                                        </a>
                                         @endif
                                     </td>
                                 </tr>
                                 @endforeach
                             </tbody>
                         </table>
-                        <div class="row">
-                            <div class="col-6 offset-md-6">
-                                {{ $all_news->links('backend.posts.pagination') }}
-                            </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-11">
+                            {{ $all_news->links('backend.posts.pagination') }}
                         </div>
-                    </div> <!-- end card body-->
-                </div> <!-- end card -->
-            </div><!-- end col-->
-        </div>
-        <!-- end row-->
-    </div> <!-- container -->
+                    </div>
+                </div> <!-- end card body-->
+            </div> <!-- end card -->
+        </div><!-- end col-->
+    </div>
+    <!-- end row-->
+</div> <!-- container -->
 </div> <!-- content -->
 
 @endsection

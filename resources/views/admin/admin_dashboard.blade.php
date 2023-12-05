@@ -9,7 +9,7 @@
     <meta content="Coderthemes" name="author" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <!-- App favicon -->
-    <link rel="shortcut icon" href="{{ asset('backend/assets/images/favicon.ico') }}">
+    <link rel="shortcut icon" href="{{ asset('frontend/assets/images/logo.jpg') }}">
     <!-- Plugins css -->
     <link href="{{ asset('backend/assets/libs/flatpickr/flatpickr.min.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('backend/assets/libs/selectize/css/selectize.bootstrap3.css') }}" rel="stylesheet"
@@ -66,7 +66,7 @@
 <!-- body start -->
 
 <body
-    style="display: flex;flex-direction: column;min-height: 100vh;font-size:17px;color:#000;width:100%;font-family:SolaimanLipiNormal;background:#f8feff;line-height:1.2;margin:auto"
+    style="display: flex;flex-direction: column;min-height: 100vh;font-size:17px;color:#000;width:100%;font-family:SolaimanLipiNormal; color:white;:1.2;margin:auto"
     data-layout-mode="default" data-theme="dark" data-topbar-color="dark" data-menu-position="fixed"
     data-leftbar-color="dark" data-leftbar-size='default' data-sidebar-user='false'>
     <!-- Begin page -->

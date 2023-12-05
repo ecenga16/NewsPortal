@@ -14,7 +14,7 @@ $seo = App\Models\Seo::find(1);
 
 	<title>@yield('title')</title>
 
-	<link rel="shortcut icon" href="{{ asset('frontend/assets/images/favicon.gif') }}" type="image/x-icon">
+	<link rel="shortcut icon" href="{{ asset('frontend/assets/images/logo.jpg') }}" type="image/x-icon">
 
 
 	<meta name="title" content="{{ $seo->meta_title }}">
