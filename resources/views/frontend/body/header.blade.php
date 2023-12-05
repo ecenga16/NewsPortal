@@ -88,12 +88,12 @@ $cdate = new DateTime();
 </style>
 <script>
     function fetchPrayerTimes() {
-        console.log('Button clicked!');
-        const city = document.getElementById('cityInput').value;
-        window.fetchAndDisplayPrayerTimes(city);
-    }
+            console.log('Button clicked!');
+            const city = document.getElementById('cityInput').value;
+            window.fetchAndDisplayPrayerTimes(city);
+        }
 
-    document.addEventListener('DOMContentLoaded', function () {
+        document.addEventListener('DOMContentLoaded', function () {
         document.querySelector('form').addEventListener('submit', function (event) {
             event.preventDefault();
 
@@ -113,8 +113,12 @@ $cdate = new DateTime();
 
         window.displayPrayerTimes = function (times) {
             var prayerTimesElement = document.querySelector('.prayerTimesExample');
+            const temperature = times.today_weather.temperature;
 
             if (prayerTimesElement) {
+
+
+                document.getElementById('temp').innerText = ` : ${temperature} °C`;
                 document.getElementById('title').innerText = times.title;
 
                 document.getElementById('fajr').innerText = times.items[0].fajr;
@@ -143,7 +147,8 @@ $cdate = new DateTime();
                         <div class="prayerTimesExample">
                             <i class="lar la-calendar" style="color:#FFFFFF"></i>
                             <span style="color:#FFFFFF"> {{ $cdate->format('l d-m-Y') }}</span>
-                            <div><span id="title" style="color:#FFFFFF"></span></div>
+                            <div><span id="title" style="color:#FFFFFF"></span><span id="temp"
+                                    style="color:#FFFFFF"></span></div>
                             <div class="row">
                                 <div class="col-6">
                                     <form>
